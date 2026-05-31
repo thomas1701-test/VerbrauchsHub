@@ -1,0 +1,652 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0315413297B5D6786E5F7444 /* BuildingSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB988AF3376088AFD353D5B8 /* BuildingSwitcher.swift */; };
+		04B6D0BC243B7407A0668E6D /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF09CB4D861FB84693C24E58 /* NotificationService.swift */; };
+		096908ABCB8C450548DC0C0D /* ReminderSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E561BD083193114713B0B /* ReminderSettingsView.swift */; };
+		098CD9F4529E3D6D5AF1B850 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4F6B9DBBDC8718D76A4F72 /* AppState.swift */; };
+		09C120F7D8FE8221E21AC2EF /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06059971BB933001B7F14DA0 /* Theme.swift */; };
+		0F0F0D77C6BA1E6F4C58C8B9 /* Reading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C0DD4DDF581C8D8BF2F85 /* Reading.swift */; };
+		1204175AA66166201CE5DE28 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810F7B6B4C07BB739242EE75 /* Enums.swift */; };
+		180F2E356FB1602AB3B25224 /* TariffListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F730A5844338E95B1A0B2FAC /* TariffListView.swift */; };
+		18867BC3A469B14B7DD22B66 /* BuildingsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D8BEB255AB7ABC89DBB2C3 /* BuildingsListView.swift */; };
+		1BB504A9382F52EA99A28682 /* MeterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B5BB5E88443C5AEA703C14 /* MeterListView.swift */; };
+		1C0CE5659BD231B04BD427FD /* MeterSummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EE09BF11807794513D2205 /* MeterSummaryCard.swift */; };
+		1FB13DDB4EC40D4880D9DFA7 /* Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = C246682EB1D49062D2F46079 /* Building.swift */; };
+		2DB617A4174B5CD5213CF2D9 /* ExportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B966E1334439063FFE1E62 /* ExportService.swift */; };
+		30964D47083CB3C9E5D76532 /* Forecaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFA5D54E6EB304A6C2976BD /* Forecaster.swift */; };
+		328AD85BC777A76CC122E031 /* AddReadingSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F15276BF52E857823260C8 /* AddReadingSheet.swift */; };
+		45EAEA90C1CB17171695EAE9 /* PeriodGranularity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7B8151E86A214164D97CFB /* PeriodGranularity.swift */; };
+		4B09C24F923B25B5F7F924A8 /* MeterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0250CE50AA3EA2C3F1AD89F /* MeterDetailView.swift */; };
+		5B249606179FD79CD0B9EBB5 /* AddMeterSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D00D86A23D97E041E88436 /* AddMeterSheet.swift */; };
+		5FFFDED8719D1EDEFBA8474D /* CalculationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29135F4179173FE1BA8C291 /* CalculationTests.swift */; };
+		6454B192D1A52DC6FCB6ACE5 /* SeedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEB3DBACA09E7EA91C2D7 /* SeedData.swift */; };
+		6996D1269CC51CA900671C01 /* Tariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1447028895F5348EFD526A98 /* Tariff.swift */; };
+		6C739B8F50EE648D7561D74D /* ConsumptionCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9F8BB9D0C842B6B8E35CC3 /* ConsumptionCalculator.swift */; };
+		6DFD1C1F5A10D71D392A32B4 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47325950AD0CFC7A80AD8B40 /* DashboardView.swift */; };
+		751C30E8EB7A4DA1ED283994 /* Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E418360F9C69B2B65E8A5DE0 /* Formatting.swift */; };
+		773E22F903E1FF3F5E23E613 /* CostCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042E48E28596EBAE79CE38DB /* CostCalculator.swift */; };
+		7822DD1202F22470BE3079F5 /* ImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9E7CE5C0612C573950A1B5 /* ImportService.swift */; };
+		991F9905B51D0A5D55E80172 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 244EA4ED092D5FA306BDE7D0 /* Assets.xcassets */; };
+		9CF99AFF6CA23329591651E7 /* BarComparisonChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59244CF4194A3E761345D2CF /* BarComparisonChartView.swift */; };
+		B1A99D029E89814FB7E6F556 /* EnergyBalanceChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E31C70C65E5DBFFF74E628 /* EnergyBalanceChartView.swift */; };
+		B77CA22F423DA4DBF398B767 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1789EF1581A7D16E540D78 /* MainTabView.swift */; };
+		BE61C03614184C15CA93BC1B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DF5090BD6B30AF1CD55B502C /* Localizable.strings */; };
+		CB3B0E7261CEE48ED34CE48A /* VerbrauchsHubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ECFCC0D71BEA7E9D085548 /* VerbrauchsHubApp.swift */; };
+		D2B04A033FEBC486D6468E21 /* ExportImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511A42650C2C77900A7D6660 /* ExportImportView.swift */; };
+		D7C41DE72087FDA7F51159DD /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2314D72F06BF8B165B5D7380 /* StatisticsView.swift */; };
+		DF9C9FD6BAD378B4BDDE79BD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D3C149E22530D7D0370FD /* SettingsView.swift */; };
+		ECEA07CA960B76F164F241BD /* Meter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA2299DA2C633636185C407 /* Meter.swift */; };
+		F6BDF0FA1B13C77844777685 /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C82A5DC646B73E2F66C6C5 /* LineChartView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EA0EA2B5CB57920141F4473F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7F71C9586AE828ACEAA6BA47 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7B8BA2E69C9E724A63F8FA08;
+			remoteInfo = VerbrauchsHub;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00D8BEB255AB7ABC89DBB2C3 /* BuildingsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingsListView.swift; sourceTree = "<group>"; };
+		042E48E28596EBAE79CE38DB /* CostCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostCalculator.swift; sourceTree = "<group>"; };
+		06059971BB933001B7F14DA0 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		06B966E1334439063FFE1E62 /* ExportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportService.swift; sourceTree = "<group>"; };
+		12B59095CD95D57FE6CCDFC5 /* VerbrauchsHub.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = VerbrauchsHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1447028895F5348EFD526A98 /* Tariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tariff.swift; sourceTree = "<group>"; };
+		14B5BB5E88443C5AEA703C14 /* MeterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterListView.swift; sourceTree = "<group>"; };
+		15D00D86A23D97E041E88436 /* AddMeterSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMeterSheet.swift; sourceTree = "<group>"; };
+		2314D72F06BF8B165B5D7380 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
+		244EA4ED092D5FA306BDE7D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		29E31C70C65E5DBFFF74E628 /* EnergyBalanceChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyBalanceChartView.swift; sourceTree = "<group>"; };
+		3C9F8BB9D0C842B6B8E35CC3 /* ConsumptionCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionCalculator.swift; sourceTree = "<group>"; };
+		41ECFCC0D71BEA7E9D085548 /* VerbrauchsHubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerbrauchsHubApp.swift; sourceTree = "<group>"; };
+		47325950AD0CFC7A80AD8B40 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		505E561BD083193114713B0B /* ReminderSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderSettingsView.swift; sourceTree = "<group>"; };
+		511A42650C2C77900A7D6660 /* ExportImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportImportView.swift; sourceTree = "<group>"; };
+		52C0A9A15731BD9F7CCBA761 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		59244CF4194A3E761345D2CF /* BarComparisonChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarComparisonChartView.swift; sourceTree = "<group>"; };
+		5FF4EB2C243394387F689412 /* VerbrauchsHubTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = VerbrauchsHubTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E9E7CE5C0612C573950A1B5 /* ImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportService.swift; sourceTree = "<group>"; };
+		6EA2299DA2C633636185C407 /* Meter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meter.swift; sourceTree = "<group>"; };
+		712228CFC80A2002EBF88043 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		810F7B6B4C07BB739242EE75 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		81FBEB3DBACA09E7EA91C2D7 /* SeedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedData.swift; sourceTree = "<group>"; };
+		85C82A5DC646B73E2F66C6C5 /* LineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
+		866C0DD4DDF581C8D8BF2F85 /* Reading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reading.swift; sourceTree = "<group>"; };
+		9D1789EF1581A7D16E540D78 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		A0250CE50AA3EA2C3F1AD89F /* MeterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterDetailView.swift; sourceTree = "<group>"; };
+		A1F15276BF52E857823260C8 /* AddReadingSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReadingSheet.swift; sourceTree = "<group>"; };
+		B29135F4179173FE1BA8C291 /* CalculationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationTests.swift; sourceTree = "<group>"; };
+		C246682EB1D49062D2F46079 /* Building.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Building.swift; sourceTree = "<group>"; };
+		CF4F6B9DBBDC8718D76A4F72 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		D49D3C149E22530D7D0370FD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		D4EE09BF11807794513D2205 /* MeterSummaryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterSummaryCard.swift; sourceTree = "<group>"; };
+		E418360F9C69B2B65E8A5DE0 /* Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatting.swift; sourceTree = "<group>"; };
+		EF09CB4D861FB84693C24E58 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		F730A5844338E95B1A0B2FAC /* TariffListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffListView.swift; sourceTree = "<group>"; };
+		FB988AF3376088AFD353D5B8 /* BuildingSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingSwitcher.swift; sourceTree = "<group>"; };
+		FBFA5D54E6EB304A6C2976BD /* Forecaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecaster.swift; sourceTree = "<group>"; };
+		FE7B8151E86A214164D97CFB /* PeriodGranularity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodGranularity.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		07C2A62261F00CAB50EF358F = {
+			isa = PBXGroup;
+			children = (
+				9F4468DA3BEC733BCBCCDB30 /* VerbrauchsHub */,
+				419E508EBF2E627A1FA6D35D /* VerbrauchsHubTests */,
+				9B34539026A8D01D19D10BDD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		193CB5B6F2A5F9C078F46927 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				47325950AD0CFC7A80AD8B40 /* DashboardView.swift */,
+				D4EE09BF11807794513D2205 /* MeterSummaryCard.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		19E596A75C8C3C72D6A12A88 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				CF4F6B9DBBDC8718D76A4F72 /* AppState.swift */,
+				9D1789EF1581A7D16E540D78 /* MainTabView.swift */,
+				41ECFCC0D71BEA7E9D085548 /* VerbrauchsHubApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		390DAE53E4468A603E945D8E /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				FB988AF3376088AFD353D5B8 /* BuildingSwitcher.swift */,
+				E418360F9C69B2B65E8A5DE0 /* Formatting.swift */,
+				06059971BB933001B7F14DA0 /* Theme.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		3B3687E34794968CD320AACF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				06B966E1334439063FFE1E62 /* ExportService.swift */,
+				6E9E7CE5C0612C573950A1B5 /* ImportService.swift */,
+				EF09CB4D861FB84693C24E58 /* NotificationService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		3D5CAFEF67DE94AC6D7E0C59 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				244EA4ED092D5FA306BDE7D0 /* Assets.xcassets */,
+				DF5090BD6B30AF1CD55B502C /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3DF65765E80AEA18B12C84E1 /* Calculation */ = {
+			isa = PBXGroup;
+			children = (
+				3C9F8BB9D0C842B6B8E35CC3 /* ConsumptionCalculator.swift */,
+				042E48E28596EBAE79CE38DB /* CostCalculator.swift */,
+				FBFA5D54E6EB304A6C2976BD /* Forecaster.swift */,
+				FE7B8151E86A214164D97CFB /* PeriodGranularity.swift */,
+			);
+			path = Calculation;
+			sourceTree = "<group>";
+		};
+		419E508EBF2E627A1FA6D35D /* VerbrauchsHubTests */ = {
+			isa = PBXGroup;
+			children = (
+				B29135F4179173FE1BA8C291 /* CalculationTests.swift */,
+			);
+			path = VerbrauchsHubTests;
+			sourceTree = "<group>";
+		};
+		5D0D3AB223355A7976C4DAE2 /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				59244CF4194A3E761345D2CF /* BarComparisonChartView.swift */,
+				29E31C70C65E5DBFFF74E628 /* EnergyBalanceChartView.swift */,
+				85C82A5DC646B73E2F66C6C5 /* LineChartView.swift */,
+				2314D72F06BF8B165B5D7380 /* StatisticsView.swift */,
+			);
+			path = Statistics;
+			sourceTree = "<group>";
+		};
+		9B34539026A8D01D19D10BDD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				12B59095CD95D57FE6CCDFC5 /* VerbrauchsHub.app */,
+				5FF4EB2C243394387F689412 /* VerbrauchsHubTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9F4468DA3BEC733BCBCCDB30 /* VerbrauchsHub */ = {
+			isa = PBXGroup;
+			children = (
+				19E596A75C8C3C72D6A12A88 /* App */,
+				3DF65765E80AEA18B12C84E1 /* Calculation */,
+				A90C2AD601CC25AEC295DDE7 /* Features */,
+				E63B88864CA7A03D07BD2FE1 /* Models */,
+				3D5CAFEF67DE94AC6D7E0C59 /* Resources */,
+				3B3687E34794968CD320AACF /* Services */,
+				390DAE53E4468A603E945D8E /* Shared */,
+			);
+			path = VerbrauchsHub;
+			sourceTree = "<group>";
+		};
+		A2CFC03BAB41A17021A4A294 /* Meters */ = {
+			isa = PBXGroup;
+			children = (
+				15D00D86A23D97E041E88436 /* AddMeterSheet.swift */,
+				A1F15276BF52E857823260C8 /* AddReadingSheet.swift */,
+				A0250CE50AA3EA2C3F1AD89F /* MeterDetailView.swift */,
+				14B5BB5E88443C5AEA703C14 /* MeterListView.swift */,
+			);
+			path = Meters;
+			sourceTree = "<group>";
+		};
+		A90C2AD601CC25AEC295DDE7 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				193CB5B6F2A5F9C078F46927 /* Dashboard */,
+				A2CFC03BAB41A17021A4A294 /* Meters */,
+				DDB3786BF401951ECCA290D5 /* Settings */,
+				5D0D3AB223355A7976C4DAE2 /* Statistics */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		DDB3786BF401951ECCA290D5 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				00D8BEB255AB7ABC89DBB2C3 /* BuildingsListView.swift */,
+				511A42650C2C77900A7D6660 /* ExportImportView.swift */,
+				505E561BD083193114713B0B /* ReminderSettingsView.swift */,
+				D49D3C149E22530D7D0370FD /* SettingsView.swift */,
+				F730A5844338E95B1A0B2FAC /* TariffListView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		E63B88864CA7A03D07BD2FE1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C246682EB1D49062D2F46079 /* Building.swift */,
+				810F7B6B4C07BB739242EE75 /* Enums.swift */,
+				6EA2299DA2C633636185C407 /* Meter.swift */,
+				866C0DD4DDF581C8D8BF2F85 /* Reading.swift */,
+				81FBEB3DBACA09E7EA91C2D7 /* SeedData.swift */,
+				1447028895F5348EFD526A98 /* Tariff.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		58BB16D436227C5A5E4E8771 /* VerbrauchsHubTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1E6727858E3944EAFE2BB03 /* Build configuration list for PBXNativeTarget "VerbrauchsHubTests" */;
+			buildPhases = (
+				EB943409928ABEE25001AA6A /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				84F62E630CB4983C5EE2E195 /* PBXTargetDependency */,
+			);
+			name = VerbrauchsHubTests;
+			packageProductDependencies = (
+			);
+			productName = VerbrauchsHubTests;
+			productReference = 5FF4EB2C243394387F689412 /* VerbrauchsHubTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7B8BA2E69C9E724A63F8FA08 /* VerbrauchsHub */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC1313BC36D102E1B8FD3EA2 /* Build configuration list for PBXNativeTarget "VerbrauchsHub" */;
+			buildPhases = (
+				DEDA1F627DAC80970DFD14EA /* Sources */,
+				F580A5D73F82401091F066EF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VerbrauchsHub;
+			packageProductDependencies = (
+			);
+			productName = VerbrauchsHub;
+			productReference = 12B59095CD95D57FE6CCDFC5 /* VerbrauchsHub.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7F71C9586AE828ACEAA6BA47 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = 9AAB2EE91EEDF567BCB9BF67 /* Build configuration list for PBXProject "VerbrauchsHub" */;
+			developmentRegion = de;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				de,
+				en,
+			);
+			mainGroup = 07C2A62261F00CAB50EF358F;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 9B34539026A8D01D19D10BDD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7B8BA2E69C9E724A63F8FA08 /* VerbrauchsHub */,
+				58BB16D436227C5A5E4E8771 /* VerbrauchsHubTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F580A5D73F82401091F066EF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				991F9905B51D0A5D55E80172 /* Assets.xcassets in Resources */,
+				BE61C03614184C15CA93BC1B /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DEDA1F627DAC80970DFD14EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B249606179FD79CD0B9EBB5 /* AddMeterSheet.swift in Sources */,
+				328AD85BC777A76CC122E031 /* AddReadingSheet.swift in Sources */,
+				098CD9F4529E3D6D5AF1B850 /* AppState.swift in Sources */,
+				9CF99AFF6CA23329591651E7 /* BarComparisonChartView.swift in Sources */,
+				1FB13DDB4EC40D4880D9DFA7 /* Building.swift in Sources */,
+				0315413297B5D6786E5F7444 /* BuildingSwitcher.swift in Sources */,
+				18867BC3A469B14B7DD22B66 /* BuildingsListView.swift in Sources */,
+				6C739B8F50EE648D7561D74D /* ConsumptionCalculator.swift in Sources */,
+				773E22F903E1FF3F5E23E613 /* CostCalculator.swift in Sources */,
+				6DFD1C1F5A10D71D392A32B4 /* DashboardView.swift in Sources */,
+				B1A99D029E89814FB7E6F556 /* EnergyBalanceChartView.swift in Sources */,
+				1204175AA66166201CE5DE28 /* Enums.swift in Sources */,
+				D2B04A033FEBC486D6468E21 /* ExportImportView.swift in Sources */,
+				2DB617A4174B5CD5213CF2D9 /* ExportService.swift in Sources */,
+				30964D47083CB3C9E5D76532 /* Forecaster.swift in Sources */,
+				751C30E8EB7A4DA1ED283994 /* Formatting.swift in Sources */,
+				7822DD1202F22470BE3079F5 /* ImportService.swift in Sources */,
+				F6BDF0FA1B13C77844777685 /* LineChartView.swift in Sources */,
+				B77CA22F423DA4DBF398B767 /* MainTabView.swift in Sources */,
+				ECEA07CA960B76F164F241BD /* Meter.swift in Sources */,
+				4B09C24F923B25B5F7F924A8 /* MeterDetailView.swift in Sources */,
+				1BB504A9382F52EA99A28682 /* MeterListView.swift in Sources */,
+				1C0CE5659BD231B04BD427FD /* MeterSummaryCard.swift in Sources */,
+				04B6D0BC243B7407A0668E6D /* NotificationService.swift in Sources */,
+				45EAEA90C1CB17171695EAE9 /* PeriodGranularity.swift in Sources */,
+				0F0F0D77C6BA1E6F4C58C8B9 /* Reading.swift in Sources */,
+				096908ABCB8C450548DC0C0D /* ReminderSettingsView.swift in Sources */,
+				6454B192D1A52DC6FCB6ACE5 /* SeedData.swift in Sources */,
+				DF9C9FD6BAD378B4BDDE79BD /* SettingsView.swift in Sources */,
+				D7C41DE72087FDA7F51159DD /* StatisticsView.swift in Sources */,
+				6996D1269CC51CA900671C01 /* Tariff.swift in Sources */,
+				180F2E356FB1602AB3B25224 /* TariffListView.swift in Sources */,
+				09C120F7D8FE8221E21AC2EF /* Theme.swift in Sources */,
+				CB3B0E7261CEE48ED34CE48A /* VerbrauchsHubApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB943409928ABEE25001AA6A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FFFDED8719D1EDEFBA8474D /* CalculationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		84F62E630CB4983C5EE2E195 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7B8BA2E69C9E724A63F8FA08 /* VerbrauchsHub */;
+			targetProxy = EA0EA2B5CB57920141F4473F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DF5090BD6B30AF1CD55B502C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				712228CFC80A2002EBF88043 /* de */,
+				52C0A9A15731BD9F7CCBA761 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6B4B94E0C5DE008FBF37955E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = VerbrauchsHub;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 5.10;
+			};
+			name = Release;
+		};
+		7AFE0628C990A2234984933A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.gmx.dillmann.VerbrauchsHubTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VerbrauchsHub.app/VerbrauchsHub";
+			};
+			name = Debug;
+		};
+		7E9C6E3FE56328622C9C8923 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Foto vom Zählerstand direkt aufnehmen.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Foto vom Zählerstand als Beweis hinzufügen.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.gmx.dillmann.VerbrauchsHub;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		90CB07F358053E25AF41EBF3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.gmx.dillmann.VerbrauchsHubTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VerbrauchsHub.app/VerbrauchsHub";
+			};
+			name = Release;
+		};
+		BE9253387DF9BB7A7C343930 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = VerbrauchsHub;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 5.10;
+			};
+			name = Debug;
+		};
+		EED5334800BA24254AF8BE7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Foto vom Zählerstand direkt aufnehmen.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Foto vom Zählerstand als Beweis hinzufügen.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.gmx.dillmann.VerbrauchsHub;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9AAB2EE91EEDF567BCB9BF67 /* Build configuration list for PBXProject "VerbrauchsHub" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE9253387DF9BB7A7C343930 /* Debug */,
+				6B4B94E0C5DE008FBF37955E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		AC1313BC36D102E1B8FD3EA2 /* Build configuration list for PBXNativeTarget "VerbrauchsHub" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7E9C6E3FE56328622C9C8923 /* Debug */,
+				EED5334800BA24254AF8BE7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E1E6727858E3944EAFE2BB03 /* Build configuration list for PBXNativeTarget "VerbrauchsHubTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7AFE0628C990A2234984933A /* Debug */,
+				90CB07F358053E25AF41EBF3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7F71C9586AE828ACEAA6BA47 /* Project object */;
+}

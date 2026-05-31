@@ -1,0 +1,42 @@
+name: VerbrauchsHub
+options:
+  bundleIdPrefix: net.gmx.dillmann
+  deploymentTarget:
+    iOS: "18.0"
+  createIntermediateGroups: true
+  developmentLanguage: de
+settings:
+  base:
+    SWIFT_VERSION: "5.10"
+    IPHONEOS_DEPLOYMENT_TARGET: "18.0"
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+    GENERATE_INFOPLIST_FILE: YES
+    INFOPLIST_KEY_UILaunchScreen_Generation: YES
+    INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+    INFOPLIST_KEY_CFBundleDisplayName: VerbrauchsHub
+    INFOPLIST_KEY_UISupportedInterfaceOrientations: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+    SWIFT_STRICT_CONCURRENCY: complete
+    DEAD_CODE_STRIPPING: YES
+targets:
+  VerbrauchsHub:
+    type: application
+    platform: iOS
+    sources:
+      - path: VerbrauchsHub
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: net.gmx.dillmann.VerbrauchsHub
+        TARGETED_DEVICE_FAMILY: "1,2"
+        INFOPLIST_KEY_NSPhotoLibraryUsageDescription: "Foto vom Zählerstand als Beweis hinzufügen."
+        INFOPLIST_KEY_NSCameraUsageDescription: "Foto vom Zählerstand direkt aufnehmen."
+  VerbrauchsHubTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: VerbrauchsHubTests
+    dependencies:
+      - target: VerbrauchsHub
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: net.gmx.dillmann.VerbrauchsHubTests
+        GENERATE_INFOPLIST_FILE: YES

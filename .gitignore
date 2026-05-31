@@ -1,0 +1,21 @@
+# Xcode
+build/
+DerivedData/
+*.xcuserdata/
+*.xcuserstate
+xcuserdata/
+xcshareddata/WorkspaceSettings.xcsettings
+*.xcscmblueprint
+*.xccheckout
+*.moved-aside
+
+# macOS
+.DS_Store
+
+# Build artifacts
+*.dSYM.zip
+*.dSYM
+*.ipa
+
+# CocoaPods (not used here, but safe)
+Pods/
