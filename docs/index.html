@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>VerbrauchsHub – Zählerstände und Verbräuche im Griff</title>
+<meta name="description" content="iOS-App zur Erfassung und Auswertung deiner Wasser-, Strom-, PV-, Gas- und Heizungs-Zählerstände. Lokal, ohne Cloud, ohne Tracker." />
+<link rel="stylesheet" href="assets/style.css" />
+<link rel="icon" type="image/png" href="assets/app-icon.png" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="assets/app-icon.png" alt="VerbrauchsHub Logo" />
+      VerbrauchsHub
+    </a>
+    <nav class="nav">
+      <a href="index.html">Start</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Datenschutz</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <img src="assets/app-icon.png" alt="App-Icon" class="app-icon" />
+    <span class="badge">iOS 18 · iPhone &amp; iPad</span>
+    <h1>Zählerstände im Griff.</h1>
+    <p class="tagline">Erfasse Wasser-, Strom-, PV-, Gas- und Heizungs-Zählerstände in einer einzigen App. Sieh deine Verbräuche und Kosten als Tag, Woche, Monat, Quartal oder Jahr — mit klaren Diagrammen und ohne Cloud-Zwang.</p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="container">
+    <h2>Was VerbrauchsHub für dich tut</h2>
+    <div class="features">
+      <div class="feature">
+        <div class="icon">🏠</div>
+        <h3>Mehrere Gebäude</h3>
+        <p>Verwalte mehrere Häuser oder Wohnungen mit eigenen Zählern und vergleiche sie.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">⚡</div>
+        <h3>Alle Zählertypen</h3>
+        <p>Strom, PV-Einspeisung, PV-Eigenverbrauch, Wasser, Gas, Wärme — oder eigene Typen.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">📊</div>
+        <h3>Tolle Diagramme</h3>
+        <p>Linienverlauf, Periodenvergleich, PV-Energiebilanz mit Autarkiegrad — alles in Swift Charts.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">💶</div>
+        <h3>Kosten &amp; Tarife</h3>
+        <p>Hinterlege Tarife mit Gültigkeitszeitraum — auch rückwirkend, mit Grundgebühr und Einspeisevergütung.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🔮</div>
+        <h3>Jahres-Hochrechnung</h3>
+        <p>Sieh sofort, worauf dein Verbrauch dieses Jahr hinausläuft.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🔔</div>
+        <h3>Erinnerungen</h3>
+        <p>Lass dich monatlich an die Ablesung erinnern — pro Zähler frei einstellbar.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">📸</div>
+        <h3>Beweisfoto</h3>
+        <p>Foto vom Zählerstand direkt mit der Ablesung speichern.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🔒</div>
+        <h3>100% lokal</h3>
+        <p>Deine Daten bleiben auf deinem Gerät. Keine Cloud, keine Tracker, keine Third-Party-SDKs.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">📤</div>
+        <h3>Export &amp; Import</h3>
+        <p>JSON für vollständiges Backup, CSV für Excel/Numbers. Datenhoheit garantiert.</p>
+      </div>
+    </div>
+
+    <div class="screenshot-wrap">
+      <img src="images/screenshot-dashboard.png" alt="VerbrauchsHub Dashboard mit Karten für jeden Zähler" class="screenshot" />
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>So funktioniert's</h2>
+    <ol>
+      <li><strong>Gebäude anlegen</strong> — z. B. „Mein Haus".</li>
+      <li><strong>Zähler hinzufügen</strong> — Strom, PV, Wasser, Gas etc.</li>
+      <li><strong>Tarif hinterlegen</strong> — Preis pro Einheit und Grundgebühr.</li>
+      <li><strong>Regelmäßig Zählerstand eintragen</strong> — VerbrauchsHub rechnet Verbrauch und Kosten automatisch zwischen den Ablesungen aus.</li>
+      <li><strong>Statistik-Tab öffnen</strong> — Periode wählen, Vergleich aktivieren, Trends erkennen.</li>
+    </ol>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>© <span id="year"></span> VerbrauchsHub</div>
+    <div>
+      <a href="support.html">Support</a> ·
+      <a href="privacy.html">Datenschutz</a>
+    </div>
+  </div>
+</footer>
+
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

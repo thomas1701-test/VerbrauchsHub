@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Support – VerbrauchsHub</title>
+<meta name="description" content="Hilfe, FAQ und Kontakt zur iOS-App VerbrauchsHub." />
+<link rel="stylesheet" href="assets/style.css" />
+<link rel="icon" type="image/png" href="assets/app-icon.png" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="assets/app-icon.png" alt="VerbrauchsHub Logo" />
+      VerbrauchsHub
+    </a>
+    <nav class="nav">
+      <a href="index.html">Start</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Datenschutz</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <article class="article">
+    <h1>Support</h1>
+    <p class="meta">Hilfe, FAQ und Kontakt</p>
+
+    <h2>Kontakt</h2>
+    <p>Bei Fragen, Fehlern oder Wünschen erreichst du mich per E-Mail:</p>
+    <p><a href="mailto:thomas.dillmann@gmx.net?subject=VerbrauchsHub%20Support">thomas.dillmann@gmx.net</a></p>
+    <p>Damit ich dir am schnellsten helfen kann, sind folgende Angaben hilfreich:</p>
+    <ul>
+      <li>iOS-Version (Einstellungen → Allgemein → Info)</li>
+      <li>Modell deines iPhones / iPads</li>
+      <li>App-Version (in den Einstellungen der App ganz unten sichtbar)</li>
+      <li>Kurze Beschreibung, was passiert / was du erwartet hast</li>
+      <li>Optional: Screenshot</li>
+    </ul>
+
+    <h2>Häufige Fragen</h2>
+
+    <details class="faq">
+      <summary>Werden meine Daten irgendwo hochgeladen?</summary>
+      <p>Nein. VerbrauchsHub speichert alles ausschließlich lokal auf deinem Gerät. Es gibt keine Cloud-Synchronisation, keine Server-Anbindung, keine Analyse und keine Werbung. Details in der <a href="privacy.html">Datenschutzerklärung</a>.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Wie sichere ich meine Daten?</summary>
+      <p>Zwei Wege:</p>
+      <ul>
+        <li><strong>iOS-Backup:</strong> Wenn du iCloud Backup aktiv hast, sind die App-Daten automatisch im Backup enthalten.</li>
+        <li><strong>Manueller Export:</strong> Einstellungen → Export &amp; Import → „JSON exportieren". Die Datei kannst du z. B. in iCloud Drive ablegen oder dir selbst per Mail schicken.</li>
+      </ul>
+    </details>
+
+    <details class="faq">
+      <summary>Was passiert, wenn ich ein neues iPhone bekomme?</summary>
+      <p>Wenn du beim Wechsel ein iCloud-Backup oder Direkt-Übertragung (iPhone-zu-iPhone) verwendest, übernimmt das neue Gerät auch die VerbrauchsHub-Daten. Falls nicht, exportiere vorher eine JSON-Datei und importiere sie auf dem neuen Gerät.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Wie werden Verbräuche zwischen zwei Ablesungen berechnet?</summary>
+      <p>VerbrauchsHub verwendet <strong>lineare Interpolation</strong>: Der Verbrauch zwischen zwei Ablesungen wird gleichmäßig auf die Tage dazwischen verteilt. Für eine Auswertung „Mai" werden so anteilig die Werte aus überlappenden Ablese-Paaren aufsummiert. Bereiche, die nur teilweise von echten Ablesungen abgedeckt sind, werden in Diagrammen visuell markiert.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Mein Zählerstand ist niedriger als der letzte (z. B. Zählertausch)</summary>
+      <p>Sinkende Werte werden derzeit in Aggregaten ignoriert (kein negativer Verbrauch). Wenn du einen Zählertausch hattest, ist es am sauberen, den alten Zähler abzulesen, danach einen <em>neuen Zähler</em> in der App anzulegen und beim neuen mit dem neuen Startwert zu beginnen. Eine echte „Zählertausch"-Funktion ist für ein späteres Update geplant.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Kann ich mehrere Häuser/Wohnungen verwalten?</summary>
+      <p>Ja. In den Einstellungen unter „Gebäude" kannst du beliebig viele Gebäude anlegen. Oben rechts in den Tabs findest du dann einen Gebäude-Switcher, mit dem du zwischen einzelnen Gebäuden oder „Alle Gebäude" umschalten kannst.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Kann ich Tarifänderungen rückwirkend abbilden?</summary>
+      <p>Ja. Jeder Tarif hat ein „Gültig ab"-Datum. Lege einfach einen neuen Tarif mit dem entsprechenden Datum an — die App rechnet Kosten innerhalb einer Periode segmentweise mit dem jeweils gültigen Tarif.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Wie berechnet die App die PV-Energiebilanz / den Autarkiegrad?</summary>
+      <p>Wenn ein Gebäude einen Bezugszähler (Strom) und einen Einspeisezähler (PV-Einspeisung) hat, kann optional auch ein PV-Eigenverbrauchs-Zähler hinterlegt werden. Daraus errechnet sich:</p>
+      <ul>
+        <li><strong>Erzeugung</strong> = Einspeisung + Eigenverbrauch</li>
+        <li><strong>Autarkiegrad</strong> = Eigenverbrauch / (Eigenverbrauch + Netzbezug)</li>
+      </ul>
+    </details>
+
+    <details class="faq">
+      <summary>Funktionieren Erinnerungen ohne Internetverbindung?</summary>
+      <p>Ja. Erinnerungen werden als lokale iOS-Notifications geplant und brauchen keinerlei Internetverbindung. Bei der ersten Aktivierung fragt iOS einmalig nach der Erlaubnis.</p>
+    </details>
+
+    <h2>Versionshistorie</h2>
+
+    <div class="version">
+      <h3>Version 1.0.0</h3>
+      <div class="date">Mai 2026 – Erstveröffentlichung</div>
+      <ul>
+        <li>Erfassung von Zählerständen für Strom, PV-Einspeisung, PV-Eigenverbrauch, Wasser, Gas, Wärme sowie eigene Zählertypen</li>
+        <li>Mehrgebäude-Unterstützung mit Toolbar-Switcher</li>
+        <li>Statistik mit Tag-, Wochen-, Monats-, Quartals- und Jahresansicht</li>
+        <li>Vergleichsmodus (Vorperiode / Vorjahr)</li>
+        <li>Tarif-Historie mit Grundgebühren und Einspeisevergütung</li>
+        <li>Jahres-Hochrechnung, Trend-Indikatoren</li>
+        <li>PV-Energiebilanz mit Autarkiegrad</li>
+        <li>Monatliche Erinnerungen pro Zähler</li>
+        <li>Export als JSON und CSV, Import mit Konflikt-Strategie</li>
+      </ul>
+    </div>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>© <span id="year"></span> VerbrauchsHub</div>
+    <div>
+      <a href="support.html">Support</a> ·
+      <a href="privacy.html">Datenschutz</a>
+    </div>
+  </div>
+</footer>
+
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

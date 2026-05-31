@@ -61,7 +61,7 @@
 		042E48E28596EBAE79CE38DB /* CostCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostCalculator.swift; sourceTree = "<group>"; };
 		06059971BB933001B7F14DA0 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		06B966E1334439063FFE1E62 /* ExportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportService.swift; sourceTree = "<group>"; };
-		12B59095CD95D57FE6CCDFC5 /* VerbrauchsHub.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = VerbrauchsHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		12B59095CD95D57FE6CCDFC5 /* VerbrauchsHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VerbrauchsHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1447028895F5348EFD526A98 /* Tariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tariff.swift; sourceTree = "<group>"; };
 		14B5BB5E88443C5AEA703C14 /* MeterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterListView.swift; sourceTree = "<group>"; };
 		15D00D86A23D97E041E88436 /* AddMeterSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMeterSheet.swift; sourceTree = "<group>"; };
@@ -304,8 +304,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 9AAB2EE91EEDF567BCB9BF67 /* Build configuration list for PBXProject "VerbrauchsHub" */;
 			developmentRegion = de;
@@ -502,6 +500,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = RVXL7PUD42;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Foto vom Zählerstand direkt aufnehmen.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Foto vom Zählerstand als Beweis hinzufügen.";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -610,6 +609,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = RVXL7PUD42;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Foto vom Zählerstand direkt aufnehmen.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Foto vom Zählerstand als Beweis hinzufügen.";
 				LD_RUNPATH_SEARCH_PATHS = (

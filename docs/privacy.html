@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Datenschutzerklärung – VerbrauchsHub</title>
+<meta name="description" content="Datenschutzerklärung der iOS-App VerbrauchsHub." />
+<link rel="stylesheet" href="assets/style.css" />
+<link rel="icon" type="image/png" href="assets/app-icon.png" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="assets/app-icon.png" alt="VerbrauchsHub Logo" />
+      VerbrauchsHub
+    </a>
+    <nav class="nav">
+      <a href="index.html">Start</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Datenschutz</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <article class="article">
+    <h1>Datenschutzerklärung</h1>
+    <p class="meta">Gültig ab: 31. Mai 2026 · App: VerbrauchsHub für iOS</p>
+
+    <div class="callout">
+      <strong>Kurz gesagt:</strong> VerbrauchsHub erhebt, speichert, überträgt oder verarbeitet <em>keine</em> personenbezogenen Daten. Alles bleibt auf deinem Gerät. Es gibt keinen Server, keine Cloud-Synchronisation, keine Analyse und keine Werbung.
+    </div>
+
+    <h2>1. Verantwortliche Stelle</h2>
+    <p>Verantwortlich für diese App im Sinne der DSGVO ist der Entwickler von VerbrauchsHub. Kontakt zu Datenschutzfragen: <a href="mailto:thomas.dillmann@gmx.net?subject=VerbrauchsHub%20Datenschutz">thomas.dillmann@gmx.net</a>.</p>
+
+    <h2>2. Welche Daten werden verarbeitet?</h2>
+    <p>VerbrauchsHub verarbeitet ausschließlich Daten, die du selbst in der App eingibst:</p>
+    <ul>
+      <li>Gebäudenamen, Adressen (optional), Notizen</li>
+      <li>Zählertypen, Bezeichnungen, Einheiten</li>
+      <li>Zählerstände mit Datum, optionalen Notizen und optionalen Fotos</li>
+      <li>Tarifinformationen (Preise, Gültigkeitszeiträume, Grundgebühren)</li>
+      <li>Einstellungen für lokale Erinnerungen</li>
+    </ul>
+    <p>Diese Daten werden ausschließlich lokal auf deinem iPhone bzw. iPad gespeichert (SwiftData-Datenbank im App-Sandbox-Verzeichnis). Sie verlassen dein Gerät zu keinem Zeitpunkt durch Aktion der App.</p>
+
+    <h2>3. Welche Berechtigungen fragt die App an?</h2>
+    <ul>
+      <li><strong>Mitteilungen (optional):</strong> nur wenn du Erinnerungen für einen Zähler aktivierst. Es werden ausschließlich lokale Benachrichtigungen über iOS geplant — kein externer Push-Dienst.</li>
+      <li><strong>Fotos / Kamera (optional):</strong> nur wenn du ein Foto vom Zählerstand anhängen möchtest. Das Foto wird lokal im App-Container gespeichert und nicht hochgeladen.</li>
+    </ul>
+    <p>Beide Berechtigungen können jederzeit in den iOS-Einstellungen widerrufen werden.</p>
+
+    <h2>4. Werden Daten an Dritte weitergegeben?</h2>
+    <p>Nein. Die App enthält keine Tracking-, Analyse- oder Werbe-SDKs und stellt keine Verbindungen zu fremden Servern her.</p>
+
+    <h2>5. Backup &amp; iCloud</h2>
+    <p>Falls du das automatische iOS-Backup (iCloud Backup oder Backup über einen Mac/PC) aktiviert hast, werden die Daten von VerbrauchsHub — wie die jeder anderen App — Bestandteil dieses Backups. Diese Sicherung wird von Apple gemäß der iCloud- bzw. iTunes-Datenschutzbestimmungen verarbeitet. VerbrauchsHub selbst hat darauf keinen Einfluss und keinen Zugriff.</p>
+
+    <h2>6. Export &amp; Import</h2>
+    <p>Wenn du in den Einstellungen die Export-Funktion verwendest, erstellt die App eine JSON- oder CSV-Datei. Was du anschließend mit dieser Datei machst (z. B. in iCloud Drive speichern, per Mail versenden, in eine andere App importieren), liegt vollständig in deiner Kontrolle und Verantwortung.</p>
+
+    <h2>7. Deine Rechte (DSGVO)</h2>
+    <p>Da keine personenbezogenen Daten an uns übertragen oder durch uns verarbeitet werden, fallen Auskunfts-, Berichtigungs- und Löschansprüche im Sinne der Art. 15–17 DSGVO gegenüber dem Entwickler grundsätzlich nicht an. Alle in der App gespeicherten Daten kannst du jederzeit selbst einsehen, ändern oder löschen — entweder direkt in der App oder durch Deinstallation der App.</p>
+
+    <h2>8. Änderungen dieser Datenschutzerklärung</h2>
+    <p>Die jeweils aktuelle Version dieser Datenschutzerklärung ist unter dieser URL abrufbar. Wesentliche Änderungen werden in der App-Beschreibung im App Store kommuniziert.</p>
+
+    <h2>9. Kontakt</h2>
+    <p>Bei Fragen zum Datenschutz erreichst du den Entwickler unter <a href="mailto:thomas.dillmann@gmx.net?subject=VerbrauchsHub%20Datenschutz">thomas.dillmann@gmx.net</a>.</p>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>© <span id="year"></span> VerbrauchsHub</div>
+    <div>
+      <a href="support.html">Support</a> ·
+      <a href="privacy.html">Datenschutz</a>
+    </div>
+  </div>
+</footer>
+
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
