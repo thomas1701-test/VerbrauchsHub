@@ -1,6 +1,12 @@
 Schluss mit Zettelwirtschaft im Keller: VerbrauchsHub macht aus deinen Zählerständen klare Zahlen – für Strom, Gas, Wasser, Wärme und deine PV-Anlage.
 
-Zählerstand eintippen, fertig. VerbrauchsHub rechnet zwischen deinen Ablesungen automatisch den Verbrauch pro Tag, Woche, Monat, Quartal oder Jahr aus – auch wenn du nicht immer am Monatsersten abliest.
+Zähler fotografieren, fertig. VerbrauchsHub erkennt den Zählerstand auf dem Foto und rechnet zwischen deinen Ablesungen automatisch den Verbrauch pro Tag, Woche, Monat, Quartal oder Jahr aus – auch wenn du nicht immer am Monatsersten abliest.
+
+KEINE BÖSE ÜBERRASCHUNG BEI DER JAHRESABRECHNUNG
+• Trage deinen monatlichen Abschlag ein und sieh jederzeit die voraussichtliche Nachzahlung oder Erstattung
+• Passender Abschlag pro Monat auf einen Blick
+• Prognosen berücksichtigen den saisonalen Verlauf des Vorjahres – wichtig bei Gas und Heizung
+• Jahresziel pro Zähler mit Fortschritt und Hochrechnung
 
 ALLE ZÄHLER. EIN BLICK.
 • Übersicht mit aktuellem Monatsverbrauch, Kosten und Trend für jeden Zähler
@@ -16,16 +22,18 @@ STATISTIKEN, DIE ETWAS SAGEN
 • Verlauf und Periodenvergleich als übersichtliche Diagramme
 • Vergleich mit der Vorperiode oder dem Vorjahr
 • PV-Energiebilanz mit Netzbezug, Einspeisung, Eigenverbrauch und Autarkiegrad
-• Jahres-Hochrechnung: Sieh früh, worauf dein Verbrauch hinausläuft – bevor die Nachzahlung kommt
 
 PRAKTISCH IM ALLTAG
+• Zählerstand per Kamera erkennen – Foto bleibt als Beleg gespeichert
+• Warnung bei Tippfehlern und ungewöhnlich hohem Verbrauch
+• „Hey Siri, Zählerstand in VerbrauchsHub erfassen“ und Kurzbefehle
 • Monatliche Ablese-Erinnerung pro Zähler
-• Foto vom Zählerstand als Beleg speichern
 • Export als JSON (komplettes Backup inkl. Fotos) oder CSV für Excel und Numbers
-• Import deines Backups auf ein neues Gerät
 • Mit Beispieldaten sofort ausprobieren
 
 DEINE DATEN GEHÖREN DIR
-Alle Daten bleiben ausschließlich auf deinem iPhone oder iPad. Kein Konto, keine Cloud, keine Werbung, kein Tracking, keine Drittanbieter-SDKs.
+Alle Daten bleiben ausschließlich auf deinem iPhone oder iPad. Kein Konto, keine Cloud, keine Werbung, kein Tracking, keine Drittanbieter-SDKs. Die Texterkennung läuft direkt auf dem Gerät.
 
-Einmal kaufen, für immer nutzen – ohne Abo.
+14 TAGE KOSTENLOS TESTEN
+Teste alle Funktionen 14 Tage lang kostenlos. Danach schaltest du die Vollversion mit einem einmaligen In-App-Kauf frei – kein Abo. Ohne Kauf ist die App nach der Testphase gesperrt; deine Daten bleiben auf dem Gerät erhalten.
+Du hast VerbrauchsHub bereits gekauft? Dann bleibt die Vollversion für dich automatisch freigeschaltet.

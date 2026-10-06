@@ -15,10 +15,11 @@ FONT = "/System/Library/Fonts/SFNS.ttf"
 CAPTIONS = {
     "01-dashboard": ("Alle Zähler.\nEin Blick.", "Strom, Gas, Wasser & PV – mit Kosten und Trend"),
     "02-detail": ("Verbrauch &\nPrognose", "Monat, Jahr und Hochrechnung – automatisch"),
-    "03-reading": ("In Sekunden\nabgelesen", "Zählerstand eintippen, optional mit Foto"),
+    "03-reading": ("In Sekunden\nabgelesen", "Foto machen – der Zählerstand wird erkannt"),
     "04-statistics": ("Vergleiche,\ndie zählen", "Tag bis Jahr – auch mit dem Vorjahr"),
     "05-pv": ("Deine\nPV-Bilanz", "Einspeisung, Eigenverbrauch und Autarkiegrad"),
     "06-meters": ("Mehrere\nGebäude", "Haus, Wohnung, Ferienhaus – sauber getrennt"),
+    "07-billing": ("Keine böse\nÜberraschung", "Nachzahlung oder Erstattung – schon heute"),
 }
 
 # Top → bottom gradient per screenshot, derived from the meter colours used in the app.
@@ -29,6 +30,7 @@ GRADIENTS = {
     "04-statistics": ("#5E35B1", "#2A1470"),
     "05-pv": ("#43A047", "#1B5E20"),
     "06-meters": ("#FB8C00", "#A84E00"),
+    "07-billing": ("#FFB300", "#B26A00"),
 }
 
 

@@ -1,1 +1,1 @@
-Zählerstand,Stromzähler,Gaszähler,Wasserzähler,Photovoltaik,PV,Autarkie,Nebenkosten,Ablesung,Energie
+Zählerstand,Stromzähler,Gaszähler,Wasserzähler,Abschlag,Nachzahlung,Photovoltaik,PV,Nebenkosten

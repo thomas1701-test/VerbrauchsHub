@@ -24,9 +24,17 @@ final class ScreenshotTests: XCTestCase {
 
         // 1 — Dashboard
         XCTAssertTrue(app.staticTexts["Strom (Bezug)"].firstMatch.waitForExistence(timeout: 10))
+        sleep(3) // the launch zoom animation is still running on first start
         snap("01-dashboard")
 
+        // 7 — Annual goal and billing forecast (uploaded as second image)
+        app.staticTexts["Strom (Bezug)"].firstMatch.tap()
+        XCTAssertTrue(app.staticTexts["Jahresabrechnung"].waitForExistence(timeout: 5))
+        snap("07-billing")
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+
         // 2 — Meter detail
+        XCTAssertTrue(app.staticTexts["Gas"].firstMatch.waitForExistence(timeout: 5))
         app.staticTexts["Gas"].firstMatch.tap()
         XCTAssertTrue(app.staticTexts["Verlauf"].waitForExistence(timeout: 5))
         snap("02-detail")
