@@ -14,6 +14,7 @@
 		09C120F7D8FE8221E21AC2EF /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06059971BB933001B7F14DA0 /* Theme.swift */; };
 		0F0F0D77C6BA1E6F4C58C8B9 /* Reading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C0DD4DDF581C8D8BF2F85 /* Reading.swift */; };
 		1204175AA66166201CE5DE28 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810F7B6B4C07BB739242EE75 /* Enums.swift */; };
+		148B148E5FCBA96E921EA718 /* KeychainFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713819BD8548D797875AC8B3 /* KeychainFlag.swift */; };
 		180F2E356FB1602AB3B25224 /* TariffListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F730A5844338E95B1A0B2FAC /* TariffListView.swift */; };
 		18867BC3A469B14B7DD22B66 /* BuildingsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D8BEB255AB7ABC89DBB2C3 /* BuildingsListView.swift */; };
 		1BB504A9382F52EA99A28682 /* MeterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B5BB5E88443C5AEA703C14 /* MeterListView.swift */; };
@@ -22,8 +23,10 @@
 		2DB617A4174B5CD5213CF2D9 /* ExportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B966E1334439063FFE1E62 /* ExportService.swift */; };
 		30964D47083CB3C9E5D76532 /* Forecaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFA5D54E6EB304A6C2976BD /* Forecaster.swift */; };
 		328AD85BC777A76CC122E031 /* AddReadingSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F15276BF52E857823260C8 /* AddReadingSheet.swift */; };
+		3C16DA173F17BBE86947F9E1 /* LicensePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87905E6F8BCBD4F3DDEF37CA /* LicensePolicy.swift */; };
 		45EAEA90C1CB17171695EAE9 /* PeriodGranularity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7B8151E86A214164D97CFB /* PeriodGranularity.swift */; };
 		4B09C24F923B25B5F7F924A8 /* MeterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0250CE50AA3EA2C3F1AD89F /* MeterDetailView.swift */; };
+		517C14F1660300029849BCEF /* LicenseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1405FA5FE33F5E3A624EA0E /* LicenseStore.swift */; };
 		5B249606179FD79CD0B9EBB5 /* AddMeterSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D00D86A23D97E041E88436 /* AddMeterSheet.swift */; };
 		5FFFDED8719D1EDEFBA8474D /* CalculationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29135F4179173FE1BA8C291 /* CalculationTests.swift */; };
 		6454B192D1A52DC6FCB6ACE5 /* SeedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEB3DBACA09E7EA91C2D7 /* SeedData.swift */; };
@@ -33,20 +36,33 @@
 		751C30E8EB7A4DA1ED283994 /* Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E418360F9C69B2B65E8A5DE0 /* Formatting.swift */; };
 		773E22F903E1FF3F5E23E613 /* CostCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042E48E28596EBAE79CE38DB /* CostCalculator.swift */; };
 		7822DD1202F22470BE3079F5 /* ImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9E7CE5C0612C573950A1B5 /* ImportService.swift */; };
+		7A83BCE8853D7F82F71A9BED /* ScreenshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1934710D98083C8ED78912D /* ScreenshotTests.swift */; };
+		8048378AEEE2413CD0BC527A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A82C7B196BCE443200744672 /* PrivacyInfo.xcprivacy */; };
 		991F9905B51D0A5D55E80172 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 244EA4ED092D5FA306BDE7D0 /* Assets.xcassets */; };
 		9CF99AFF6CA23329591651E7 /* BarComparisonChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59244CF4194A3E761345D2CF /* BarComparisonChartView.swift */; };
 		B1A99D029E89814FB7E6F556 /* EnergyBalanceChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E31C70C65E5DBFFF74E628 /* EnergyBalanceChartView.swift */; };
+		B3B15E913F735D97873ADA98 /* LicenseStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C77048DB4BD9F0348158575 /* LicenseStoreTests.swift */; };
 		B77CA22F423DA4DBF398B767 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1789EF1581A7D16E540D78 /* MainTabView.swift */; };
+		BB176B266181C978346B51F4 /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EB2E2B501520C34CC8214 /* PaywallView.swift */; };
 		BE61C03614184C15CA93BC1B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DF5090BD6B30AF1CD55B502C /* Localizable.strings */; };
 		CB3B0E7261CEE48ED34CE48A /* VerbrauchsHubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ECFCC0D71BEA7E9D085548 /* VerbrauchsHubApp.swift */; };
 		D2B04A033FEBC486D6468E21 /* ExportImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511A42650C2C77900A7D6660 /* ExportImportView.swift */; };
 		D7C41DE72087FDA7F51159DD /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2314D72F06BF8B165B5D7380 /* StatisticsView.swift */; };
+		D9CD0469626225B072918998 /* VerbrauchsHub.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 3829AD9751C9E62D07F64CA4 /* VerbrauchsHub.storekit */; };
 		DF9C9FD6BAD378B4BDDE79BD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D3C149E22530D7D0370FD /* SettingsView.swift */; };
 		ECEA07CA960B76F164F241BD /* Meter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA2299DA2C633636185C407 /* Meter.swift */; };
 		F6BDF0FA1B13C77844777685 /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C82A5DC646B73E2F66C6C5 /* LineChartView.swift */; };
+		FDE4BD6069CC516DD650C7C5 /* LicensePolicyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7934F1B82E90C9D4AE73A959 /* LicensePolicyTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		9ACA291088306D855A2D7E7F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7F71C9586AE828ACEAA6BA47 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7B8BA2E69C9E724A63F8FA08;
+			remoteInfo = VerbrauchsHub;
+		};
 		EA0EA2B5CB57920141F4473F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7F71C9586AE828ACEAA6BA47 /* Project object */;
@@ -61,36 +77,45 @@
 		042E48E28596EBAE79CE38DB /* CostCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostCalculator.swift; sourceTree = "<group>"; };
 		06059971BB933001B7F14DA0 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		06B966E1334439063FFE1E62 /* ExportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportService.swift; sourceTree = "<group>"; };
-		12B59095CD95D57FE6CCDFC5 /* VerbrauchsHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VerbrauchsHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		12B59095CD95D57FE6CCDFC5 /* VerbrauchsHub.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = VerbrauchsHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1447028895F5348EFD526A98 /* Tariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tariff.swift; sourceTree = "<group>"; };
 		14B5BB5E88443C5AEA703C14 /* MeterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterListView.swift; sourceTree = "<group>"; };
 		15D00D86A23D97E041E88436 /* AddMeterSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMeterSheet.swift; sourceTree = "<group>"; };
 		2314D72F06BF8B165B5D7380 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		244EA4ED092D5FA306BDE7D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29E31C70C65E5DBFFF74E628 /* EnergyBalanceChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyBalanceChartView.swift; sourceTree = "<group>"; };
+		3829AD9751C9E62D07F64CA4 /* VerbrauchsHub.storekit */ = {isa = PBXFileReference; path = VerbrauchsHub.storekit; sourceTree = "<group>"; };
 		3C9F8BB9D0C842B6B8E35CC3 /* ConsumptionCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionCalculator.swift; sourceTree = "<group>"; };
 		41ECFCC0D71BEA7E9D085548 /* VerbrauchsHubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerbrauchsHubApp.swift; sourceTree = "<group>"; };
 		47325950AD0CFC7A80AD8B40 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		505E561BD083193114713B0B /* ReminderSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderSettingsView.swift; sourceTree = "<group>"; };
 		511A42650C2C77900A7D6660 /* ExportImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportImportView.swift; sourceTree = "<group>"; };
-		52C0A9A15731BD9F7CCBA761 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		59244CF4194A3E761345D2CF /* BarComparisonChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarComparisonChartView.swift; sourceTree = "<group>"; };
 		5FF4EB2C243394387F689412 /* VerbrauchsHubTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = VerbrauchsHubTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C77048DB4BD9F0348158575 /* LicenseStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseStoreTests.swift; sourceTree = "<group>"; };
 		6E9E7CE5C0612C573950A1B5 /* ImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportService.swift; sourceTree = "<group>"; };
 		6EA2299DA2C633636185C407 /* Meter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meter.swift; sourceTree = "<group>"; };
 		712228CFC80A2002EBF88043 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		713819BD8548D797875AC8B3 /* KeychainFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainFlag.swift; sourceTree = "<group>"; };
+		7934F1B82E90C9D4AE73A959 /* LicensePolicyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicensePolicyTests.swift; sourceTree = "<group>"; };
 		810F7B6B4C07BB739242EE75 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		81FBEB3DBACA09E7EA91C2D7 /* SeedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedData.swift; sourceTree = "<group>"; };
 		85C82A5DC646B73E2F66C6C5 /* LineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
 		866C0DD4DDF581C8D8BF2F85 /* Reading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reading.swift; sourceTree = "<group>"; };
+		87905E6F8BCBD4F3DDEF37CA /* LicensePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicensePolicy.swift; sourceTree = "<group>"; };
 		9D1789EF1581A7D16E540D78 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		A0250CE50AA3EA2C3F1AD89F /* MeterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterDetailView.swift; sourceTree = "<group>"; };
 		A1F15276BF52E857823260C8 /* AddReadingSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReadingSheet.swift; sourceTree = "<group>"; };
+		A82C7B196BCE443200744672 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		B29135F4179173FE1BA8C291 /* CalculationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationTests.swift; sourceTree = "<group>"; };
+		BF8EB2E2B501520C34CC8214 /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
 		C246682EB1D49062D2F46079 /* Building.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Building.swift; sourceTree = "<group>"; };
 		CF4F6B9DBBDC8718D76A4F72 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		D1405FA5FE33F5E3A624EA0E /* LicenseStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseStore.swift; sourceTree = "<group>"; };
+		D1934710D98083C8ED78912D /* ScreenshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotTests.swift; sourceTree = "<group>"; };
 		D49D3C149E22530D7D0370FD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D4EE09BF11807794513D2205 /* MeterSummaryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterSummaryCard.swift; sourceTree = "<group>"; };
+		E204BE0EF6CCC30B473B9242 /* VerbrauchsHubUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = VerbrauchsHubUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E418360F9C69B2B65E8A5DE0 /* Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatting.swift; sourceTree = "<group>"; };
 		EF09CB4D861FB84693C24E58 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		F730A5844338E95B1A0B2FAC /* TariffListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffListView.swift; sourceTree = "<group>"; };
@@ -103,8 +128,10 @@
 		07C2A62261F00CAB50EF358F = {
 			isa = PBXGroup;
 			children = (
+				7116D220D0732DB41203557C /* StoreKit */,
 				9F4468DA3BEC733BCBCCDB30 /* VerbrauchsHub */,
 				419E508EBF2E627A1FA6D35D /* VerbrauchsHubTests */,
+				6D28E6E04C10CE2F57054DDD /* VerbrauchsHubUITests */,
 				9B34539026A8D01D19D10BDD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -152,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				244EA4ED092D5FA306BDE7D0 /* Assets.xcassets */,
+				A82C7B196BCE443200744672 /* PrivacyInfo.xcprivacy */,
 				DF5090BD6B30AF1CD55B502C /* Localizable.strings */,
 			);
 			path = Resources;
@@ -172,6 +200,8 @@
 			isa = PBXGroup;
 			children = (
 				B29135F4179173FE1BA8C291 /* CalculationTests.swift */,
+				7934F1B82E90C9D4AE73A959 /* LicensePolicyTests.swift */,
+				6C77048DB4BD9F0348158575 /* LicenseStoreTests.swift */,
 			);
 			path = VerbrauchsHubTests;
 			sourceTree = "<group>";
@@ -187,11 +217,38 @@
 			path = Statistics;
 			sourceTree = "<group>";
 		};
+		6D28E6E04C10CE2F57054DDD /* VerbrauchsHubUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D1934710D98083C8ED78912D /* ScreenshotTests.swift */,
+			);
+			path = VerbrauchsHubUITests;
+			sourceTree = "<group>";
+		};
+		7116D220D0732DB41203557C /* StoreKit */ = {
+			isa = PBXGroup;
+			children = (
+				3829AD9751C9E62D07F64CA4 /* VerbrauchsHub.storekit */,
+			);
+			path = StoreKit;
+			sourceTree = "<group>";
+		};
+		7D96B43818324ECCFC151F74 /* Purchase */ = {
+			isa = PBXGroup;
+			children = (
+				713819BD8548D797875AC8B3 /* KeychainFlag.swift */,
+				87905E6F8BCBD4F3DDEF37CA /* LicensePolicy.swift */,
+				D1405FA5FE33F5E3A624EA0E /* LicenseStore.swift */,
+			);
+			path = Purchase;
+			sourceTree = "<group>";
+		};
 		9B34539026A8D01D19D10BDD /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				12B59095CD95D57FE6CCDFC5 /* VerbrauchsHub.app */,
 				5FF4EB2C243394387F689412 /* VerbrauchsHubTests.xctest */,
+				E204BE0EF6CCC30B473B9242 /* VerbrauchsHubUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -203,6 +260,7 @@
 				3DF65765E80AEA18B12C84E1 /* Calculation */,
 				A90C2AD601CC25AEC295DDE7 /* Features */,
 				E63B88864CA7A03D07BD2FE1 /* Models */,
+				7D96B43818324ECCFC151F74 /* Purchase */,
 				3D5CAFEF67DE94AC6D7E0C59 /* Resources */,
 				3B3687E34794968CD320AACF /* Services */,
 				390DAE53E4468A603E945D8E /* Shared */,
@@ -226,6 +284,7 @@
 			children = (
 				193CB5B6F2A5F9C078F46927 /* Dashboard */,
 				A2CFC03BAB41A17021A4A294 /* Meters */,
+				FC3C5E37358B6BE2BB9BE3B3 /* Purchase */,
 				DDB3786BF401951ECCA290D5 /* Settings */,
 				5D0D3AB223355A7976C4DAE2 /* Statistics */,
 			);
@@ -257,6 +316,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		FC3C5E37358B6BE2BB9BE3B3 /* Purchase */ = {
+			isa = PBXGroup;
+			children = (
+				BF8EB2E2B501520C34CC8214 /* PaywallView.swift */,
+			);
+			path = Purchase;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -265,6 +332,7 @@
 			buildConfigurationList = E1E6727858E3944EAFE2BB03 /* Build configuration list for PBXNativeTarget "VerbrauchsHubTests" */;
 			buildPhases = (
 				EB943409928ABEE25001AA6A /* Sources */,
+				9E08949AB9F460CE60B48263 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -296,6 +364,24 @@
 			productReference = 12B59095CD95D57FE6CCDFC5 /* VerbrauchsHub.app */;
 			productType = "com.apple.product-type.application";
 		};
+		EC9EF7C6DA1E1C25E6D3DA7A /* VerbrauchsHubUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F31992DD680567FA68EB6179 /* Build configuration list for PBXNativeTarget "VerbrauchsHubUITests" */;
+			buildPhases = (
+				81BB5B7B0534C1AFA3D03686 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B6EE60FDC97E4D58BBDDDB0B /* PBXTargetDependency */,
+			);
+			name = VerbrauchsHubUITests;
+			packageProductDependencies = (
+			);
+			productName = VerbrauchsHubUITests;
+			productReference = E204BE0EF6CCC30B473B9242 /* VerbrauchsHubUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -304,6 +390,21 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					58BB16D436227C5A5E4E8771 = {
+						DevelopmentTeam = RVXL7PUD42;
+						ProvisioningStyle = Automatic;
+					};
+					7B8BA2E69C9E724A63F8FA08 = {
+						DevelopmentTeam = RVXL7PUD42;
+						ProvisioningStyle = Automatic;
+					};
+					EC9EF7C6DA1E1C25E6D3DA7A = {
+						DevelopmentTeam = RVXL7PUD42;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7B8BA2E69C9E724A63F8FA08;
+					};
+				};
 			};
 			buildConfigurationList = 9AAB2EE91EEDF567BCB9BF67 /* Build configuration list for PBXProject "VerbrauchsHub" */;
 			developmentRegion = de;
@@ -311,7 +412,6 @@
 			knownRegions = (
 				Base,
 				de,
-				en,
 			);
 			mainGroup = 07C2A62261F00CAB50EF358F;
 			minimizedProjectReferenceProxies = 1;
@@ -322,23 +422,41 @@
 			targets = (
 				7B8BA2E69C9E724A63F8FA08 /* VerbrauchsHub */,
 				58BB16D436227C5A5E4E8771 /* VerbrauchsHubTests */,
+				EC9EF7C6DA1E1C25E6D3DA7A /* VerbrauchsHubUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		9E08949AB9F460CE60B48263 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9CD0469626225B072918998 /* VerbrauchsHub.storekit in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F580A5D73F82401091F066EF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				991F9905B51D0A5D55E80172 /* Assets.xcassets in Resources */,
 				BE61C03614184C15CA93BC1B /* Localizable.strings in Resources */,
+				8048378AEEE2413CD0BC527A /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		81BB5B7B0534C1AFA3D03686 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A83BCE8853D7F82F71A9BED /* ScreenshotTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DEDA1F627DAC80970DFD14EA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -360,6 +478,9 @@
 				30964D47083CB3C9E5D76532 /* Forecaster.swift in Sources */,
 				751C30E8EB7A4DA1ED283994 /* Formatting.swift in Sources */,
 				7822DD1202F22470BE3079F5 /* ImportService.swift in Sources */,
+				148B148E5FCBA96E921EA718 /* KeychainFlag.swift in Sources */,
+				3C16DA173F17BBE86947F9E1 /* LicensePolicy.swift in Sources */,
+				517C14F1660300029849BCEF /* LicenseStore.swift in Sources */,
 				F6BDF0FA1B13C77844777685 /* LineChartView.swift in Sources */,
 				B77CA22F423DA4DBF398B767 /* MainTabView.swift in Sources */,
 				ECEA07CA960B76F164F241BD /* Meter.swift in Sources */,
@@ -367,6 +488,7 @@
 				1BB504A9382F52EA99A28682 /* MeterListView.swift in Sources */,
 				1C0CE5659BD231B04BD427FD /* MeterSummaryCard.swift in Sources */,
 				04B6D0BC243B7407A0668E6D /* NotificationService.swift in Sources */,
+				BB176B266181C978346B51F4 /* PaywallView.swift in Sources */,
 				45EAEA90C1CB17171695EAE9 /* PeriodGranularity.swift in Sources */,
 				0F0F0D77C6BA1E6F4C58C8B9 /* Reading.swift in Sources */,
 				096908ABCB8C450548DC0C0D /* ReminderSettingsView.swift in Sources */,
@@ -385,6 +507,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FFFDED8719D1EDEFBA8474D /* CalculationTests.swift in Sources */,
+				FDE4BD6069CC516DD650C7C5 /* LicensePolicyTests.swift in Sources */,
+				B3B15E913F735D97873ADA98 /* LicenseStoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,6 +520,11 @@
 			target = 7B8BA2E69C9E724A63F8FA08 /* VerbrauchsHub */;
 			targetProxy = EA0EA2B5CB57920141F4473F /* PBXContainerItemProxy */;
 		};
+		B6EE60FDC97E4D58BBDDDB0B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7B8BA2E69C9E724A63F8FA08 /* VerbrauchsHub */;
+			targetProxy = 9ACA291088306D855A2D7E7F /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -403,7 +532,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				712228CFC80A2002EBF88043 /* de */,
-				52C0A9A15731BD9F7CCBA761 /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -411,6 +539,23 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4B0718908AA7E9DB16C65492 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.gmx.dillmann.VerbrauchsHubUITests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = VerbrauchsHub;
+			};
+			name = Debug;
+		};
 		6B4B94E0C5DE008FBF37955E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -444,10 +589,12 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = RVXL7PUD42;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -461,6 +608,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = VerbrauchsHub;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -500,7 +649,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = RVXL7PUD42;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Foto vom Zählerstand direkt aufnehmen.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Foto vom Zählerstand als Beweis hinzufügen.";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -527,6 +675,23 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VerbrauchsHub.app/VerbrauchsHub";
+			};
+			name = Release;
+		};
+		A3F1437CF80E33D0C90EFD03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.gmx.dillmann.VerbrauchsHubUITests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = VerbrauchsHub;
 			};
 			name = Release;
 		};
@@ -563,10 +728,12 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = RVXL7PUD42;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -586,6 +753,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = VerbrauchsHub;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -609,7 +778,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = RVXL7PUD42;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Foto vom Zählerstand direkt aufnehmen.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Foto vom Zählerstand als Beweis hinzufügen.";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -648,6 +816,15 @@
 			buildConfigurations = (
 				7AFE0628C990A2234984933A /* Debug */,
 				90CB07F358053E25AF41EBF3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F31992DD680567FA68EB6179 /* Build configuration list for PBXNativeTarget "VerbrauchsHubUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B0718908AA7E9DB16C65492 /* Debug */,
+				A3F1437CF80E33D0C90EFD03 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

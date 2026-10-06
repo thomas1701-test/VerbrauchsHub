@@ -19,7 +19,11 @@ settings:
     SWIFT_STRICT_CONCURRENCY: complete
     DEAD_CODE_STRIPPING: YES
     MARKETING_VERSION: "1.0.0"
-    CURRENT_PROJECT_VERSION: "1"
+    INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: NO
+    INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.utilities
+    DEVELOPMENT_TEAM: RVXL7PUD42
+    CODE_SIGN_STYLE: Automatic
+    CURRENT_PROJECT_VERSION: "3"
 targets:
   VerbrauchsHub:
     type: application
@@ -37,9 +41,40 @@ targets:
     platform: iOS
     sources:
       - path: VerbrauchsHubTests
+      - path: StoreKit/VerbrauchsHub.storekit
+        buildPhase: resources
     dependencies:
       - target: VerbrauchsHub
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: net.gmx.dillmann.VerbrauchsHubTests
         GENERATE_INFOPLIST_FILE: YES
+  VerbrauchsHubUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: VerbrauchsHubUITests
+    dependencies:
+      - target: VerbrauchsHub
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: net.gmx.dillmann.VerbrauchsHubUITests
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_TARGET_NAME: VerbrauchsHub
+schemes:
+  VerbrauchsHub:
+    build:
+      targets:
+        VerbrauchsHub: all
+        VerbrauchsHubTests: [test]
+        VerbrauchsHubUITests: [test]
+    run:
+      config: Debug
+      storeKitConfiguration: StoreKit/VerbrauchsHub.storekit
+    test:
+      config: Debug
+      targets:
+        - VerbrauchsHubTests
+        - VerbrauchsHubUITests
+    archive:
+      config: Release

@@ -5,6 +5,7 @@ import SwiftData
 struct VerbrauchsHubApp: App {
     let container: ModelContainer
     @State private var appState = AppState()
+    @State private var license = LicenseStore()
 
     init() {
         do {
@@ -20,15 +21,15 @@ struct VerbrauchsHubApp: App {
             fatalError("Failed to create ModelContainer: \(error)")
         }
 
-        // Seed demo data on first launch only
         let context = ModelContext(container)
-        SeedData.seedIfNeeded(context)
+        SeedData.seedIfRequested(context)
     }
 
     var body: some Scene {
         WindowGroup {
             RootView()
                 .environment(appState)
+                .environment(license)
         }
         .modelContainer(container)
     }
@@ -36,14 +37,45 @@ struct VerbrauchsHubApp: App {
 
 struct RootView: View {
     @Environment(AppState.self) private var appState
+    @Environment(LicenseStore.self) private var license
+    @Environment(\.scenePhase) private var scenePhase
     @Query private var buildings: [Building]
+    @State private var showReminder = false
 
     var body: some View {
-        if buildings.isEmpty {
-            OnboardingView()
-        } else {
-            MainTabView()
+        Group {
+            switch license.state {
+            case .checking:
+                ProgressView()
+            case .trialNotStarted:
+                PaywallView(mode: .start)
+            case .expired:
+                PaywallView(mode: .expired)
+            case .legacy, .purchased, .trial, .unknown:
+                if buildings.isEmpty {
+                    OnboardingView()
+                } else {
+                    MainTabView()
+                }
+            }
         }
+        .onChange(of: scenePhase) { _, phase in
+            guard phase == .active else { return }
+            license.recompute()
+            Task { await license.refresh() }
+            remindIfDue()
+        }
+        .onChange(of: license.state) { remindIfDue() }
+        .onAppear { remindIfDue() }
+        .sheet(isPresented: $showReminder) {
+            PaywallView(mode: .reminder) { showReminder = false }
+        }
+    }
+
+    private func remindIfDue() {
+        guard !showReminder, license.isReminderDue else { return }
+        license.markReminderShown()
+        showReminder = true
     }
 }
 
@@ -75,6 +107,10 @@ struct OnboardingView: View {
             .buttonStyle(.borderedProminent)
             .controlSize(.large)
             .padding(.horizontal, 24)
+
+            Button("Mit Beispieldaten ausprobieren") {
+                SeedData.insertDemoData(context)
+            }
             .padding(.bottom, 24)
         }
         .sheet(isPresented: $showAddBuilding) {
