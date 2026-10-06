@@ -7,6 +7,8 @@ struct MeterDetailView: View {
     @Bindable var meter: Meter
 
     @State private var showAddReading = false
+    @State private var showEditMeter = false
+    @State private var editingReading: Reading?
     @State private var selectedGranularity: PeriodGranularity = .month
 
     private var calculator: ConsumptionCalculator { ConsumptionCalculator(meter: meter) }
@@ -19,6 +21,7 @@ struct MeterDetailView: View {
             VStack(alignment: .leading, spacing: 20) {
                 header
                 summary
+                PlanningCards(meter: meter, accent: accent) { showEditMeter = true }
                 miniChart
                 readingsList
             }
@@ -30,6 +33,14 @@ struct MeterDetailView: View {
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button {
+                    showEditMeter = true
+                } label: {
+                    Image(systemName: "slider.horizontal.3")
+                }
+                .accessibilityLabel("Zähler bearbeiten")
+            }
+            ToolbarItem(placement: .primaryAction) {
+                Button {
                     showAddReading = true
                 } label: {
                     Image(systemName: "plus.circle.fill")
@@ -39,6 +50,12 @@ struct MeterDetailView: View {
         }
         .sheet(isPresented: $showAddReading) {
             AddReadingSheet(meter: meter)
+        }
+        .sheet(item: $editingReading) { reading in
+            AddReadingSheet(meter: meter, reading: reading)
+        }
+        .sheet(isPresented: $showEditMeter) {
+            EditMeterSheet(meter: meter)
         }
     }
 
@@ -153,12 +170,20 @@ struct MeterDetailView: View {
             if sortedReadings.isEmpty {
                 Text("Noch keine Ablesungen erfasst.").foregroundStyle(.secondary).italic()
             } else {
-                Text("Gedrückt halten zum Löschen").font(.caption).foregroundStyle(.secondary)
+                Text("Tippen zum Bearbeiten, gedrückt halten zum Löschen").font(.caption).foregroundStyle(.secondary)
                 ForEach(sortedReadings) { reading in
                     // Not inside a List, so swipeActions would never fire — use a context menu.
                     ReadingRow(reading: reading, unit: meter.unitLabel)
                         .contentShape(Rectangle())
+                        .onTapGesture { editingReading = reading }
+                        .accessibilityIdentifier("readingRow")
+                        .accessibilityAddTraits(.isButton)
                         .contextMenu {
+                            Button {
+                                editingReading = reading
+                            } label: {
+                                Label("Bearbeiten", systemImage: "pencil")
+                            }
                             Button(role: .destructive) {
                                 context.delete(reading)
                                 try? context.save()

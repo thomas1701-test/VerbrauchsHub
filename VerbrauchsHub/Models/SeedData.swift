@@ -33,6 +33,16 @@ enum SeedData {
         let fewoWasser = Meter(building: fewo, type: .water, createdAt: now.addingTimeInterval(6))
         [strom, pv, eigen, gas, wasser, fewoStrom, fewoWasser].forEach { context.insert($0) }
 
+        // Advance payments, billing years and goals show the planning cards.
+        let yearStart = calendar.dateInterval(of: .year, for: now)?.start ?? now
+        strom.advancePaymentPerMonth = 105
+        strom.billingStartDate = yearStart
+        strom.annualTarget = 3_300
+        gas.advancePaymentPerMonth = 30
+        gas.billingStartDate = calendar.date(byAdding: .month, value: 3, to: yearStart)
+        gas.annualTarget = 1_400
+        pv.annualTarget = 5_500
+
         context.insert(Tariff(meter: strom, pricePerUnit: Decimal(string: "0.34")!, baseFeePerMonth: Decimal(string: "12.50")!, validFrom: tariffStart))
         context.insert(Tariff(meter: pv, pricePerUnit: 0, baseFeePerMonth: 0, feedInPricePerUnit: Decimal(string: "0.082")!, validFrom: tariffStart))
         context.insert(Tariff(meter: gas, pricePerUnit: Decimal(string: "0.11")!, baseFeePerMonth: Decimal(string: "14.90")!, validFrom: tariffStart))

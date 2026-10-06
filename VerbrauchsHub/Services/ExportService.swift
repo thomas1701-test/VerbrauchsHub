@@ -32,6 +32,10 @@ struct MeterDTO: Codable {
     let reminderEnabled: Bool
     let reminderDayOfMonth: Int?
     let createdAt: Date
+    // Added in 1.1 – optional so older backups still import.
+    var advancePaymentPerMonth: Decimal?
+    var billingStartDate: Date?
+    var annualTarget: Decimal?
 }
 
 struct ReadingDTO: Codable {
@@ -63,7 +67,7 @@ enum ExportService {
                 BuildingDTO(id: $0.id, name: $0.name, address: $0.address, iconName: $0.iconName, colorHex: $0.colorHex, notes: $0.notes, createdAt: $0.createdAt)
             },
             meters: meters.map {
-                MeterDTO(id: $0.id, buildingID: $0.building?.id, typeRaw: $0.typeRaw, customName: $0.customName, unitRaw: $0.unitRaw, unitCustomLabel: $0.unitCustomLabel, iconName: $0.iconName, colorHex: $0.colorHex, reminderEnabled: $0.reminderEnabled, reminderDayOfMonth: $0.reminderDayOfMonth, createdAt: $0.createdAt)
+                MeterDTO(id: $0.id, buildingID: $0.building?.id, typeRaw: $0.typeRaw, customName: $0.customName, unitRaw: $0.unitRaw, unitCustomLabel: $0.unitCustomLabel, iconName: $0.iconName, colorHex: $0.colorHex, reminderEnabled: $0.reminderEnabled, reminderDayOfMonth: $0.reminderDayOfMonth, createdAt: $0.createdAt, advancePaymentPerMonth: $0.advancePaymentPerMonth, billingStartDate: $0.billingStartDate, annualTarget: $0.annualTarget)
             },
             readings: readings.map {
                 ReadingDTO(id: $0.id, meterID: $0.meter?.id, date: $0.date, value: $0.value, note: $0.note, photoData: $0.photoData, createdAt: $0.createdAt)

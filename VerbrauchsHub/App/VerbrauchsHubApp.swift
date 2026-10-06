@@ -8,19 +8,7 @@ struct VerbrauchsHubApp: App {
     @State private var license = LicenseStore()
 
     init() {
-        do {
-            let schema = Schema([
-                Building.self,
-                Meter.self,
-                Reading.self,
-                Tariff.self,
-            ])
-            let config = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-            container = try ModelContainer(for: schema, configurations: [config])
-        } catch {
-            fatalError("Failed to create ModelContainer: \(error)")
-        }
-
+        container = AppDataStore.container
         let context = ModelContext(container)
         SeedData.seedIfRequested(context)
     }

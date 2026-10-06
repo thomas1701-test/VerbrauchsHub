@@ -71,6 +71,9 @@ enum ImportService {
                 existing.colorHex = dto.colorHex
                 existing.reminderEnabled = dto.reminderEnabled
                 existing.reminderDayOfMonth = dto.reminderDayOfMonth
+                existing.advancePaymentPerMonth = dto.advancePaymentPerMonth
+                existing.billingStartDate = dto.billingStartDate
+                existing.annualTarget = dto.annualTarget
                 existing.building = building
                 updatedCount += 1
             } else {
@@ -87,6 +90,9 @@ enum ImportService {
                     reminderDayOfMonth: dto.reminderDayOfMonth,
                     createdAt: dto.createdAt
                 )
+                m.advancePaymentPerMonth = dto.advancePaymentPerMonth
+                m.billingStartDate = dto.billingStartDate
+                m.annualTarget = dto.annualTarget
                 context.insert(m)
                 metersByID[dto.id] = m
                 addedMeters += 1

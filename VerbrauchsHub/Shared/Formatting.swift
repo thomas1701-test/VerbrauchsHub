@@ -81,6 +81,11 @@ enum Formatting {
 
     /// Parses user input like "1.234,5", "1234,5" or "1234.5". Rejects trailing garbage
     /// (`Decimal(string:)` alone would silently turn "12abc" into 12).
+    /// Value for an input field: German decimal comma, no grouping ("21612,8").
+    static func inputString(_ value: Decimal) -> String {
+        NSDecimalNumber(decimal: value).stringValue.replacingOccurrences(of: ".", with: ",")
+    }
+
     static func parseDecimal(_ input: String) -> Decimal? {
         var s = input.filter { !$0.isWhitespace }
         if s.contains(",") {

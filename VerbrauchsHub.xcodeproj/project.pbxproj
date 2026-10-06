@@ -33,13 +33,19 @@
 		6996D1269CC51CA900671C01 /* Tariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1447028895F5348EFD526A98 /* Tariff.swift */; };
 		6C739B8F50EE648D7561D74D /* ConsumptionCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9F8BB9D0C842B6B8E35CC3 /* ConsumptionCalculator.swift */; };
 		6DFD1C1F5A10D71D392A32B4 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47325950AD0CFC7A80AD8B40 /* DashboardView.swift */; };
+		702B182CF69ABA0C3D1B88DE /* FeatureTour.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0487F0F9EB08E75ECA61F01 /* FeatureTour.swift */; };
 		751C30E8EB7A4DA1ED283994 /* Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E418360F9C69B2B65E8A5DE0 /* Formatting.swift */; };
 		773E22F903E1FF3F5E23E613 /* CostCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042E48E28596EBAE79CE38DB /* CostCalculator.swift */; };
 		7822DD1202F22470BE3079F5 /* ImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9E7CE5C0612C573950A1B5 /* ImportService.swift */; };
 		7A83BCE8853D7F82F71A9BED /* ScreenshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1934710D98083C8ED78912D /* ScreenshotTests.swift */; };
+		7A8D80C71A43AC335439A21B /* Projection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC202A763DCEA113367FA96 /* Projection.swift */; };
 		8048378AEEE2413CD0BC527A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A82C7B196BCE443200744672 /* PrivacyInfo.xcprivacy */; };
+		84C95872A44598E5D2F29135 /* EditMeterSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A53611D82C928AE8F3DFC1D /* EditMeterSheet.swift */; };
+		8B7C7D4ECAC692F5F60FD51F /* AppDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2051F4FCE01CB165243DB7 /* AppDataStore.swift */; };
 		991F9905B51D0A5D55E80172 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 244EA4ED092D5FA306BDE7D0 /* Assets.xcassets */; };
 		9CF99AFF6CA23329591651E7 /* BarComparisonChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59244CF4194A3E761345D2CF /* BarComparisonChartView.swift */; };
+		9E0A3F9163AFA015A34579B6 /* PlanningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832C584B75747AC83C92236 /* PlanningTests.swift */; };
+		AEDF0F275A88EDC98DB13704 /* AddReadingIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF829424077474BB5874CAC /* AddReadingIntent.swift */; };
 		B1A99D029E89814FB7E6F556 /* EnergyBalanceChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E31C70C65E5DBFFF74E628 /* EnergyBalanceChartView.swift */; };
 		B3B15E913F735D97873ADA98 /* LicenseStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C77048DB4BD9F0348158575 /* LicenseStoreTests.swift */; };
 		B77CA22F423DA4DBF398B767 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1789EF1581A7D16E540D78 /* MainTabView.swift */; };
@@ -48,11 +54,14 @@
 		CB3B0E7261CEE48ED34CE48A /* VerbrauchsHubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ECFCC0D71BEA7E9D085548 /* VerbrauchsHubApp.swift */; };
 		D2B04A033FEBC486D6468E21 /* ExportImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511A42650C2C77900A7D6660 /* ExportImportView.swift */; };
 		D7C41DE72087FDA7F51159DD /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2314D72F06BF8B165B5D7380 /* StatisticsView.swift */; };
+		D81FBD7D9FCDCCD06E6F5899 /* PlanningCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2263100002D0F27C298B19D8 /* PlanningCards.swift */; };
 		D9CD0469626225B072918998 /* VerbrauchsHub.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 3829AD9751C9E62D07F64CA4 /* VerbrauchsHub.storekit */; };
 		DF9C9FD6BAD378B4BDDE79BD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D3C149E22530D7D0370FD /* SettingsView.swift */; };
+		E2C23BCED1612B7ED057EE59 /* MeterValueRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310A633C86AF5159E5E83A56 /* MeterValueRecognizer.swift */; };
 		ECEA07CA960B76F164F241BD /* Meter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA2299DA2C633636185C407 /* Meter.swift */; };
 		F6BDF0FA1B13C77844777685 /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C82A5DC646B73E2F66C6C5 /* LineChartView.swift */; };
 		FDE4BD6069CC516DD650C7C5 /* LicensePolicyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7934F1B82E90C9D4AE73A959 /* LicensePolicyTests.swift */; };
+		FF471EC0616ED44F46511C39 /* ReadingCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D23D8F5E52DD5ADB9BD1DCB /* ReadingCheck.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,13 +86,16 @@
 		042E48E28596EBAE79CE38DB /* CostCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostCalculator.swift; sourceTree = "<group>"; };
 		06059971BB933001B7F14DA0 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		06B966E1334439063FFE1E62 /* ExportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportService.swift; sourceTree = "<group>"; };
+		0BC202A763DCEA113367FA96 /* Projection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projection.swift; sourceTree = "<group>"; };
 		12B59095CD95D57FE6CCDFC5 /* VerbrauchsHub.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = VerbrauchsHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1447028895F5348EFD526A98 /* Tariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tariff.swift; sourceTree = "<group>"; };
 		14B5BB5E88443C5AEA703C14 /* MeterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterListView.swift; sourceTree = "<group>"; };
 		15D00D86A23D97E041E88436 /* AddMeterSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMeterSheet.swift; sourceTree = "<group>"; };
+		2263100002D0F27C298B19D8 /* PlanningCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningCards.swift; sourceTree = "<group>"; };
 		2314D72F06BF8B165B5D7380 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		244EA4ED092D5FA306BDE7D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29E31C70C65E5DBFFF74E628 /* EnergyBalanceChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyBalanceChartView.swift; sourceTree = "<group>"; };
+		310A633C86AF5159E5E83A56 /* MeterValueRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterValueRecognizer.swift; sourceTree = "<group>"; };
 		3829AD9751C9E62D07F64CA4 /* VerbrauchsHub.storekit */ = {isa = PBXFileReference; path = VerbrauchsHub.storekit; sourceTree = "<group>"; };
 		3C9F8BB9D0C842B6B8E35CC3 /* ConsumptionCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionCalculator.swift; sourceTree = "<group>"; };
 		41ECFCC0D71BEA7E9D085548 /* VerbrauchsHubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerbrauchsHubApp.swift; sourceTree = "<group>"; };
@@ -91,26 +103,32 @@
 		505E561BD083193114713B0B /* ReminderSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderSettingsView.swift; sourceTree = "<group>"; };
 		511A42650C2C77900A7D6660 /* ExportImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportImportView.swift; sourceTree = "<group>"; };
 		59244CF4194A3E761345D2CF /* BarComparisonChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarComparisonChartView.swift; sourceTree = "<group>"; };
+		5A53611D82C928AE8F3DFC1D /* EditMeterSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMeterSheet.swift; sourceTree = "<group>"; };
 		5FF4EB2C243394387F689412 /* VerbrauchsHubTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = VerbrauchsHubTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C77048DB4BD9F0348158575 /* LicenseStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseStoreTests.swift; sourceTree = "<group>"; };
 		6E9E7CE5C0612C573950A1B5 /* ImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportService.swift; sourceTree = "<group>"; };
 		6EA2299DA2C633636185C407 /* Meter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meter.swift; sourceTree = "<group>"; };
 		712228CFC80A2002EBF88043 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		713819BD8548D797875AC8B3 /* KeychainFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainFlag.swift; sourceTree = "<group>"; };
+		7832C584B75747AC83C92236 /* PlanningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningTests.swift; sourceTree = "<group>"; };
 		7934F1B82E90C9D4AE73A959 /* LicensePolicyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicensePolicyTests.swift; sourceTree = "<group>"; };
 		810F7B6B4C07BB739242EE75 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		81FBEB3DBACA09E7EA91C2D7 /* SeedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedData.swift; sourceTree = "<group>"; };
 		85C82A5DC646B73E2F66C6C5 /* LineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
 		866C0DD4DDF581C8D8BF2F85 /* Reading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reading.swift; sourceTree = "<group>"; };
 		87905E6F8BCBD4F3DDEF37CA /* LicensePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicensePolicy.swift; sourceTree = "<group>"; };
+		8D23D8F5E52DD5ADB9BD1DCB /* ReadingCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingCheck.swift; sourceTree = "<group>"; };
 		9D1789EF1581A7D16E540D78 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		A0250CE50AA3EA2C3F1AD89F /* MeterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterDetailView.swift; sourceTree = "<group>"; };
 		A1F15276BF52E857823260C8 /* AddReadingSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReadingSheet.swift; sourceTree = "<group>"; };
 		A82C7B196BCE443200744672 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		B29135F4179173FE1BA8C291 /* CalculationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationTests.swift; sourceTree = "<group>"; };
+		BCF829424077474BB5874CAC /* AddReadingIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReadingIntent.swift; sourceTree = "<group>"; };
 		BF8EB2E2B501520C34CC8214 /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
 		C246682EB1D49062D2F46079 /* Building.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Building.swift; sourceTree = "<group>"; };
+		CF2051F4FCE01CB165243DB7 /* AppDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDataStore.swift; sourceTree = "<group>"; };
 		CF4F6B9DBBDC8718D76A4F72 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		D0487F0F9EB08E75ECA61F01 /* FeatureTour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureTour.swift; sourceTree = "<group>"; };
 		D1405FA5FE33F5E3A624EA0E /* LicenseStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseStore.swift; sourceTree = "<group>"; };
 		D1934710D98083C8ED78912D /* ScreenshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotTests.swift; sourceTree = "<group>"; };
 		D49D3C149E22530D7D0370FD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -125,6 +143,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		000AABCF8A0DA0DE73E66515 /* Intents */ = {
+			isa = PBXGroup;
+			children = (
+				BCF829424077474BB5874CAC /* AddReadingIntent.swift */,
+			);
+			path = Intents;
+			sourceTree = "<group>";
+		};
 		07C2A62261F00CAB50EF358F = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +174,7 @@
 		19E596A75C8C3C72D6A12A88 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				CF2051F4FCE01CB165243DB7 /* AppDataStore.swift */,
 				CF4F6B9DBBDC8718D76A4F72 /* AppState.swift */,
 				9D1789EF1581A7D16E540D78 /* MainTabView.swift */,
 				41ECFCC0D71BEA7E9D085548 /* VerbrauchsHubApp.swift */,
@@ -170,6 +197,7 @@
 			children = (
 				06B966E1334439063FFE1E62 /* ExportService.swift */,
 				6E9E7CE5C0612C573950A1B5 /* ImportService.swift */,
+				310A633C86AF5159E5E83A56 /* MeterValueRecognizer.swift */,
 				EF09CB4D861FB84693C24E58 /* NotificationService.swift */,
 			);
 			path = Services;
@@ -192,6 +220,8 @@
 				042E48E28596EBAE79CE38DB /* CostCalculator.swift */,
 				FBFA5D54E6EB304A6C2976BD /* Forecaster.swift */,
 				FE7B8151E86A214164D97CFB /* PeriodGranularity.swift */,
+				0BC202A763DCEA113367FA96 /* Projection.swift */,
+				8D23D8F5E52DD5ADB9BD1DCB /* ReadingCheck.swift */,
 			);
 			path = Calculation;
 			sourceTree = "<group>";
@@ -202,6 +232,7 @@
 				B29135F4179173FE1BA8C291 /* CalculationTests.swift */,
 				7934F1B82E90C9D4AE73A959 /* LicensePolicyTests.swift */,
 				6C77048DB4BD9F0348158575 /* LicenseStoreTests.swift */,
+				7832C584B75747AC83C92236 /* PlanningTests.swift */,
 			);
 			path = VerbrauchsHubTests;
 			sourceTree = "<group>";
@@ -220,6 +251,7 @@
 		6D28E6E04C10CE2F57054DDD /* VerbrauchsHubUITests */ = {
 			isa = PBXGroup;
 			children = (
+				D0487F0F9EB08E75ECA61F01 /* FeatureTour.swift */,
 				D1934710D98083C8ED78912D /* ScreenshotTests.swift */,
 			);
 			path = VerbrauchsHubUITests;
@@ -259,6 +291,7 @@
 				19E596A75C8C3C72D6A12A88 /* App */,
 				3DF65765E80AEA18B12C84E1 /* Calculation */,
 				A90C2AD601CC25AEC295DDE7 /* Features */,
+				000AABCF8A0DA0DE73E66515 /* Intents */,
 				E63B88864CA7A03D07BD2FE1 /* Models */,
 				7D96B43818324ECCFC151F74 /* Purchase */,
 				3D5CAFEF67DE94AC6D7E0C59 /* Resources */,
@@ -273,8 +306,10 @@
 			children = (
 				15D00D86A23D97E041E88436 /* AddMeterSheet.swift */,
 				A1F15276BF52E857823260C8 /* AddReadingSheet.swift */,
+				5A53611D82C928AE8F3DFC1D /* EditMeterSheet.swift */,
 				A0250CE50AA3EA2C3F1AD89F /* MeterDetailView.swift */,
 				14B5BB5E88443C5AEA703C14 /* MeterListView.swift */,
+				2263100002D0F27C298B19D8 /* PlanningCards.swift */,
 			);
 			path = Meters;
 			sourceTree = "<group>";
@@ -453,6 +488,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				702B182CF69ABA0C3D1B88DE /* FeatureTour.swift in Sources */,
 				7A83BCE8853D7F82F71A9BED /* ScreenshotTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -462,7 +498,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B249606179FD79CD0B9EBB5 /* AddMeterSheet.swift in Sources */,
+				AEDF0F275A88EDC98DB13704 /* AddReadingIntent.swift in Sources */,
 				328AD85BC777A76CC122E031 /* AddReadingSheet.swift in Sources */,
+				8B7C7D4ECAC692F5F60FD51F /* AppDataStore.swift in Sources */,
 				098CD9F4529E3D6D5AF1B850 /* AppState.swift in Sources */,
 				9CF99AFF6CA23329591651E7 /* BarComparisonChartView.swift in Sources */,
 				1FB13DDB4EC40D4880D9DFA7 /* Building.swift in Sources */,
@@ -471,6 +509,7 @@
 				6C739B8F50EE648D7561D74D /* ConsumptionCalculator.swift in Sources */,
 				773E22F903E1FF3F5E23E613 /* CostCalculator.swift in Sources */,
 				6DFD1C1F5A10D71D392A32B4 /* DashboardView.swift in Sources */,
+				84C95872A44598E5D2F29135 /* EditMeterSheet.swift in Sources */,
 				B1A99D029E89814FB7E6F556 /* EnergyBalanceChartView.swift in Sources */,
 				1204175AA66166201CE5DE28 /* Enums.swift in Sources */,
 				D2B04A033FEBC486D6468E21 /* ExportImportView.swift in Sources */,
@@ -487,10 +526,14 @@
 				4B09C24F923B25B5F7F924A8 /* MeterDetailView.swift in Sources */,
 				1BB504A9382F52EA99A28682 /* MeterListView.swift in Sources */,
 				1C0CE5659BD231B04BD427FD /* MeterSummaryCard.swift in Sources */,
+				E2C23BCED1612B7ED057EE59 /* MeterValueRecognizer.swift in Sources */,
 				04B6D0BC243B7407A0668E6D /* NotificationService.swift in Sources */,
 				BB176B266181C978346B51F4 /* PaywallView.swift in Sources */,
 				45EAEA90C1CB17171695EAE9 /* PeriodGranularity.swift in Sources */,
+				D81FBD7D9FCDCCD06E6F5899 /* PlanningCards.swift in Sources */,
+				7A8D80C71A43AC335439A21B /* Projection.swift in Sources */,
 				0F0F0D77C6BA1E6F4C58C8B9 /* Reading.swift in Sources */,
+				FF471EC0616ED44F46511C39 /* ReadingCheck.swift in Sources */,
 				096908ABCB8C450548DC0C0D /* ReminderSettingsView.swift in Sources */,
 				6454B192D1A52DC6FCB6ACE5 /* SeedData.swift in Sources */,
 				DF9C9FD6BAD378B4BDDE79BD /* SettingsView.swift in Sources */,
@@ -509,6 +552,7 @@
 				5FFFDED8719D1EDEFBA8474D /* CalculationTests.swift in Sources */,
 				FDE4BD6069CC516DD650C7C5 /* LicensePolicyTests.swift in Sources */,
 				B3B15E913F735D97873ADA98 /* LicenseStoreTests.swift in Sources */,
+				9E0A3F9163AFA015A34579B6 /* PlanningTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,7 +635,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = RVXL7PUD42;
@@ -615,7 +659,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -730,7 +774,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = RVXL7PUD42;
@@ -760,7 +804,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;

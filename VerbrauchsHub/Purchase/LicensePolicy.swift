@@ -50,12 +50,13 @@ enum LicensePolicy {
 
     /// Second safety net for the switch-over: everyone whose first download lies
     /// before this moment counts as an existing customer, whatever build they got.
-    /// Set it a few days *after* the price is changed to free.
+    /// The price went to free on the evening of 6 October 2026, before build 4 was released,
+    /// so every paid download carries build 1–3 anyway.
     static let freeSwitchCutoff: Date = {
         var components = DateComponents()
         components.year = 2026
-        components.month = 11
-        components.day = 15
+        components.month = 10
+        components.day = 7
         components.timeZone = TimeZone(identifier: "Europe/Berlin")
         return Calendar(identifier: .gregorian).date(from: components)!
     }()

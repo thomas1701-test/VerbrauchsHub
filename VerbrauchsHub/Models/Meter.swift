@@ -14,6 +14,12 @@ final class Meter {
     var reminderEnabled: Bool
     var reminderDayOfMonth: Int?
     var createdAt: Date
+    /// Monthly advance payment to the supplier (Abschlag) in euros.
+    var advancePaymentPerMonth: Decimal?
+    /// Start of a billing period; the period repeats yearly from this date.
+    var billingStartDate: Date?
+    /// Consumption goal per calendar year in the meter's unit.
+    var annualTarget: Decimal?
 
     @Relationship(deleteRule: .cascade, inverse: \Reading.meter)
     var readings: [Reading] = []

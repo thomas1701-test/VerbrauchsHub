@@ -138,6 +138,13 @@ final class LicenseStore {
         defer { isWorking = false }
         do {
             let result = try await purchase(product)
+            #if DEBUG
+            if case .success(let verification) = result, case .unverified(_, let error) = verification {
+                print("LicenseStore: unverified purchase of \(product.id): \(error)")
+            } else if case .success = result {} else {
+                print("LicenseStore: purchase of \(product.id) ended with \(result)")
+            }
+            #endif
             switch result {
             case .success(let verification):
                 await handle(verification)
@@ -149,6 +156,9 @@ final class LicenseStore {
                 break
             }
         } catch {
+            #if DEBUG
+            print("LicenseStore: purchase of \(product.id) failed: \(error)")
+            #endif
             errorMessage = "Der Kauf konnte nicht abgeschlossen werden. Bitte versuche es erneut."
         }
     }
