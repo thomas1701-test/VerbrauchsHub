@@ -34,6 +34,7 @@ struct MeterDetailView: View {
                 } label: {
                     Image(systemName: "plus.circle.fill")
                 }
+                .accessibilityLabel("Ablesung hinzufügen")
             }
         }
         .sheet(isPresented: $showAddReading) {
@@ -73,12 +74,12 @@ struct MeterDetailView: View {
         VStack(spacing: 12) {
             HStack {
                 statTile(title: "Aktueller Monat", value: Formatting.amount(monthCons, unit: meter.unitLabel))
-                statTile(title: "Year-to-Date", value: Formatting.amount(yearCons, unit: meter.unitLabel))
+                statTile(title: "Seit Jahresbeginn", value: Formatting.amount(yearCons, unit: meter.unitLabel))
             }
             if let f = forecast, f.projectedTotal > 0 {
                 HStack {
                     statTile(title: "Prognose Jahr", value: Formatting.amount(f.projectedTotal, unit: meter.unitLabel))
-                    statTile(title: "Kosten Monat", value: Formatting.currency(costCalculator.cost(in: monthPeriod).total))
+                    statTile(title: meter.type.isFeedIn ? "Vergütung Monat" : "Kosten Monat", value: Formatting.netCost(costCalculator.cost(in: monthPeriod).total))
                 }
             }
         }
@@ -152,9 +153,12 @@ struct MeterDetailView: View {
             if sortedReadings.isEmpty {
                 Text("Noch keine Ablesungen erfasst.").foregroundStyle(.secondary).italic()
             } else {
+                Text("Gedrückt halten zum Löschen").font(.caption).foregroundStyle(.secondary)
                 ForEach(sortedReadings) { reading in
+                    // Not inside a List, so swipeActions would never fire — use a context menu.
                     ReadingRow(reading: reading, unit: meter.unitLabel)
-                        .swipeActions {
+                        .contentShape(Rectangle())
+                        .contextMenu {
                             Button(role: .destructive) {
                                 context.delete(reading)
                                 try? context.save()

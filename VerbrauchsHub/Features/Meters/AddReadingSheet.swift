@@ -13,14 +13,14 @@ struct AddReadingSheet: View {
     @State private var photoItem: PhotosPickerItem?
     @State private var photoData: Data?
     @State private var validationError: String?
+    @State private var showDecreaseConfirm = false
 
     private var previousValue: Decimal? {
         meter.readings.filter { $0.date < date }.sorted { $0.date > $1.date }.first?.value
     }
 
     private var parsedValue: Decimal? {
-        let normalized = valueText.replacingOccurrences(of: ",", with: ".")
-        return Decimal(string: normalized)
+        Formatting.parseDecimal(valueText)
     }
 
     var body: some View {
@@ -70,6 +70,12 @@ struct AddReadingSheet: View {
                     Button("Speichern") { save() }
                 }
             }
+            .alert("Zählerstand niedriger als zuvor", isPresented: $showDecreaseConfirm) {
+                Button("Trotzdem speichern") { insertReading() }
+                Button("Abbrechen", role: .cancel) {}
+            } message: {
+                Text("Der Wert ist kleiner als die vorherige Ablesung. Das passiert z. B. nach einem Zählertausch. Dieser Abschnitt wird bei der Verbrauchsberechnung ignoriert.")
+            }
             .task(id: photoItem) {
                 if let item = photoItem,
                    let data = try? await item.loadTransferable(type: Data.self) {
@@ -85,9 +91,14 @@ struct AddReadingSheet: View {
             return
         }
         if let prev = previousValue, value < prev {
-            validationError = "Wert ist kleiner als die letzte Ablesung. Zähler-Reset? Trotzdem speichern: längeres Drücken."
-            // For simplicity we still save but with note.
+            showDecreaseConfirm = true
+            return
         }
+        insertReading()
+    }
+
+    private func insertReading() {
+        guard let value = parsedValue else { return }
         let reading = Reading(meter: meter, date: date, value: value, note: note.isEmpty ? nil : note, photoData: photoData)
         context.insert(reading)
         try? context.save()

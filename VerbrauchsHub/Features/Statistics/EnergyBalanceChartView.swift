@@ -60,7 +60,16 @@ struct EnergyBalanceChartView: View {
                 }
             }
             Chart(data) { layer in
+                // Unstacked: the three flows don't add up to a meaningful total.
                 AreaMark(
+                    x: .value("Datum", layer.date),
+                    y: .value("kWh", layer.value),
+                    stacking: .unstacked
+                )
+                .foregroundStyle(by: .value("Kategorie", layer.category))
+                .opacity(0.35)
+                .interpolationMethod(.catmullRom)
+                LineMark(
                     x: .value("Datum", layer.date),
                     y: .value("kWh", layer.value)
                 )

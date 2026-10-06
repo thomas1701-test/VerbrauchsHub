@@ -1,0 +1,1 @@
+Zählerstand,Stromzähler,Gaszähler,Wasserzähler,Photovoltaik,PV,Autarkie,Nebenkosten,Ablesung,Energie

@@ -75,12 +75,15 @@ struct LineChartView: View {
         VStack(alignment: .leading, spacing: 4) {
             Text("Verbrauch über Zeit").font(.headline)
             Chart(dataPoints) { p in
+                // Explicit series, otherwise current and comparison points of the same
+                // meter are joined into a single zig-zag line.
                 LineMark(
                     x: .value("Datum", p.date),
-                    y: .value("Verbrauch", p.value)
+                    y: .value("Verbrauch", p.value),
+                    series: .value("Serie", "\(p.meterID)-\(p.series)")
                 )
                 .foregroundStyle(by: .value("Zähler", p.meterName))
-                .lineStyle(StrokeStyle(lineWidth: p.series == "Aktuell" ? 2 : 1.5, dash: p.series == "Vergleich" ? [4, 4] : (p.isPartial ? [2, 3] : [])))
+                .lineStyle(StrokeStyle(lineWidth: p.series == "Aktuell" ? 2 : 1.5, dash: p.series == "Vergleich" ? [4, 4] : []))
                 .symbol(by: .value("Zähler", p.meterName))
             }
             .chartForegroundStyleScale(domain: meters.map(\.displayName), range: meters.map { Color(hex: $0.colorHex) ?? .accentColor })

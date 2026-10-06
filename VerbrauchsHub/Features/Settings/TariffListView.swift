@@ -128,7 +128,7 @@ struct AddTariffSheet: View {
     }
 
     private func parseDecimal(_ s: String) -> Decimal? {
-        Decimal(string: s.replacingOccurrences(of: ",", with: "."))
+        Formatting.parseDecimal(s)
     }
 
     private func save() {

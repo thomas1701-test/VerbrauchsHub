@@ -69,9 +69,27 @@ enum Formatting {
         currency.string(from: value as NSDecimalNumber) ?? "\(value) €"
     }
 
+    /// Net cost for display: negative totals (feed-in revenue) are shown as "+x €".
+    static func netCost(_ value: Decimal) -> String {
+        value < 0 ? "+" + currency(-value) : currency(value)
+    }
+
     static func percent(_ value: Decimal) -> String {
         let n = percent.string(from: value as NSDecimalNumber) ?? "\(value)%"
         return n
+    }
+
+    /// Parses user input like "1.234,5", "1234,5" or "1234.5". Rejects trailing garbage
+    /// (`Decimal(string:)` alone would silently turn "12abc" into 12).
+    static func parseDecimal(_ input: String) -> Decimal? {
+        var s = input.filter { !$0.isWhitespace }
+        if s.contains(",") {
+            s = s.replacingOccurrences(of: ".", with: "").replacingOccurrences(of: ",", with: ".")
+        }
+        guard !s.isEmpty,
+              s.filter({ $0 == "." }).count <= 1,
+              s.allSatisfy({ $0.isASCII && ($0.isNumber || $0 == ".") }) else { return nil }
+        return Decimal(string: s, locale: Locale(identifier: "en_US_POSIX"))
     }
 }
 

@@ -128,3 +128,35 @@ import Foundation
         #expect(abs(result.energyCost.doubleValue - 50.0) < 0.01)
     }
 }
+
+@Suite struct ForecastAndParsingTests {
+    let calendar: Calendar = {
+        var c = Calendar(identifier: .gregorian)
+        c.timeZone = TimeZone(identifier: "UTC")!
+        return c
+    }()
+    private func date(_ y: Int, _ m: Int, _ d: Int) -> Date {
+        calendar.date(from: DateComponents(year: y, month: m, day: d))!
+    }
+
+    @Test func forecastIgnoresGapSinceLastReading() {
+        // 1 unit/day from Jan 1 to Jul 1, forecast asked on Oct 1 → still ~365/year.
+        let meter = Meter(type: .electricity)
+        meter.readings = [
+            Reading(meter: meter, date: date(2025, 1, 1), value: 0),
+            Reading(meter: meter, date: date(2025, 7, 1), value: 181)
+        ]
+        let forecast = Forecaster(meter: meter).yearForecast(asOf: date(2025, 10, 1), calendar: calendar)
+        #expect(abs((forecast?.projectedTotal.doubleValue ?? 0) - 365) < 1)
+    }
+
+    @Test func parsesGermanAndEnglishNumbers() {
+        #expect(Formatting.parseDecimal("1.234,5") == Decimal(string: "1234.5"))
+        #expect(Formatting.parseDecimal("1234,5") == Decimal(string: "1234.5"))
+        #expect(Formatting.parseDecimal("1234.5") == Decimal(string: "1234.5"))
+        #expect(Formatting.parseDecimal(" 42 ") == 42)
+        #expect(Formatting.parseDecimal("12abc") == nil)
+        #expect(Formatting.parseDecimal("") == nil)
+        #expect(Formatting.parseDecimal("1.2.3") == nil)
+    }
+}
