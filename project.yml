@@ -23,7 +23,7 @@ settings:
     INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.utilities
     DEVELOPMENT_TEAM: RVXL7PUD42
     CODE_SIGN_STYLE: Automatic
-    CURRENT_PROJECT_VERSION: "4"
+    CURRENT_PROJECT_VERSION: "5"
 targets:
   VerbrauchsHub:
     type: application
