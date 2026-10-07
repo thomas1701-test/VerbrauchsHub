@@ -121,8 +121,9 @@ final class LicenseStore {
         } catch {
             errorMessage = "Die Käufe konnten nicht abgerufen werden. Prüfe deine Internetverbindung und versuche es erneut."
         }
-        // Asking Apple again also renews the proof that this account had the paid app.
-        if legacy != .legacy {
+        // Only without a verified proof of the original download is it worth asking Apple again –
+        // `AppTransaction.refresh()` shows its own sign-in prompt, on top of the one from `sync()`.
+        if legacy == .unknown {
             _ = try? await AppTransaction.refresh()
         }
         await refresh()
