@@ -102,13 +102,13 @@ final class LicenseStore {
     typealias Purchase = (Product) async throws -> Product.PurchaseResult
 
     func startTrial(using purchase: Purchase) async {
-        guard let trialProduct else { return await reloadProductsAfterFailure() }
-        await buy(trialProduct, using: purchase)
+        guard let product = await product(\.trialProduct) else { return }
+        await buy(product, using: purchase)
     }
 
     func buyFullVersion(using purchase: Purchase) async {
-        guard let fullProduct else { return await reloadProductsAfterFailure() }
-        await buy(fullProduct, using: purchase)
+        guard let product = await product(\.fullProduct) else { return }
+        await buy(product, using: purchase)
     }
 
     func restore() async {
@@ -227,13 +227,15 @@ final class LicenseStore {
         }
     }
 
-    private func reloadProductsAfterFailure() async {
+    /// The product, loading it again if the first request at launch failed (offline, slow store).
+    private func product(_ keyPath: KeyPath<LicenseStore, Product?>) async -> Product? {
+        if let product = self[keyPath: keyPath] { return product }
         isWorking = true
-        defer { isWorking = false }
         await loadProducts()
-        if productsFailed {
-            errorMessage = "Der App Store ist gerade nicht erreichbar. Prüfe deine Internetverbindung und versuche es erneut."
-        }
+        isWorking = false
+        if let product = self[keyPath: keyPath] { return product }
+        errorMessage = "Der App Store ist gerade nicht erreichbar. Prüfe deine Internetverbindung und versuche es erneut."
+        return nil
     }
 
     static func checkLegacy() async -> LegacyVerdict {
