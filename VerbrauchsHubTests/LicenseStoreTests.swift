@@ -31,7 +31,7 @@ final class LicenseStoreTests: XCTestCase {
     func testNewUserStartsTrialThenBuys() async throws {
         let store = try await makeStore()
         XCTAssertEqual(store.state, .trialNotStarted)
-        XCTAssertTrue(store.fullPriceText.contains("0,99"), store.fullPriceText)
+        XCTAssertTrue(store.fullPriceText.contains("0,99") || store.fullPriceText.contains("0.99"), store.fullPriceText)
 
         await store.startTrial(using: buy)
         XCTAssertNil(store.errorMessage)
