@@ -104,13 +104,19 @@ enum BillingForecaster {
             return nil
         }
 
-        // Measured part with the tariffs that actually applied, the rest at today's tariff.
+        // Measured part with the tariffs that actually applied, the rest with the tariffs
+        // stored for the remaining time (including contracts that only start later).
         let measuredPeriod = Period(granularity: .day, start: start, end: projection.coveredEnd)
         let measuredCost = costs.cost(in: measuredPeriod, calendar: calendar).total
-        let tariff = costs.activeTariff(on: projection.coveredEnd) ?? costs.tariffs.last!
         let remainingConsumption = max(0, projection.total - projection.actual)
-        let remainingMonths = Decimal(end.timeIntervalSince(projection.coveredEnd) / (86_400 * 30.4375))
-        let remainingCost = remainingConsumption * tariff.pricePerUnit + remainingMonths * tariff.baseFeePerMonth
+        let remainingCost = self.remainingCost(
+            costs: costs,
+            consumption: remainingConsumption,
+            from: projection.coveredEnd,
+            to: end,
+            seasonal: projection.usesPreviousYear,
+            calendar: calendar
+        )
 
         return BillingForecast(
             periodStart: start,
@@ -120,5 +126,50 @@ enum BillingForecaster {
             advancePayments: advance * 12,
             usesPreviousYear: projection.usesPreviousYear
         )
+    }
+
+    /// Cost of the not yet measured `[from, to)`, split at every tariff change.
+    ///
+    /// The expected consumption is spread over the segments by time, or with last year's
+    /// distribution for seasonal projections (heating in winter costs more after a price rise in
+    /// January than a straight line suggests).
+    private static func remainingCost(
+        costs: CostCalculator,
+        consumption: Decimal,
+        from: Date,
+        to: Date,
+        seasonal: Bool,
+        calendar: Calendar
+    ) -> Decimal {
+        guard to > from, let fallback = costs.activeTariff(on: from) ?? costs.tariffs.last(where: { $0.validFrom <= from }) ?? costs.tariffs.first else {
+            return 0
+        }
+
+        let changes = costs.tariffs.flatMap { [$0.validFrom, $0.validTo].compactMap { $0 } }
+            .filter { $0 > from && $0 < to }
+        let bounds = ([from] + Set(changes).sorted() + [to])
+        let segments = zip(bounds, bounds.dropFirst()).map { (start: $0, end: $1) }
+
+        let secondsPerMonth: Double = 86_400 * 30.4375
+        let timeWeights = segments.map { Decimal($0.end.timeIntervalSince($0.start)) }
+        var weights = timeWeights
+        if seasonal {
+            let previous = segments.map { segment -> Decimal in
+                guard let prevStart = calendar.date(byAdding: .year, value: -1, to: segment.start),
+                      let prevEnd = calendar.date(byAdding: .year, value: -1, to: segment.end) else { return 0 }
+                return costs.consumption.totalConsumption(from: prevStart, to: prevEnd, calendar: calendar).amount
+            }
+            if previous.reduce(0, +) > 0 { weights = previous }
+        }
+        let totalWeight = weights.reduce(0, +)
+
+        var cost: Decimal = 0
+        for (index, segment) in segments.enumerated() {
+            let tariff = costs.activeTariff(on: segment.start) ?? fallback
+            let share = totalWeight > 0 ? consumption * weights[index] / totalWeight : 0
+            let months = Decimal(segment.end.timeIntervalSince(segment.start) / secondsPerMonth)
+            cost += share * tariff.pricePerUnit + months * tariff.baseFeePerMonth
+        }
+        return cost
     }
 }

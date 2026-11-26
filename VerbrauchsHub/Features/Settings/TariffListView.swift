@@ -46,8 +46,13 @@ struct TariffListView: View {
                         Text(Formatting.currency(t.pricePerUnit) + "/\(meter.unitLabel)")
                             .font(.headline)
                         Spacer()
-                        if t.validTo == nil {
+                        switch t.status(on: .now) {
+                        case .planned:
+                            Text("geplant").font(.caption).foregroundStyle(.orange)
+                        case .current:
                             Text("aktuell").font(.caption).foregroundStyle(.green)
+                        case .ended:
+                            EmptyView()
                         }
                     }
                     if t.baseFeePerMonth != 0 {
@@ -62,7 +67,11 @@ struct TariffListView: View {
                 .padding(.vertical, 4)
             }
             .onDelete { offsets in
-                for i in offsets { context.delete(sortedTariffs[i]) }
+                let removed = offsets.map { sortedTariffs[$0] }
+                let removedIDs = Set(removed.map(\.id))
+                for tariff in removed { context.delete(tariff) }
+                // Close the gap: the previous tariff runs on until the next remaining one.
+                Tariff.relink(meter.tariffs.filter { !removedIDs.contains($0.id) })
                 try? context.save()
             }
         }
@@ -86,7 +95,6 @@ struct AddTariffSheet: View {
     @State private var baseFeeText = ""
     @State private var feedInText = ""
     @State private var validFrom: Date = .now
-    @State private var endPrevious = true
 
     var body: some View {
         NavigationStack {
@@ -110,9 +118,12 @@ struct AddTariffSheet: View {
                         }
                     }
                 }
-                Section("Gültigkeit") {
+                Section {
                     DatePicker("Gültig ab", selection: $validFrom, displayedComponents: .date)
-                    Toggle("Vorherigen Tarif beenden", isOn: $endPrevious)
+                } header: {
+                    Text("Gültigkeit")
+                } footer: {
+                    Text("Der vorherige Tarif endet automatisch an diesem Tag. Ein Datum in der Zukunft legt den Tarif als geplant an.")
                 }
             }
             .navigationTitle("Neuer Tarif")
@@ -135,11 +146,6 @@ struct AddTariffSheet: View {
         guard let price = parseDecimal(priceText) else { return }
         let base = parseDecimal(baseFeeText) ?? 0
         let feed = parseDecimal(feedInText)
-        if endPrevious {
-            for old in meter.tariffs where old.validTo == nil && old.validFrom < validFrom {
-                old.validTo = validFrom
-            }
-        }
         let t = Tariff(
             meter: meter,
             pricePerUnit: price,
@@ -148,6 +154,8 @@ struct AddTariffSheet: View {
             validFrom: validFrom
         )
         context.insert(t)
+        let others = meter.tariffs.filter { $0.id != t.id }
+        Tariff.relink(others + [t])
         try? context.save()
         dismiss()
     }

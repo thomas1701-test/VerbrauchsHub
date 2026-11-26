@@ -92,6 +92,66 @@ final class PlanningTests: XCTestCase {
         XCTAssertEqual(forecast.suggestedAdvance, 20)
     }
 
+    func testBillingForecastUsesPlannedTariff() throws {
+        let meter = Meter(type: .electricity)
+        meter.readings = [
+            Reading(meter: meter, date: date(2025, 1, 1), value: 0),
+            Reading(meter: meter, date: date(2025, 7, 1), value: 181),
+        ]
+        // Current contract ends on 1 Oct, the next one is already known.
+        meter.tariffs = [
+            Tariff(meter: meter, pricePerUnit: Decimal(string: "0.30")!, baseFeePerMonth: 10, validFrom: date(2024, 1, 1), validTo: date(2025, 10, 1)),
+            Tariff(meter: meter, pricePerUnit: Decimal(string: "0.40")!, baseFeePerMonth: 12, validFrom: date(2025, 10, 1)),
+        ]
+        meter.advancePaymentPerMonth = 50
+        meter.billingStartDate = date(2025, 1, 1)
+
+        let forecast = try XCTUnwrap(BillingForecaster.forecast(for: meter, asOf: date(2025, 7, 15), calendar: calendar))
+        // 1 unit per day: 273 days (Jan–Sep) at the old price, 92 days (Oct–Dec) at the new one.
+        let month = 30.4375
+        let expected = 273 * 0.30 + 92 * 0.40 + 273 / month * 10 + 92 / month * 12
+        XCTAssertEqual(forecast.projectedCost.doubleValue, expected, accuracy: 1.5)
+    }
+
+    func testTariffStatus() {
+        let tariff = Tariff(pricePerUnit: 1, validFrom: date(2027, 1, 1), validTo: date(2028, 1, 1))
+        XCTAssertEqual(tariff.status(on: date(2026, 11, 26)), .planned)
+        XCTAssertEqual(tariff.status(on: date(2027, 1, 1)), .current)
+        XCTAssertEqual(tariff.status(on: date(2028, 1, 1)), .ended)
+        XCTAssertEqual(Tariff(pricePerUnit: 1, validFrom: date(2024, 1, 1)).status(on: date(2026, 11, 26)), .current)
+    }
+
+    func testTariffChainHasNoOverlapForOlderTariffAddedLater() {
+        let current = Tariff(pricePerUnit: 1, validFrom: date(2025, 1, 1))
+        let older = Tariff(pricePerUnit: 2, validFrom: date(2024, 1, 1))
+        let planned = Tariff(pricePerUnit: 3, validFrom: date(2027, 1, 1))
+        Tariff.relink([current, planned, older])
+        XCTAssertEqual(older.validTo, date(2025, 1, 1))
+        XCTAssertEqual(current.validTo, date(2027, 1, 1))
+        XCTAssertNil(planned.validTo)
+    }
+
+    func testDeletingLastTariffReopensPrevious() {
+        let old = Tariff(pricePerUnit: 1, validFrom: date(2024, 1, 1), validTo: date(2027, 1, 1))
+        // The planned tariff was deleted: only the old one is left.
+        Tariff.relink([old])
+        XCTAssertNil(old.validTo)
+    }
+
+    func testCostIsNotCountedTwiceAfterRelink() {
+        let meter = Meter(type: .electricity)
+        meter.readings = [
+            Reading(meter: meter, date: date(2025, 1, 1), value: 0),
+            Reading(meter: meter, date: date(2025, 1, 11), value: 10),
+        ]
+        let a = Tariff(meter: meter, pricePerUnit: 1, validFrom: date(2024, 1, 1))
+        let b = Tariff(meter: meter, pricePerUnit: 1, validFrom: date(2025, 1, 6))
+        meter.tariffs = [a, b]
+        Tariff.relink(meter.tariffs)
+        let cost = CostCalculator(meter: meter).cost(in: Period(granularity: .day, start: date(2025, 1, 1), end: date(2025, 1, 11)), calendar: calendar)
+        XCTAssertEqual(cost.energyCost.doubleValue, 10, accuracy: 0.01)
+    }
+
     func testNoBillingWithoutTariffOrForFeedIn() {
         let meter = Meter(type: .electricity)
         meter.readings = [

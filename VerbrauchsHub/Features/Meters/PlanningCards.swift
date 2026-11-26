@@ -154,8 +154,8 @@ private struct BillingCard: View {
                 .foregroundStyle(.secondary)
         }
         Text(forecast.usesPreviousYear
-             ? "Hochgerechnet mit dem Verlauf des Vorjahres und dem aktuellen Tarif."
-             : "Gleichmäßig hochgerechnet mit dem aktuellen Tarif. Mit Ablesungen aus dem Vorjahr wird die Prognose genauer.")
+             ? "Hochgerechnet mit dem Verlauf des Vorjahres und den hinterlegten Tarifen, auch künftigen."
+             : "Gleichmäßig hochgerechnet mit den hinterlegten Tarifen, auch künftigen. Mit Ablesungen aus dem Vorjahr wird die Prognose genauer.")
             .font(.caption2)
             .foregroundStyle(.secondary)
     }
