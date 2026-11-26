@@ -27,3 +27,15 @@ final class AdvancePayment: ValidityPeriod {
         self.createdAt = createdAt
     }
 }
+
+extension Meter {
+    /// The advance payment due on `date`.
+    func advance(on date: Date) -> AdvancePayment? {
+        advancePayments.first { $0.isActive(on: date) }
+    }
+
+    /// The next advance payment that starts after `date`, if one is already stored.
+    func nextPlannedAdvance(after date: Date) -> AdvancePayment? {
+        advancePayments.filter { $0.validFrom > date }.min { $0.validFrom < $1.validFrom }
+    }
+}

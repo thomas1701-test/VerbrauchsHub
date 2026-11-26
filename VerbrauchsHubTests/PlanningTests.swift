@@ -124,7 +124,7 @@ final class PlanningTests: XCTestCase {
             Reading(meter: meter, date: date(2025, 7, 1), value: 181),
         ]
         meter.tariffs = [Tariff(meter: meter, pricePerUnit: Decimal(string: "0.30")!, baseFeePerMonth: 10, validFrom: date(2024, 1, 1))]
-        meter.advancePaymentPerMonth = 50
+        meter.advancePayments = [AdvancePayment(meter: meter, amountPerMonth: 50, validFrom: date(2024, 1, 1))]
         meter.billingStartDate = date(2025, 1, 1)
 
         let forecast = try XCTUnwrap(BillingForecaster.forecast(for: meter, asOf: date(2025, 7, 15), calendar: calendar))
@@ -146,7 +146,7 @@ final class PlanningTests: XCTestCase {
             Tariff(meter: meter, pricePerUnit: Decimal(string: "0.30")!, baseFeePerMonth: 10, validFrom: date(2024, 1, 1), validTo: date(2025, 10, 1)),
             Tariff(meter: meter, pricePerUnit: Decimal(string: "0.40")!, baseFeePerMonth: 12, validFrom: date(2025, 10, 1)),
         ]
-        meter.advancePaymentPerMonth = 50
+        meter.advancePayments = [AdvancePayment(meter: meter, amountPerMonth: 50, validFrom: date(2024, 1, 1))]
         meter.billingStartDate = date(2025, 1, 1)
 
         let forecast = try XCTUnwrap(BillingForecaster.forecast(for: meter, asOf: date(2025, 7, 15), calendar: calendar))
@@ -205,18 +205,67 @@ final class PlanningTests: XCTestCase {
         XCTAssertEqual(a.status(on: date(2026, 11, 26)), .current)
     }
 
+    /// 1 unit per day through the first half of 2025, tariff 0.30 €/unit + 10 €/month, billing from 1 Jan.
+    private func linearMeter() -> Meter {
+        let meter = Meter(type: .electricity)
+        meter.readings = [
+            Reading(meter: meter, date: date(2025, 1, 1), value: 0),
+            Reading(meter: meter, date: date(2025, 7, 1), value: 181),
+        ]
+        meter.tariffs = [Tariff(meter: meter, pricePerUnit: Decimal(string: "0.30")!, baseFeePerMonth: 10, validFrom: date(2024, 1, 1))]
+        meter.billingStartDate = date(2025, 1, 1)
+        return meter
+    }
+
+    func testAdvanceChangeMidYear() throws {
+        let meter = linearMeter()
+        let a = AdvancePayment(meter: meter, amountPerMonth: 50, validFrom: date(2024, 1, 1))
+        let b = AdvancePayment(meter: meter, amountPerMonth: 80, validFrom: date(2025, 10, 1))
+        meter.advancePayments = [a, b]
+        ValidityChain.relink(meter.advancePayments)
+        let forecast = try XCTUnwrap(BillingForecaster.forecast(for: meter, asOf: date(2025, 7, 15), calendar: calendar))
+        // Nine payments of 50 (Jan–Sep), three of 80 (Oct–Dec).
+        XCTAssertEqual(forecast.advancePayments, 9 * 50 + 3 * 80)
+    }
+
+    func testAdvanceStartingMidYearCountsOnlyFromStart() throws {
+        let meter = linearMeter()
+        meter.advancePayments = [AdvancePayment(meter: meter, amountPerMonth: 50, validFrom: date(2025, 7, 1))]
+        let forecast = try XCTUnwrap(BillingForecaster.forecast(for: meter, asOf: date(2025, 7, 15), calendar: calendar))
+        XCTAssertEqual(forecast.advancePayments, 6 * 50) // Jul–Dec
+    }
+
+    func testNoBillingWithoutAdvanceInPeriod() {
+        let meter = linearMeter()
+        XCTAssertNil(BillingForecaster.forecast(for: meter, asOf: date(2025, 7, 15), calendar: calendar))
+        // An advance that already ended before the billing year does not count either.
+        meter.advancePayments = [AdvancePayment(meter: meter, amountPerMonth: 50, validFrom: date(2023, 1, 1), validTo: date(2024, 6, 1))]
+        XCTAssertNil(BillingForecaster.forecast(for: meter, asOf: date(2025, 7, 15), calendar: calendar))
+    }
+
+    func testCurrentAndPlannedAdvance() {
+        let meter = linearMeter()
+        let a = AdvancePayment(meter: meter, amountPerMonth: 50, validFrom: date(2024, 1, 1))
+        let b = AdvancePayment(meter: meter, amountPerMonth: 80, validFrom: date(2027, 1, 1))
+        meter.advancePayments = [a, b]
+        ValidityChain.relink(meter.advancePayments)
+        XCTAssertEqual(meter.advance(on: date(2026, 11, 26))?.amountPerMonth, 50)
+        XCTAssertEqual(meter.nextPlannedAdvance(after: date(2026, 11, 26))?.amountPerMonth, 80)
+        XCTAssertNil(meter.nextPlannedAdvance(after: date(2027, 2, 1)))
+    }
+
     func testNoBillingWithoutTariffOrForFeedIn() {
         let meter = Meter(type: .electricity)
         meter.readings = [
             Reading(meter: meter, date: date(2025, 1, 1), value: 0),
             Reading(meter: meter, date: date(2025, 7, 1), value: 181),
         ]
-        meter.advancePaymentPerMonth = 50
+        meter.advancePayments = [AdvancePayment(meter: meter, amountPerMonth: 50, validFrom: date(2024, 1, 1))]
         meter.billingStartDate = date(2025, 1, 1)
         XCTAssertNil(BillingForecaster.forecast(for: meter, asOf: date(2025, 7, 15), calendar: calendar))
 
         let feedIn = Meter(type: .electricityFeedIn)
-        feedIn.advancePaymentPerMonth = 50
+        feedIn.advancePayments = [AdvancePayment(meter: feedIn, amountPerMonth: 50, validFrom: date(2024, 1, 1))]
         feedIn.billingStartDate = date(2025, 1, 1)
         XCTAssertNil(BillingForecaster.forecast(for: feedIn, asOf: date(2025, 7, 15), calendar: calendar))
     }

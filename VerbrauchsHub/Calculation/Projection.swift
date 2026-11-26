@@ -68,7 +68,7 @@ struct BillingForecast: Hashable {
     let periodEnd: Date
     let projectedConsumption: Decimal
     let projectedCost: Decimal
-    /// Advance payments for the whole period (12 × monthly advance).
+    /// Advance payments due in the period (one per month, at the amount valid then).
     let advancePayments: Decimal
     /// Positive: additional payment due. Negative: refund.
     var balance: Decimal { projectedCost - advancePayments }
@@ -93,13 +93,13 @@ enum BillingForecaster {
     }
 
     static func forecast(for meter: Meter, asOf now: Date = .now, calendar: Calendar = .current) -> BillingForecast? {
-        guard !meter.type.isFeedIn,
-              let advance = meter.advancePaymentPerMonth, advance > 0,
-              let anchor = meter.billingStartDate else { return nil }
+        guard !meter.type.isFeedIn, let anchor = meter.billingStartDate else { return nil }
         let costs = CostCalculator(meter: meter)
         guard !costs.tariffs.isEmpty else { return nil }
 
         let (start, end) = period(anchor: anchor, containing: now, calendar: calendar)
+        let advances = advanceTotal(for: meter, from: start, to: end, calendar: calendar)
+        guard advances > 0 else { return nil }
         guard let projection = costs.consumption.projection(from: start, to: end, asOf: now, calendar: calendar) else {
             return nil
         }
@@ -123,9 +123,21 @@ enum BillingForecaster {
             periodEnd: end,
             projectedConsumption: projection.total,
             projectedCost: measuredCost + remainingCost,
-            advancePayments: advance * 12,
+            advancePayments: advances,
             usesPreviousYear: projection.usesPreviousYear
         )
+    }
+
+    /// Advance payments due in `[from, to)`: one payment per month from `from` on, at the amount
+    /// valid on its due date (advances are paid in whole monthly amounts, not pro rata).
+    static func advanceTotal(for meter: Meter, from: Date, to: Date, calendar: Calendar = .current) -> Decimal {
+        var total: Decimal = 0
+        var month = 0
+        while let due = calendar.date(byAdding: .month, value: month, to: from), due < to {
+            total += meter.advance(on: due)?.amountPerMonth ?? 0
+            month += 1
+        }
+        return total
     }
 
     /// Cost of the not yet measured `[from, to)`, split at every tariff change.

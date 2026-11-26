@@ -11,10 +11,10 @@ struct PlanningCards: View {
             if let target = meter.annualTarget {
                 GoalCard(meter: meter, target: target, accent: accent)
             }
-            if meter.advancePaymentPerMonth != nil {
+            if !meter.advancePayments.isEmpty {
                 BillingCard(meter: meter)
             }
-            if meter.annualTarget == nil && meter.advancePaymentPerMonth == nil {
+            if meter.annualTarget == nil && meter.advancePayments.isEmpty {
                 Button(action: onEdit) {
                     HStack(spacing: 12) {
                         Image(systemName: "target")
@@ -132,7 +132,7 @@ private struct BillingCard: View {
 
         VStack(spacing: 6) {
             row("Voraussichtliche Kosten", Formatting.currency(forecast.projectedCost))
-            row("Abschläge (12 ×)", Formatting.currency(forecast.advancePayments))
+            row("Abschläge", Formatting.currency(forecast.advancePayments))
         }
         .font(.subheadline)
 
@@ -148,7 +148,12 @@ private struct BillingCard: View {
         }
         .font(.subheadline.weight(.semibold))
 
-        if let advance = meter.advancePaymentPerMonth, abs(forecast.suggestedAdvance - advance) >= 1 {
+        if let planned = meter.nextPlannedAdvance(after: .now) {
+            Text("Ab \(Formatting.date.string(from: planned.validFrom)): \(Formatting.currency(planned.amountPerMonth)) pro Monat hinterlegt.")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+        }
+        if let advance = meter.advance(on: .now)?.amountPerMonth, abs(forecast.suggestedAdvance - advance) >= 1 {
             Text("Passender Abschlag: \(Formatting.currency(forecast.suggestedAdvance)) pro Monat (aktuell \(Formatting.currency(advance))).")
                 .font(.caption)
                 .foregroundStyle(.secondary)
