@@ -28,6 +28,7 @@ struct RootView: View {
     @Environment(AppState.self) private var appState
     @Environment(LicenseStore.self) private var license
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.modelContext) private var context
     @Query private var buildings: [Building]
     @State private var showReminder = false
 
@@ -50,6 +51,7 @@ struct RootView: View {
         }
         .onChange(of: scenePhase) { _, phase in
             guard phase == .active else { return }
+            NotificationService.shared.rescheduleAllContractReminders(context)
             license.recompute()
             Task { await license.refresh() }
             remindIfDue()

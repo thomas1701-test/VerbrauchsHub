@@ -72,4 +72,34 @@ final class ContractTests: XCTestCase {
 
         XCTAssertNil(Contract(provider: "Leer", startDate: date(2024, 1, 1)).status(on: today))
     }
+
+    // MARK: - Reminders
+
+    private func at9(_ y: Int, _ m: Int, _ d: Int) -> Date {
+        calendar.date(from: DateComponents(year: y, month: m, day: d, hour: 9))!
+    }
+
+    func testRemindersForDeadlineAndPriceGuarantee() {
+        let c = contract(termEnd: date(2027, 1, 31), notice: (1, .months), renewal: nil)
+        c.priceGuaranteeUntil = date(2027, 3, 31)
+        XCTAssertEqual(c.reminders(asOf: today, calendar: calendar), [
+            ContractReminder(kind: .cancellation, fireDate: at9(2026, 12, 1), eventDate: date(2026, 12, 31)),
+            ContractReminder(kind: .priceGuarantee, fireDate: at9(2027, 3, 1), eventDate: date(2027, 3, 31)),
+        ])
+    }
+
+    func testRemindersInThePastAreSkipped() {
+        // Deadline 31 Dec, but only 10 days before is too late for a 30-day lead.
+        let c = contract(termEnd: date(2027, 1, 31), notice: (1, .months), renewal: nil)
+        XCTAssertEqual(c.reminders(asOf: date(2026, 12, 21), calendar: calendar), [])
+    }
+
+    func testNoRemindersWhenDisabledOrAnytime() {
+        let disabled = contract(termEnd: date(2027, 1, 31), notice: (1, .months), renewal: nil)
+        disabled.reminderEnabled = false
+        disabled.priceGuaranteeUntil = date(2027, 3, 31)
+        XCTAssertEqual(disabled.reminders(asOf: today, calendar: calendar), [])
+        let anytime = contract(termEnd: date(2025, 12, 31), notice: (1, .months), renewal: nil)
+        XCTAssertEqual(anytime.reminders(asOf: today, calendar: calendar), [])
+    }
 }

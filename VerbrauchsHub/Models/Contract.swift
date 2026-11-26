@@ -93,3 +93,30 @@ extension Contract {
         return .ended
     }
 }
+
+struct ContractReminder: Equatable {
+    enum Kind { case cancellation, priceGuarantee }
+    let kind: Kind
+    /// When the notification fires: `reminderLeadDays` before the event, at 9:00.
+    let fireDate: Date
+    /// Last day to cancel, or last day of the price guarantee.
+    let eventDate: Date
+}
+
+extension Contract {
+    func reminders(asOf now: Date, calendar: Calendar = .current) -> [ContractReminder] {
+        guard reminderEnabled else { return [] }
+        var events: [(ContractReminder.Kind, Date)] = []
+        if case .deadline(let date, _) = cancellation(asOf: now, calendar: calendar) {
+            events.append((.cancellation, date))
+        }
+        if let guarantee = priceGuaranteeUntil { events.append((.priceGuarantee, guarantee)) }
+
+        return events.compactMap { kind, eventDate in
+            guard let leadDay = calendar.date(byAdding: .day, value: -reminderLeadDays, to: calendar.startOfDay(for: eventDate)),
+                  let fireDate = calendar.date(bySettingHour: 9, minute: 0, second: 0, of: leadDay),
+                  fireDate > now else { return nil }
+            return ContractReminder(kind: kind, fireDate: fireDate, eventDate: eventDate)
+        }
+    }
+}
