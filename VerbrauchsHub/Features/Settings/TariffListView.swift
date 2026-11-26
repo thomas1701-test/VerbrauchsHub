@@ -71,7 +71,7 @@ struct TariffListView: View {
                 let removedIDs = Set(removed.map(\.id))
                 for tariff in removed { context.delete(tariff) }
                 // Close the gap: the previous tariff runs on until the next remaining one.
-                Tariff.relink(meter.tariffs.filter { !removedIDs.contains($0.id) })
+                ValidityChain.relink(meter.tariffs.filter { !removedIDs.contains($0.id) })
                 try? context.save()
             }
         }
@@ -155,7 +155,7 @@ struct AddTariffSheet: View {
         )
         context.insert(t)
         let others = meter.tariffs.filter { $0.id != t.id }
-        Tariff.relink(others + [t])
+        ValidityChain.relink(others + [t])
         try? context.save()
         dismiss()
     }

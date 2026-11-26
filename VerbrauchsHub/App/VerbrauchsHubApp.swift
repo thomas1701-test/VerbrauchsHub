@@ -11,6 +11,7 @@ struct VerbrauchsHubApp: App {
         container = AppDataStore.container
         let context = ModelContext(container)
         SeedData.seedIfRequested(context)
+        DataMigration.run(context)
     }
 
     var body: some Scene {

@@ -168,7 +168,7 @@ final class PlanningTests: XCTestCase {
         let current = Tariff(pricePerUnit: 1, validFrom: date(2025, 1, 1))
         let older = Tariff(pricePerUnit: 2, validFrom: date(2024, 1, 1))
         let planned = Tariff(pricePerUnit: 3, validFrom: date(2027, 1, 1))
-        Tariff.relink([current, planned, older])
+        ValidityChain.relink([current, planned, older])
         XCTAssertEqual(older.validTo, date(2025, 1, 1))
         XCTAssertEqual(current.validTo, date(2027, 1, 1))
         XCTAssertNil(planned.validTo)
@@ -177,7 +177,7 @@ final class PlanningTests: XCTestCase {
     func testDeletingLastTariffReopensPrevious() {
         let old = Tariff(pricePerUnit: 1, validFrom: date(2024, 1, 1), validTo: date(2027, 1, 1))
         // The planned tariff was deleted: only the old one is left.
-        Tariff.relink([old])
+        ValidityChain.relink([old])
         XCTAssertNil(old.validTo)
     }
 
@@ -190,9 +190,19 @@ final class PlanningTests: XCTestCase {
         let a = Tariff(meter: meter, pricePerUnit: 1, validFrom: date(2024, 1, 1))
         let b = Tariff(meter: meter, pricePerUnit: 1, validFrom: date(2025, 1, 6))
         meter.tariffs = [a, b]
-        Tariff.relink(meter.tariffs)
+        ValidityChain.relink(meter.tariffs)
         let cost = CostCalculator(meter: meter).cost(in: Period(granularity: .day, start: date(2025, 1, 1), end: date(2025, 1, 11)), calendar: calendar)
         XCTAssertEqual(cost.energyCost.doubleValue, 10, accuracy: 0.01)
+    }
+
+    func testAdvancePaymentsChain() {
+        let a = AdvancePayment(amountPerMonth: 90, validFrom: date(2025, 1, 1))
+        let b = AdvancePayment(amountPerMonth: 105, validFrom: date(2027, 1, 1))
+        ValidityChain.relink([b, a])
+        XCTAssertEqual(a.validTo, date(2027, 1, 1))
+        XCTAssertNil(b.validTo)
+        XCTAssertEqual(b.status(on: date(2026, 11, 26)), .planned)
+        XCTAssertEqual(a.status(on: date(2026, 11, 26)), .current)
     }
 
     func testNoBillingWithoutTariffOrForFeedIn() {

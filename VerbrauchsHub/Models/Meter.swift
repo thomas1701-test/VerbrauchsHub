@@ -27,6 +27,9 @@ final class Meter {
     @Relationship(deleteRule: .cascade, inverse: \Tariff.meter)
     var tariffs: [Tariff] = []
 
+    @Relationship(deleteRule: .cascade, inverse: \AdvancePayment.meter)
+    var advancePayments: [AdvancePayment] = []
+
     init(
         id: UUID = UUID(),
         building: Building? = nil,
