@@ -24,6 +24,9 @@ struct AddReadingSheet: View {
     @State private var isRecognizing = false
     @State private var suggestions: [Decimal] = []
     @State private var didLoad = false
+    @State private var isMeterChange = false
+    @State private var oldFinalText = ""
+    @FocusState private var oldFinalFocused: Bool
 
     private var isEditing: Bool { reading != nil }
 
@@ -35,13 +38,27 @@ struct AddReadingSheet: View {
         Formatting.parseDecimal(valueText)
     }
 
+    private var parsedOldFinal: Decimal? {
+        Formatting.parseDecimal(oldFinalText)
+    }
+
     var body: some View {
         NavigationStack {
             Form {
-                Section("Ablesung") {
+                Section {
                     DatePicker("Datum", selection: $date, displayedComponents: .date)
+                    Toggle("Zählerwechsel", isOn: $isMeterChange.animation())
+                    if isMeterChange {
+                        HStack {
+                            TextField("Endstand alter Zähler", text: $oldFinalText)
+                                .keyboardType(.decimalPad)
+                                .monospacedDigit()
+                                .focused($oldFinalFocused)
+                            Text(meter.unitLabel).foregroundStyle(.secondary)
+                        }
+                    }
                     HStack {
-                        TextField("Zählerstand", text: $valueText)
+                        TextField(isMeterChange ? "Startstand neuer Zähler" : "Zählerstand", text: $valueText)
                             .keyboardType(.decimalPad)
                             .monospacedDigit()
                         Text(meter.unitLabel).foregroundStyle(.secondary)
@@ -57,6 +74,12 @@ struct AddReadingSheet: View {
                         }
                     } else if !suggestions.isEmpty {
                         suggestionRow
+                    }
+                } header: {
+                    Text("Ablesung")
+                } footer: {
+                    if isMeterChange {
+                        Text("Endstand vom alten Zähler und Startstand vom neuen, beide vom Wechseltag.")
                     }
                 }
                 Section {
@@ -122,6 +145,13 @@ struct AddReadingSheet: View {
                 get: { pendingCheck != nil },
                 set: { if !$0 { pendingCheck = nil } }
             )) {
+                if case .lowerThanPrevious = pendingCheck, !isMeterChange {
+                    Button("Das war ein Zählerwechsel") {
+                        isMeterChange = true
+                        oldFinalText = ""
+                        oldFinalFocused = true
+                    }
+                }
                 Button("Trotzdem speichern") { store() }
                 Button("Korrigieren", role: .cancel) {}
             } message: {
@@ -180,6 +210,10 @@ struct AddReadingSheet: View {
         valueText = Formatting.inputString(reading.value)
         note = reading.note ?? ""
         photoData = reading.photoData
+        if let finalValue = reading.previousMeterFinalValue {
+            isMeterChange = true
+            oldFinalText = Formatting.inputString(finalValue)
+        }
     }
 
     private func setPhoto(_ data: Data) {
@@ -202,8 +236,12 @@ struct AddReadingSheet: View {
             validationError = "Bitte gültigen Zahlenwert eingeben."
             return
         }
+        if isMeterChange && parsedOldFinal == nil {
+            validationError = "Bitte den Endstand des alten Zählers eintragen."
+            return
+        }
         validationError = nil
-        if let check = ReadingCheck.evaluate(value: parsedValue!, date: date, readings: meter.readings, editing: reading) {
+        if let check = ReadingCheck.evaluate(value: parsedValue!, date: date, readings: meter.readings, editing: reading, previousMeterFinalValue: isMeterChange ? parsedOldFinal : nil) {
             pendingCheck = check
             return
         }
@@ -213,13 +251,15 @@ struct AddReadingSheet: View {
     private func store() {
         guard let value = parsedValue else { return }
         let trimmedNote = note.trimmingCharacters(in: .whitespacesAndNewlines)
+        let oldFinal = isMeterChange ? parsedOldFinal : nil
         if let reading {
             reading.date = date
             reading.value = value
             reading.note = trimmedNote.isEmpty ? nil : trimmedNote
             reading.photoData = photoData
+            reading.previousMeterFinalValue = oldFinal
         } else {
-            let newReading = Reading(meter: meter, date: date, value: value, note: trimmedNote.isEmpty ? nil : trimmedNote, photoData: photoData)
+            let newReading = Reading(meter: meter, date: date, value: value, note: trimmedNote.isEmpty ? nil : trimmedNote, photoData: photoData, previousMeterFinalValue: oldFinal)
             context.insert(newReading)
         }
         try? context.save()
@@ -244,7 +284,7 @@ struct AddReadingSheet: View {
     private var checkMessage: String {
         switch pendingCheck {
         case .lowerThanPrevious(let previous):
-            "Der Wert ist kleiner als die vorherige Ablesung (\(Formatting.counter(previous, unit: meter.unitLabel))). Das passiert z. B. nach einem Zählertausch. Dieser Abschnitt wird bei der Verbrauchsberechnung ignoriert."
+            "Der Wert ist kleiner als die vorherige Ablesung (\(Formatting.counter(previous, unit: meter.unitLabel))). War es ein Zählerwechsel, trag den Endstand des alten Zählers ein, damit kein Verbrauch verloren geht."
         case .unusuallyHigh(let factor):
             factor > 20
                 ? "Seit der letzten Ablesung wäre der Verbrauch ein Vielfaches des üblichen Werts. Bitte prüfe, ob du dich vertippt hast."

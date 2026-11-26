@@ -208,6 +208,10 @@ struct ReadingRow: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text(Formatting.date.string(from: reading.date))
                     .font(.subheadline.weight(.medium))
+                if let finalValue = reading.previousMeterFinalValue {
+                    Label("Zählerwechsel · alter Zähler: \(Formatting.counter(finalValue, unit: unit))", systemImage: "arrow.triangle.2.circlepath")
+                        .font(.caption).foregroundStyle(.secondary)
+                }
                 if let note = reading.note, !note.isEmpty {
                     Text(note).font(.caption).foregroundStyle(.secondary)
                 }
