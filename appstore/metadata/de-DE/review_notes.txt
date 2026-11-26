@@ -4,3 +4,5 @@ Business model (Guideline 3.1.1): VerbrauchsHub is now free to download. On firs
 Customers who bought the previous paid version are recognised via AppTransaction (original app version 1–3) and keep full access without a purchase.
 
 To explore: start the trial, then tap "Mit Beispieldaten ausprobieren" to load demo data (two buildings, seven meters, 24 months of readings). Open "Strom (Bezug)" to see the annual goal and the billing forecast.
+
+New in 1.2.0: Settings › "Verträge & Preise" lists supply contracts with their prices (demo data includes a running contract and one planned for 1 January). Local notifications remind the user before the cancellation deadline and the end of a price guarantee; they are only scheduled after the user enables them and grants permission.

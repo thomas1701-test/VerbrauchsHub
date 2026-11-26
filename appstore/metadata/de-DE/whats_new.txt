@@ -1,8 +1,6 @@
-• Zählerstand per Kamera: VerbrauchsHub erkennt den Wert auf dem Foto
-• Jahresabrechnung im Blick: Abschlag eintragen und voraussichtliche Nachzahlung oder Erstattung sehen, inkl. passendem Abschlag
-• Prognosen nach dem Verlauf des Vorjahres – genauer bei Gas und Heizung
-• Jahresziel pro Zähler
-• Ablesungen und Zähler bearbeiten, Fotos groß ansehen
-• Warnung bei Tippfehlern und ungewöhnlich hohem Verbrauch
-• Siri und Kurzbefehle: „Zählerstand erfassen“
-• Neu: kostenlos laden und 14 Tage testen, danach Vollversion per einmaligem Kauf. Wer die App schon gekauft hat, behält alle Funktionen kostenlos.
+• Verträge: Anbieter, Laufzeit, Kündigungsfrist und Preisgarantie hinterlegen – VerbrauchsHub erinnert dich rechtzeitig vor dem letzten Kündigungstag
+• Neuer Vertrag ab Januar? Schon jetzt eintragen: Er erscheint als „geplant“ und zählt ab dem Wechseldatum in der Prognose
+• Abschläge mit Gültigkeit: Erhöhungen nach der Jahresabrechnung fließen richtig in die Prognose ein
+• Zählerwechsel: Endstand des alten und Startstand des neuen Zählers erfassen – ohne Lücke im Verbrauch
+• Preise lassen sich jetzt bearbeiten
+• Behoben: Tarife überschneiden sich nicht mehr, und Löschen hinterlässt keine Lücke bei den Kosten

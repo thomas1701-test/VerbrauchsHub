@@ -13,9 +13,11 @@ ALLE ZÄHLER. EIN BLICK.
 • Strom (Bezug), PV-Einspeisung, PV-Eigenverbrauch, Wasser, Gas, Wärme – oder eigene Zähler mit eigener Einheit
 • Mehrere Gebäude: Haus, Wohnung, Ferienwohnung oder Garage sauber getrennt
 
-KOSTEN, DIE STIMMEN
-• Tarife mit Arbeitspreis, Grundgebühr und Gültigkeitszeitraum
-• Tarifwechsel mitten im Monat werden korrekt anteilig berechnet
+KOSTEN UND VERTRÄGE IM GRIFF
+• Verträge mit Anbieter, Laufzeit, Kündigungsfrist und Preisgarantie – mit Erinnerung vor dem letzten Kündigungstag
+• Neuen Vertrag schon vorab eintragen: Er zählt ab dem Wechseldatum in Kosten und Prognose
+• Preise mit Arbeitspreis, Grundgebühr und Gültigkeit – Preisänderungen mitten im Monat werden anteilig berechnet
+• Abschläge mit Gültigkeit, z. B. nach einer Erhöhung
 • Einspeisevergütung für deine PV-Anlage
 
 STATISTIKEN, DIE ETWAS SAGEN
@@ -26,6 +28,7 @@ STATISTIKEN, DIE ETWAS SAGEN
 PRAKTISCH IM ALLTAG
 • Zählerstand per Kamera erkennen – Foto bleibt als Beleg gespeichert
 • Warnung bei Tippfehlern und ungewöhnlich hohem Verbrauch
+• Zählerwechsel erfassen, ohne dass Verbrauch verloren geht
 • „Hey Siri, Zählerstand in VerbrauchsHub erfassen“ und Kurzbefehle
 • Monatliche Ablese-Erinnerung pro Zähler
 • Export als JSON (komplettes Backup inkl. Fotos) oder CSV für Excel und Numbers
