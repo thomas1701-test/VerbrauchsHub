@@ -30,6 +30,9 @@ final class Meter {
     @Relationship(deleteRule: .cascade, inverse: \AdvancePayment.meter)
     var advancePayments: [AdvancePayment] = []
 
+    @Relationship(deleteRule: .cascade, inverse: \Contract.meter)
+    var contracts: [Contract] = []
+
     init(
         id: UUID = UUID(),
         building: Building? = nil,

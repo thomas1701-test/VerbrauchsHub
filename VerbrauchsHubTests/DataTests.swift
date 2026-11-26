@@ -17,7 +17,7 @@ final class DataTests: XCTestCase {
     private var container: ModelContainer?
 
     private func makeContext() throws -> ModelContext {
-        let schema = Schema([Building.self, Meter.self, Reading.self, Tariff.self, AdvancePayment.self])
+        let schema = Schema([Building.self, Meter.self, Reading.self, Tariff.self, AdvancePayment.self, Contract.self])
         let container = try ModelContainer(for: schema, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
         self.container = container
         return ModelContext(container)

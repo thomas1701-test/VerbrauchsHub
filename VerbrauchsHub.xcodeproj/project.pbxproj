@@ -46,6 +46,7 @@
 		8048378AEEE2413CD0BC527A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A82C7B196BCE443200744672 /* PrivacyInfo.xcprivacy */; };
 		84C95872A44598E5D2F29135 /* EditMeterSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A53611D82C928AE8F3DFC1D /* EditMeterSheet.swift */; };
 		8B7C7D4ECAC692F5F60FD51F /* AppDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2051F4FCE01CB165243DB7 /* AppDataStore.swift */; };
+		93AD8B80E27D33A785F531B8 /* Contract.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE640B205F5FC6064014B5D0 /* Contract.swift */; };
 		991F9905B51D0A5D55E80172 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 244EA4ED092D5FA306BDE7D0 /* Assets.xcassets */; };
 		9CF99AFF6CA23329591651E7 /* BarComparisonChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59244CF4194A3E761345D2CF /* BarComparisonChartView.swift */; };
 		9E0A3F9163AFA015A34579B6 /* PlanningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832C584B75747AC83C92236 /* PlanningTests.swift */; };
@@ -65,6 +66,7 @@
 		E2C23BCED1612B7ED057EE59 /* MeterValueRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310A633C86AF5159E5E83A56 /* MeterValueRecognizer.swift */; };
 		ECEA07CA960B76F164F241BD /* Meter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA2299DA2C633636185C407 /* Meter.swift */; };
 		F6BDF0FA1B13C77844777685 /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C82A5DC646B73E2F66C6C5 /* LineChartView.swift */; };
+		FC30E84753DEF77B6D56A87D /* ContractTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AB2976A40D3FA51FD17BD /* ContractTests.swift */; };
 		FDE4BD6069CC516DD650C7C5 /* LicensePolicyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7934F1B82E90C9D4AE73A959 /* LicensePolicyTests.swift */; };
 		FEEDDE44FDC21D46F134E6F7 /* ValidityBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31448862D828B3054ED19B21 /* ValidityBadge.swift */; };
 		FF471EC0616ED44F46511C39 /* ReadingCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D23D8F5E52DD5ADB9BD1DCB /* ReadingCheck.swift */; };
@@ -126,6 +128,7 @@
 		866C0DD4DDF581C8D8BF2F85 /* Reading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reading.swift; sourceTree = "<group>"; };
 		87905E6F8BCBD4F3DDEF37CA /* LicensePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicensePolicy.swift; sourceTree = "<group>"; };
 		8D23D8F5E52DD5ADB9BD1DCB /* ReadingCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingCheck.swift; sourceTree = "<group>"; };
+		9A9AB2976A40D3FA51FD17BD /* ContractTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractTests.swift; sourceTree = "<group>"; };
 		9D1789EF1581A7D16E540D78 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		A0250CE50AA3EA2C3F1AD89F /* MeterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterDetailView.swift; sourceTree = "<group>"; };
 		A1F15276BF52E857823260C8 /* AddReadingSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReadingSheet.swift; sourceTree = "<group>"; };
@@ -136,6 +139,7 @@
 		BCF829424077474BB5874CAC /* AddReadingIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReadingIntent.swift; sourceTree = "<group>"; };
 		BF8EB2E2B501520C34CC8214 /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
 		C246682EB1D49062D2F46079 /* Building.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Building.swift; sourceTree = "<group>"; };
+		CE640B205F5FC6064014B5D0 /* Contract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contract.swift; sourceTree = "<group>"; };
 		CF2051F4FCE01CB165243DB7 /* AppDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDataStore.swift; sourceTree = "<group>"; };
 		CF4F6B9DBBDC8718D76A4F72 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		D0487F0F9EB08E75ECA61F01 /* FeatureTour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureTour.swift; sourceTree = "<group>"; };
@@ -244,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				B29135F4179173FE1BA8C291 /* CalculationTests.swift */,
+				9A9AB2976A40D3FA51FD17BD /* ContractTests.swift */,
 				FE246F90481F43C4B2EA721A /* DataTests.swift */,
 				7934F1B82E90C9D4AE73A959 /* LicensePolicyTests.swift */,
 				6C77048DB4BD9F0348158575 /* LicenseStoreTests.swift */,
@@ -359,6 +364,7 @@
 			children = (
 				B2485ABD6F35A7BB51CEA543 /* AdvancePayment.swift */,
 				C246682EB1D49062D2F46079 /* Building.swift */,
+				CE640B205F5FC6064014B5D0 /* Contract.swift */,
 				810F7B6B4C07BB739242EE75 /* Enums.swift */,
 				6EA2299DA2C633636185C407 /* Meter.swift */,
 				866C0DD4DDF581C8D8BF2F85 /* Reading.swift */,
@@ -527,6 +533,7 @@
 				0315413297B5D6786E5F7444 /* BuildingSwitcher.swift in Sources */,
 				18867BC3A469B14B7DD22B66 /* BuildingsListView.swift in Sources */,
 				6C739B8F50EE648D7561D74D /* ConsumptionCalculator.swift in Sources */,
+				93AD8B80E27D33A785F531B8 /* Contract.swift in Sources */,
 				773E22F903E1FF3F5E23E613 /* CostCalculator.swift in Sources */,
 				6DFD1C1F5A10D71D392A32B4 /* DashboardView.swift in Sources */,
 				15F6B92B5E6C91EF3D9BB283 /* DataMigration.swift in Sources */,
@@ -573,6 +580,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FFFDED8719D1EDEFBA8474D /* CalculationTests.swift in Sources */,
+				FC30E84753DEF77B6D56A87D /* ContractTests.swift in Sources */,
 				0ACB8419C0EDE07851E6479F /* DataTests.swift in Sources */,
 				FDE4BD6069CC516DD650C7C5 /* LicensePolicyTests.swift in Sources */,
 				B3B15E913F735D97873ADA98 /* LicenseStoreTests.swift in Sources */,

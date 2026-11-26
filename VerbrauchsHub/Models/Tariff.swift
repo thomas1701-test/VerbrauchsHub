@@ -5,6 +5,7 @@ import SwiftData
 final class Tariff: ValidityPeriod {
     @Attribute(.unique) var id: UUID
     var meter: Meter?
+    var contract: Contract?
     var pricePerUnit: Decimal
     var baseFeePerMonth: Decimal
     var feedInPricePerUnit: Decimal?
