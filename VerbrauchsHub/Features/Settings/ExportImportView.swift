@@ -8,6 +8,8 @@ struct ExportImportView: View {
     @Query private var meters: [Meter]
     @Query private var readings: [Reading]
     @Query private var tariffs: [Tariff]
+    @Query private var contracts: [Contract]
+    @Query private var advancePayments: [AdvancePayment]
 
     @State private var exportURL: URL?
     @State private var showShare = false
@@ -84,7 +86,7 @@ struct ExportImportView: View {
 
     private func exportJSON() {
         do {
-            let snapshot = ExportService.makeSnapshot(buildings: buildings, meters: meters, readings: readings, tariffs: tariffs)
+            let snapshot = ExportService.makeSnapshot(buildings: buildings, meters: meters, readings: readings, tariffs: tariffs, contracts: contracts, advancePayments: advancePayments)
             let url = try ExportService.writeJSON(snapshot)
             exportURL = url
             showShare = true
