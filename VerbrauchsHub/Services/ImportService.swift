@@ -140,7 +140,8 @@ enum ImportService {
                 existing.value = dto.value
                 existing.note = dto.note
                 existing.photoData = dto.photoData
-                existing.previousMeterFinalValue = dto.previousMeterFinalValue
+                // Older backups know nothing of meter changes; keep what this device has.
+                if hasAdvanceHistory { existing.previousMeterFinalValue = dto.previousMeterFinalValue }
                 existing.meter = meter
                 updatedCount += 1
             } else {
@@ -155,7 +156,8 @@ enum ImportService {
             let meter = dto.meterID.flatMap { metersByID[$0] }
             let contract = dto.contractID.flatMap { contractsByID[$0] }
             if let existing = tariffsByID[dto.id] {
-                existing.contract = contract
+                // Older backups know nothing of contracts; keep the assignment this device has.
+                if hasAdvanceHistory { existing.contract = contract }
                 existing.pricePerUnit = dto.pricePerUnit
                 existing.baseFeePerMonth = dto.baseFeePerMonth
                 existing.feedInPricePerUnit = dto.feedInPricePerUnit
@@ -200,7 +202,11 @@ enum ImportService {
         return "Import erfolgreich: +\(addedBuildings) Gebäude, +\(addedMeters) Zähler, +\(addedReadings) Ablesungen, +\(addedTariffs) Tarife, +\(addedContracts) Verträge, +\(addedAdvances) Abschläge, \(updatedCount) aktualisiert."
     }
 
+    @MainActor
     private static func deleteAll(context: ModelContext) throws {
+        for contract in (try? context.fetch(FetchDescriptor<Contract>())) ?? [] {
+            NotificationService.shared.cancelContractReminders(for: contract)
+        }
         try context.delete(model: Reading.self)
         try context.delete(model: Tariff.self)
         try context.delete(model: AdvancePayment.self)

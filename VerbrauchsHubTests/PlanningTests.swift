@@ -340,4 +340,25 @@ final class PlanningTests: XCTestCase {
         let values = await MeterValueRecognizer.recognize(imageData: data, previous: 21_500)
         XCTAssertEqual(values.first, 21_612)
     }
+
+    // MARK: - Review fixes
+
+    func testAdvanceEnteredDuringTheDayCountsFromThatDay() throws {
+        let meter = linearMeter()
+        let afternoon = date(2025, 1, 1).addingTimeInterval(14 * 3600 + 23 * 60)
+        meter.advancePayments = [AdvancePayment(meter: meter, amountPerMonth: 50, validFrom: afternoon)]
+        let forecast = try XCTUnwrap(BillingForecaster.forecast(for: meter, asOf: date(2025, 7, 15), calendar: calendar))
+        XCTAssertEqual(forecast.advancePayments, 12 * 50)
+    }
+
+    func testFirstAdvanceSetsMissingBillingStart() {
+        let meter = Meter(type: .electricity)
+        let payment = AdvancePayment(meter: meter, amountPerMonth: 50, validFrom: date(2026, 3, 15))
+        meter.ensureBillingStart(for: payment, calendar: calendar)
+        XCTAssertEqual(meter.billingStartDate, date(2026, 1, 1))
+        // An existing billing start stays.
+        meter.billingStartDate = date(2025, 4, 1)
+        meter.ensureBillingStart(for: payment, calendar: calendar)
+        XCTAssertEqual(meter.billingStartDate, date(2025, 4, 1))
+    }
 }

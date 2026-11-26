@@ -129,12 +129,14 @@ enum BillingForecaster {
     }
 
     /// Advance payments due in `[from, to)`: one payment per month from `from` on, at the amount
-    /// valid on its due date (advances are paid in whole monthly amounts, not pro rata).
+    /// valid on its due day (advances are paid in whole monthly amounts, not pro rata). An entry
+    /// counts for the whole day it starts, whatever time of day was stored with it.
     static func advanceTotal(for meter: Meter, from: Date, to: Date, calendar: Calendar = .current) -> Decimal {
         var total: Decimal = 0
         var month = 0
         while let due = calendar.date(byAdding: .month, value: month, to: from), due < to {
-            total += meter.advance(on: due)?.amountPerMonth ?? 0
+            let endOfDueDay = (calendar.date(byAdding: .day, value: 1, to: calendar.startOfDay(for: due)) ?? due).addingTimeInterval(-1)
+            total += meter.advance(on: endOfDueDay)?.amountPerMonth ?? 0
             month += 1
         }
         return total

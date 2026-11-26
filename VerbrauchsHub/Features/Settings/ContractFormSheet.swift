@@ -216,6 +216,7 @@ struct ContractFormSheet: View {
                 context.insert(payment)
                 ValidityChain.relink(meter.advancePayments.filter { $0.id != payment.id } + [payment])
                 meter.advancePaymentPerMonth = nil
+                meter.ensureBillingStart(for: payment)
             }
         }
         try? context.save()

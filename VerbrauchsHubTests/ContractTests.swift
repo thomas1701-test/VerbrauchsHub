@@ -102,4 +102,28 @@ final class ContractTests: XCTestCase {
         let anytime = contract(termEnd: date(2025, 12, 31), notice: (1, .months), renewal: nil)
         XCTAssertEqual(anytime.reminders(asOf: today, calendar: calendar), [])
     }
+
+    // MARK: - Review fixes
+
+    func testDeadlineDayStaysOpenAllDay() {
+        // Term end stored with the picker's time of day; on the deadline day itself it is still open.
+        let c = contract(termEnd: date(2026, 12, 26).addingTimeInterval(9 * 3600), notice: (1, .months), renewal: 12)
+        let evening = today.addingTimeInterval(20 * 3600)
+        guard case .deadline(let deadline, _) = c.cancellation(asOf: evening, calendar: calendar) else {
+            return XCTFail("expected a deadline")
+        }
+        XCTAssertEqual(calendar.startOfDay(for: deadline), today)
+    }
+
+    func testEndedContractSendsNoReminders() {
+        let c = contract(termEnd: date(2025, 12, 31), notice: (1, .months), renewal: 12)
+        c.priceGuaranteeUntil = date(2027, 3, 31)
+        c.tariffs = [Tariff(pricePerUnit: 1, validFrom: date(2024, 1, 1), validTo: date(2026, 1, 1))]
+        XCTAssertEqual(c.reminders(asOf: today, calendar: calendar), [])
+    }
+
+    func testContractReminderIdentifiersAreFound() {
+        let ids = ["meter-reminder-1", "contract-cancel-A", "contract-guarantee-B", "other"]
+        XCTAssertEqual(NotificationService.contractReminderIDs(in: ids), ["contract-cancel-A", "contract-guarantee-B"])
+    }
 }

@@ -122,4 +122,36 @@ final class DataTests: XCTestCase {
         XCTAssertEqual(meter.tariffs.count, 1)
         XCTAssertNil(meter.tariffs.first?.contract)
     }
+
+    // MARK: - Review fixes
+
+    func testMergingOldBackupKeepsMeterChangeAndContract() throws {
+        let context = try makeContext()
+        let meterID = UUID(uuidString: "6F1C7B8E-1D2A-4E2B-9C51-7A0B3C2D1E00")!
+        let meter = Meter(id: meterID, type: .electricity)
+        context.insert(meter)
+        let reading = Reading(id: UUID(uuidString: "6F1C7B8E-1D2A-4E2B-9C51-7A0B3C2D1E01")!, meter: meter, date: date(2025, 1, 1), value: 0, previousMeterFinalValue: 900)
+        context.insert(reading)
+        let contract = Contract(meter: meter, provider: "Stadtwerke", startDate: date(2024, 1, 1))
+        context.insert(contract)
+        let tariff = Tariff(id: UUID(uuidString: "6F1C7B8E-1D2A-4E2B-9C51-7A0B3C2D1E02")!, meter: meter, pricePerUnit: Decimal(string: "0.3")!, validFrom: date(2024, 1, 1))
+        tariff.contract = contract
+        context.insert(tariff)
+        try context.save()
+
+        let json = """
+        {
+          "schemaVersion": 1, "exportedAt": "2025-08-01T10:00:00Z", "buildings": [],
+          "meters": [{ "id": "6F1C7B8E-1D2A-4E2B-9C51-7A0B3C2D1E00", "typeRaw": "electricity", "unitRaw": "kWh",
+            "iconName": "bolt.fill", "colorHex": "#FFB300", "reminderEnabled": false, "createdAt": "2025-01-01T00:00:00Z" }],
+          "readings": [{ "id": "6F1C7B8E-1D2A-4E2B-9C51-7A0B3C2D1E01", "meterID": "6F1C7B8E-1D2A-4E2B-9C51-7A0B3C2D1E00",
+            "date": "2025-01-01T00:00:00Z", "value": 0, "createdAt": "2025-01-01T00:00:00Z" }],
+          "tariffs": [{ "id": "6F1C7B8E-1D2A-4E2B-9C51-7A0B3C2D1E02", "meterID": "6F1C7B8E-1D2A-4E2B-9C51-7A0B3C2D1E00",
+            "pricePerUnit": 0.3, "baseFeePerMonth": 0, "validFrom": "2024-01-01T00:00:00Z", "createdAt": "2024-01-01T00:00:00Z" }]
+        }
+        """
+        _ = try ImportService.importSnapshot(data: Data(json.utf8), into: context, strategy: .merge)
+        XCTAssertEqual(reading.previousMeterFinalValue, 900)
+        XCTAssertEqual(tariff.contract?.provider, "Stadtwerke")
+    }
 }

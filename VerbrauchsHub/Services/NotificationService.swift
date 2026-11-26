@@ -86,10 +86,20 @@ extension NotificationService {
         )
     }
 
-    /// Re-plans every contract, e.g. after an automatic renewal moved the deadline.
+    /// Re-plans every contract, e.g. after an automatic renewal moved the deadline, and removes
+    /// reminders of contracts that no longer exist.
     func rescheduleAllContractReminders(_ context: ModelContext) {
         let contracts = (try? context.fetch(FetchDescriptor<Contract>())) ?? []
         contracts.forEach(scheduleContractReminders)
+        let valid = Set(contracts.flatMap { [cancelIdentifier(for: $0), guaranteeIdentifier(for: $0)] })
+        UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
+            let stale = Self.contractReminderIDs(in: requests.map(\.identifier)).filter { !valid.contains($0) }
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: stale)
+        }
+    }
+
+    nonisolated static func contractReminderIDs(in identifiers: [String]) -> [String] {
+        identifiers.filter { $0.hasPrefix("contract-cancel-") || $0.hasPrefix("contract-guarantee-") }
     }
 
     private func cancelIdentifier(for contract: Contract) -> String { "contract-cancel-\(contract.id.uuidString)" }

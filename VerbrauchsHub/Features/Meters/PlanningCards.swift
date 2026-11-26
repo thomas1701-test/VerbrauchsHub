@@ -206,7 +206,14 @@ private struct BillingCard: View {
 
     private var missingReason: String {
         if meter.tariffs.isEmpty {
-            return "Lege unter Einstellungen › Tarife einen Tarif für diesen Zähler an, um die Abrechnung vorherzusagen."
+            return "Lege unter Einstellungen › Verträge einen Vertrag mit Preis für diesen Zähler an, um die Abrechnung vorherzusagen."
+        }
+        guard let anchor = meter.billingStartDate else {
+            return "Lege unter „Zähler bearbeiten“ fest, wann dein Abrechnungsjahr beginnt."
+        }
+        let period = BillingForecaster.period(anchor: anchor, containing: .now)
+        if BillingForecaster.advanceTotal(for: meter, from: period.start, to: period.end) == 0 {
+            return "Für das laufende Abrechnungsjahr ist kein Abschlag hinterlegt."
         }
         return "Für eine Prognose braucht es Ablesungen über mindestens zwei Wochen im aktuellen Abrechnungsjahr."
     }

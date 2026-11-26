@@ -77,7 +77,10 @@ extension Contract {
         let component: Calendar.Component = unit == .weeks ? .weekOfYear : .month
         for _ in 0..<100 {
             guard let deadline = calendar.date(byAdding: component, value: -value, to: termEnd) else { return nil }
-            if deadline >= now { return .deadline(date: deadline, termEnd: termEnd) }
+            // The deadline day counts in full, whatever time of day the dates carry.
+            if calendar.startOfDay(for: deadline) >= calendar.startOfDay(for: now) {
+                return .deadline(date: deadline, termEnd: termEnd)
+            }
             guard let renewal = renewalMonths, renewal > 0 else { return .anytime(value: value, unit: unit) }
             guard let next = calendar.date(byAdding: .month, value: renewal, to: termEnd) else { return nil }
             termEnd = next
@@ -105,7 +108,7 @@ struct ContractReminder: Equatable {
 
 extension Contract {
     func reminders(asOf now: Date, calendar: Calendar = .current) -> [ContractReminder] {
-        guard reminderEnabled else { return [] }
+        guard reminderEnabled, status(on: now) != .ended else { return [] }
         var events: [(ContractReminder.Kind, Date)] = []
         if case .deadline(let date, _) = cancellation(asOf: now, calendar: calendar) {
             events.append((.cancellation, date))

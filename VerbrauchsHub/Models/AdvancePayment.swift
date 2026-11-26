@@ -34,6 +34,13 @@ extension Meter {
         advancePayments.first { $0.isActive(on: date) }
     }
 
+    /// Without a billing start the forecast cannot run; the calendar year of the first advance
+    /// is the most common billing year.
+    func ensureBillingStart(for payment: AdvancePayment, calendar: Calendar = .current) {
+        guard billingStartDate == nil else { return }
+        billingStartDate = calendar.dateInterval(of: .year, for: payment.validFrom)?.start
+    }
+
     /// The next advance payment that starts after `date`, if one is already stored.
     func nextPlannedAdvance(after date: Date) -> AdvancePayment? {
         advancePayments.filter { $0.validFrom > date }.min { $0.validFrom < $1.validFrom }

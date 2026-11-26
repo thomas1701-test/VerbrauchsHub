@@ -127,8 +127,12 @@ private struct ContractHeader: View {
                 ValidityBadge(status: contract.status(on: .now))
                 Image(systemName: "chevron.right").font(.caption.weight(.semibold)).foregroundStyle(.tertiary)
             }
-            Text(contract.cancellationText(asOf: .now)).font(.caption).foregroundStyle(.secondary)
-            if let guarantee = contract.priceGuaranteeUntil {
+            if contract.status(on: .now) == .ended {
+                Text("Vertrag beendet").font(.caption).foregroundStyle(.secondary)
+            } else {
+                Text(contract.cancellationText(asOf: .now)).font(.caption).foregroundStyle(.secondary)
+            }
+            if let guarantee = contract.priceGuaranteeUntil, contract.status(on: .now) != .ended {
                 Text("Preisgarantie bis \(Formatting.date.string(from: guarantee))").font(.caption).foregroundStyle(.secondary)
             }
         }

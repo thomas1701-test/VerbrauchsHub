@@ -73,6 +73,7 @@ struct AdvancePaymentSheet: View {
             entry = AdvancePayment(meter: meter, amountPerMonth: amount, validFrom: validFrom)
             context.insert(entry)
         }
+        meter.ensureBillingStart(for: entry)
         finish(remaining: meter.advancePayments.filter { $0.id != entry.id } + [entry])
     }
 

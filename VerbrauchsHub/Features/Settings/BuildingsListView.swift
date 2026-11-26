@@ -27,7 +27,10 @@ struct BuildingsListView: View {
             .onDelete { offsets in
                 for i in offsets {
                     let building = buildings[i]
-                    building.meters.forEach { NotificationService.shared.cancelReminder(for: $0) }
+                    for meter in building.meters {
+                        NotificationService.shared.cancelReminder(for: meter)
+                        meter.contracts.forEach { NotificationService.shared.cancelContractReminders(for: $0) }
+                    }
                     if appState.selectedBuildingID == building.id { appState.selectedBuildingID = nil }
                     context.delete(building)
                 }
