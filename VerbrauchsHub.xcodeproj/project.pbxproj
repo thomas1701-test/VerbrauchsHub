@@ -17,7 +17,6 @@
 		1204175AA66166201CE5DE28 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810F7B6B4C07BB739242EE75 /* Enums.swift */; };
 		148B148E5FCBA96E921EA718 /* KeychainFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713819BD8548D797875AC8B3 /* KeychainFlag.swift */; };
 		15F6B92B5E6C91EF3D9BB283 /* DataMigration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3510FD1597C4F581E844702 /* DataMigration.swift */; };
-		180F2E356FB1602AB3B25224 /* TariffListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F730A5844338E95B1A0B2FAC /* TariffListView.swift */; };
 		18867BC3A469B14B7DD22B66 /* BuildingsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D8BEB255AB7ABC89DBB2C3 /* BuildingsListView.swift */; };
 		1BB504A9382F52EA99A28682 /* MeterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B5BB5E88443C5AEA703C14 /* MeterListView.swift */; };
 		1C0CE5659BD231B04BD427FD /* MeterSummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EE09BF11807794513D2205 /* MeterSummaryCard.swift */; };
@@ -29,6 +28,7 @@
 		39C694A2BB86504E66296480 /* AdvancePaymentSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436C9821A4778BBCDEF70723 /* AdvancePaymentSheet.swift */; };
 		3C16DA173F17BBE86947F9E1 /* LicensePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87905E6F8BCBD4F3DDEF37CA /* LicensePolicy.swift */; };
 		45EAEA90C1CB17171695EAE9 /* PeriodGranularity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7B8151E86A214164D97CFB /* PeriodGranularity.swift */; };
+		482061B62FE79245A53A98F5 /* ContractListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C92F96F58AA7271484065 /* ContractListView.swift */; };
 		4B09C24F923B25B5F7F924A8 /* MeterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0250CE50AA3EA2C3F1AD89F /* MeterDetailView.swift */; };
 		517C14F1660300029849BCEF /* LicenseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1405FA5FE33F5E3A624EA0E /* LicenseStore.swift */; };
 		5B249606179FD79CD0B9EBB5 /* AddMeterSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D00D86A23D97E041E88436 /* AddMeterSheet.swift */; };
@@ -39,6 +39,7 @@
 		6DFD1C1F5A10D71D392A32B4 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47325950AD0CFC7A80AD8B40 /* DashboardView.swift */; };
 		702B182CF69ABA0C3D1B88DE /* FeatureTour.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0487F0F9EB08E75ECA61F01 /* FeatureTour.swift */; };
 		751C30E8EB7A4DA1ED283994 /* Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E418360F9C69B2B65E8A5DE0 /* Formatting.swift */; };
+		75C9F43E0E6141AAE9DC1088 /* ContractFormSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CC47FD69CCB746ADC816D8 /* ContractFormSheet.swift */; };
 		773E22F903E1FF3F5E23E613 /* CostCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042E48E28596EBAE79CE38DB /* CostCalculator.swift */; };
 		7822DD1202F22470BE3079F5 /* ImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9E7CE5C0612C573950A1B5 /* ImportService.swift */; };
 		7A83BCE8853D7F82F71A9BED /* ScreenshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1934710D98083C8ED78912D /* ScreenshotTests.swift */; };
@@ -57,6 +58,7 @@
 		B77CA22F423DA4DBF398B767 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1789EF1581A7D16E540D78 /* MainTabView.swift */; };
 		BB176B266181C978346B51F4 /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EB2E2B501520C34CC8214 /* PaywallView.swift */; };
 		BE61C03614184C15CA93BC1B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DF5090BD6B30AF1CD55B502C /* Localizable.strings */; };
+		C7299A978F5E903356B57364 /* TariffFormSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85746EF96D3F7643CB52AAC /* TariffFormSheet.swift */; };
 		CB3B0E7261CEE48ED34CE48A /* VerbrauchsHubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ECFCC0D71BEA7E9D085548 /* VerbrauchsHubApp.swift */; };
 		D2B04A033FEBC486D6468E21 /* ExportImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511A42650C2C77900A7D6660 /* ExportImportView.swift */; };
 		D7C41DE72087FDA7F51159DD /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2314D72F06BF8B165B5D7380 /* StatisticsView.swift */; };
@@ -94,6 +96,7 @@
 		042E48E28596EBAE79CE38DB /* CostCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostCalculator.swift; sourceTree = "<group>"; };
 		06059971BB933001B7F14DA0 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		06B966E1334439063FFE1E62 /* ExportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportService.swift; sourceTree = "<group>"; };
+		093C92F96F58AA7271484065 /* ContractListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractListView.swift; sourceTree = "<group>"; };
 		0BC202A763DCEA113367FA96 /* Projection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projection.swift; sourceTree = "<group>"; };
 		12B59095CD95D57FE6CCDFC5 /* VerbrauchsHub.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = VerbrauchsHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1447028895F5348EFD526A98 /* Tariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tariff.swift; sourceTree = "<group>"; };
@@ -128,6 +131,7 @@
 		866C0DD4DDF581C8D8BF2F85 /* Reading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reading.swift; sourceTree = "<group>"; };
 		87905E6F8BCBD4F3DDEF37CA /* LicensePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicensePolicy.swift; sourceTree = "<group>"; };
 		8D23D8F5E52DD5ADB9BD1DCB /* ReadingCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingCheck.swift; sourceTree = "<group>"; };
+		94CC47FD69CCB746ADC816D8 /* ContractFormSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractFormSheet.swift; sourceTree = "<group>"; };
 		9A9AB2976A40D3FA51FD17BD /* ContractTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractTests.swift; sourceTree = "<group>"; };
 		9D1789EF1581A7D16E540D78 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		A0250CE50AA3EA2C3F1AD89F /* MeterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterDetailView.swift; sourceTree = "<group>"; };
@@ -150,8 +154,8 @@
 		E204BE0EF6CCC30B473B9242 /* VerbrauchsHubUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = VerbrauchsHubUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3510FD1597C4F581E844702 /* DataMigration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMigration.swift; sourceTree = "<group>"; };
 		E418360F9C69B2B65E8A5DE0 /* Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatting.swift; sourceTree = "<group>"; };
+		E85746EF96D3F7643CB52AAC /* TariffFormSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffFormSheet.swift; sourceTree = "<group>"; };
 		EF09CB4D861FB84693C24E58 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
-		F730A5844338E95B1A0B2FAC /* TariffListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffListView.swift; sourceTree = "<group>"; };
 		FB988AF3376088AFD353D5B8 /* BuildingSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingSwitcher.swift; sourceTree = "<group>"; };
 		FBFA5D54E6EB304A6C2976BD /* Forecaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecaster.swift; sourceTree = "<group>"; };
 		FE246F90481F43C4B2EA721A /* DataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTests.swift; sourceTree = "<group>"; };
@@ -351,10 +355,12 @@
 			isa = PBXGroup;
 			children = (
 				00D8BEB255AB7ABC89DBB2C3 /* BuildingsListView.swift */,
+				94CC47FD69CCB746ADC816D8 /* ContractFormSheet.swift */,
+				093C92F96F58AA7271484065 /* ContractListView.swift */,
 				511A42650C2C77900A7D6660 /* ExportImportView.swift */,
 				505E561BD083193114713B0B /* ReminderSettingsView.swift */,
 				D49D3C149E22530D7D0370FD /* SettingsView.swift */,
-				F730A5844338E95B1A0B2FAC /* TariffListView.swift */,
+				E85746EF96D3F7643CB52AAC /* TariffFormSheet.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -534,6 +540,8 @@
 				18867BC3A469B14B7DD22B66 /* BuildingsListView.swift in Sources */,
 				6C739B8F50EE648D7561D74D /* ConsumptionCalculator.swift in Sources */,
 				93AD8B80E27D33A785F531B8 /* Contract.swift in Sources */,
+				75C9F43E0E6141AAE9DC1088 /* ContractFormSheet.swift in Sources */,
+				482061B62FE79245A53A98F5 /* ContractListView.swift in Sources */,
 				773E22F903E1FF3F5E23E613 /* CostCalculator.swift in Sources */,
 				6DFD1C1F5A10D71D392A32B4 /* DashboardView.swift in Sources */,
 				15F6B92B5E6C91EF3D9BB283 /* DataMigration.swift in Sources */,
@@ -567,7 +575,7 @@
 				DF9C9FD6BAD378B4BDDE79BD /* SettingsView.swift in Sources */,
 				D7C41DE72087FDA7F51159DD /* StatisticsView.swift in Sources */,
 				6996D1269CC51CA900671C01 /* Tariff.swift in Sources */,
-				180F2E356FB1602AB3B25224 /* TariffListView.swift in Sources */,
+				C7299A978F5E903356B57364 /* TariffFormSheet.swift in Sources */,
 				09C120F7D8FE8221E21AC2EF /* Theme.swift in Sources */,
 				B324321E36F51066A6A3FEE2 /* Validity.swift in Sources */,
 				FEEDDE44FDC21D46F134E6F7 /* ValidityBadge.swift in Sources */,

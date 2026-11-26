@@ -8,6 +8,7 @@ struct PlanningCards: View {
 
     var body: some View {
         VStack(spacing: 12) {
+            ContractLine(meter: meter)
             if let target = meter.annualTarget {
                 GoalCard(meter: meter, target: target, accent: accent)
             }
@@ -39,6 +40,36 @@ struct PlanningCards: View {
                 .buttonStyle(.plain)
             }
         }
+    }
+}
+
+/// "Vertrag: Anbieter · kündbar bis …" and an upcoming contract, if any.
+private struct ContractLine: View {
+    let meter: Meter
+
+    var body: some View {
+        let now = Date.now
+        let current = meter.contracts.first { $0.status(on: now) == .current }
+        let planned = meter.contracts
+            .filter { $0.status(on: now) == .planned }
+            .min { start($0) < start($1) }
+        if current != nil || planned != nil {
+            VStack(alignment: .leading, spacing: 4) {
+                if let current {
+                    Label("Vertrag: \(current.provider) · \(current.cancellationText(asOf: now))", systemImage: "doc.text")
+                }
+                if let planned {
+                    Label("Neuer Vertrag ab \(Formatting.date.string(from: start(planned))): \(planned.provider)", systemImage: "calendar.badge.clock")
+                }
+            }
+            .font(.caption)
+            .foregroundStyle(.secondary)
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+    }
+
+    private func start(_ contract: Contract) -> Date {
+        contract.tariffs.map(\.validFrom).min() ?? contract.startDate
     }
 }
 
