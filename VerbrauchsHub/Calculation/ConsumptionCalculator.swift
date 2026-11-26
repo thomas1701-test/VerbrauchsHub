@@ -60,7 +60,8 @@ struct ConsumptionCalculator {
             if b.date <= coveredStart { continue }
             if a.date >= coveredEnd { break }
 
-            let delta = b.value - a.value
+            // On a meter exchange `b` carries the old meter's final value; from `b` on the new meter counts.
+            let delta = (b.previousMeterFinalValue ?? b.value) - a.value
             if delta <= 0 { continue } // ignore meter resets/decreases
 
             let pairSeconds: Double = b.date.timeIntervalSince(a.date)

@@ -10,6 +10,11 @@ final class Reading {
     var note: String?
     @Attribute(.externalStorage) var photoData: Data?
     var createdAt: Date
+    /// Set on a meter exchange: final value of the old meter on `date`.
+    /// `value` is then the start value of the new meter.
+    var previousMeterFinalValue: Decimal?
+
+    var isMeterChange: Bool { previousMeterFinalValue != nil }
 
     init(
         id: UUID = UUID(),
@@ -18,7 +23,8 @@ final class Reading {
         value: Decimal,
         note: String? = nil,
         photoData: Data? = nil,
-        createdAt: Date = .now
+        createdAt: Date = .now,
+        previousMeterFinalValue: Decimal? = nil
     ) {
         self.id = id
         self.meter = meter
@@ -27,5 +33,6 @@ final class Reading {
         self.note = note
         self.photoData = photoData
         self.createdAt = createdAt
+        self.previousMeterFinalValue = previousMeterFinalValue
     }
 }

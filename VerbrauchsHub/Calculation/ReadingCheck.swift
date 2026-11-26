@@ -11,9 +11,14 @@ enum ReadingCheck: Equatable {
     static let highFactor: Double = 3
 
     /// - Parameter readings: existing readings of the meter (any order); `editing` is ignored.
-    static func evaluate(value: Decimal, date: Date, readings: [Reading], editing: Reading? = nil) -> ReadingCheck? {
+    /// - Parameter previousMeterFinalValue: set when the new reading is a meter exchange; then
+    ///   the old meter's final value is checked and `value` (start of the new meter) is not.
+    static func evaluate(value: Decimal, date: Date, readings: [Reading], editing: Reading? = nil, previousMeterFinalValue: Decimal? = nil) -> ReadingCheck? {
         let others = readings.filter { $0 !== editing }.sorted { $0.date < $1.date }
         guard let previous = others.last(where: { $0.date <= date }) else { return nil }
+        if let finalValue = previousMeterFinalValue {
+            return finalValue < previous.value ? .lowerThanPrevious(previous: previous.value) : nil
+        }
         if value < previous.value { return .lowerThanPrevious(previous: previous.value) }
 
         // Usual rate: the year before the previous reading (at least three readings needed).
@@ -23,7 +28,9 @@ enum ReadingCheck: Equatable {
         }) ?? history.first, oldest !== previous else { return nil }
 
         let historyDays = previous.date.timeIntervalSince(oldest.date) / 86_400
-        let historyAmount = (previous.value - oldest.value).doubleValue
+        // Via the calculator, so a meter exchange inside the history does not distort the rate.
+        let historyAmount = ConsumptionCalculator(readings: history)
+            .totalConsumption(from: oldest.date, to: previous.date).amount.doubleValue
         guard historyDays >= 14, historyAmount > 0 else { return nil }
         let usualRate = historyAmount / historyDays
 

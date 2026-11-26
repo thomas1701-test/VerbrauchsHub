@@ -62,6 +62,49 @@ final class PlanningTests: XCTestCase {
         XCTAssertNil(ConsumptionCalculator(meter: meter).projection(from: date(2025, 1, 1), to: date(2026, 1, 1), asOf: date(2025, 1, 6), calendar: calendar))
     }
 
+    // MARK: - Meter change
+
+    func testConsumptionContinuesAcrossMeterChange() {
+        let meter = Meter(type: .electricity)
+        meter.readings = [
+            Reading(meter: meter, date: date(2025, 1, 1), value: 1000),
+            Reading(meter: meter, date: date(2025, 1, 11), value: 0, previousMeterFinalValue: 1100), // 100 on the old meter
+            Reading(meter: meter, date: date(2025, 1, 21), value: 50),                               // 50 on the new meter
+        ]
+        let calc = ConsumptionCalculator(meter: meter)
+        XCTAssertEqual(calc.totalConsumption(from: date(2025, 1, 1), to: date(2025, 1, 21), calendar: calendar).amount.doubleValue, 150, accuracy: 0.01)
+        // Boundary exactly on the change day.
+        XCTAssertEqual(calc.totalConsumption(from: date(2025, 1, 1), to: date(2025, 1, 11), calendar: calendar).amount.doubleValue, 100, accuracy: 0.01)
+        XCTAssertEqual(calc.totalConsumption(from: date(2025, 1, 11), to: date(2025, 1, 21), calendar: calendar).amount.doubleValue, 50, accuracy: 0.01)
+    }
+
+    func testMeterChangeAsFirstReadingIsIgnored() {
+        let meter = Meter(type: .electricity)
+        meter.readings = [
+            Reading(meter: meter, date: date(2025, 1, 1), value: 0, previousMeterFinalValue: 500),
+            Reading(meter: meter, date: date(2025, 1, 11), value: 10),
+        ]
+        XCTAssertEqual(ConsumptionCalculator(meter: meter).totalConsumption(from: date(2025, 1, 1), to: date(2025, 1, 11), calendar: calendar).amount.doubleValue, 10, accuracy: 0.01)
+    }
+
+    func testMeterChangeIsNotFlaggedButLowFinalValueIs() {
+        let readings = [Reading(date: date(2025, 1, 1), value: 1000)]
+        XCTAssertNil(ReadingCheck.evaluate(value: 0, date: date(2025, 1, 11), readings: readings, previousMeterFinalValue: 1100))
+        XCTAssertEqual(ReadingCheck.evaluate(value: 0, date: date(2025, 1, 11), readings: readings, previousMeterFinalValue: 900), .lowerThanPrevious(previous: 1000))
+    }
+
+    func testUsualRateIgnoresMeterChangeInHistory() {
+        // 10/day before and after a change. Raw value differences would make the history negative
+        // and silently skip the check; 70/day must still be flagged.
+        let readings = [
+            Reading(date: date(2025, 1, 1), value: 1000),
+            Reading(date: date(2025, 1, 31), value: 0, previousMeterFinalValue: 1300),
+            Reading(date: date(2025, 3, 2), value: 300),
+        ]
+        XCTAssertNil(ReadingCheck.evaluate(value: 400, date: date(2025, 3, 12), readings: readings))
+        XCTAssertEqual(ReadingCheck.evaluate(value: 1000, date: date(2025, 3, 12), readings: readings), .unusuallyHigh(factor: 7))
+    }
+
     // MARK: - Billing
 
     func testBillingPeriodRepeatsYearly() {
