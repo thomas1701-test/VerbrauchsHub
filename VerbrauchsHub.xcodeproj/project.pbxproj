@@ -26,6 +26,7 @@
 		2DB617A4174B5CD5213CF2D9 /* ExportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B966E1334439063FFE1E62 /* ExportService.swift */; };
 		30964D47083CB3C9E5D76532 /* Forecaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFA5D54E6EB304A6C2976BD /* Forecaster.swift */; };
 		328AD85BC777A76CC122E031 /* AddReadingSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F15276BF52E857823260C8 /* AddReadingSheet.swift */; };
+		39C694A2BB86504E66296480 /* AdvancePaymentSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436C9821A4778BBCDEF70723 /* AdvancePaymentSheet.swift */; };
 		3C16DA173F17BBE86947F9E1 /* LicensePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87905E6F8BCBD4F3DDEF37CA /* LicensePolicy.swift */; };
 		45EAEA90C1CB17171695EAE9 /* PeriodGranularity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7B8151E86A214164D97CFB /* PeriodGranularity.swift */; };
 		4B09C24F923B25B5F7F924A8 /* MeterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0250CE50AA3EA2C3F1AD89F /* MeterDetailView.swift */; };
@@ -65,6 +66,7 @@
 		ECEA07CA960B76F164F241BD /* Meter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA2299DA2C633636185C407 /* Meter.swift */; };
 		F6BDF0FA1B13C77844777685 /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C82A5DC646B73E2F66C6C5 /* LineChartView.swift */; };
 		FDE4BD6069CC516DD650C7C5 /* LicensePolicyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7934F1B82E90C9D4AE73A959 /* LicensePolicyTests.swift */; };
+		FEEDDE44FDC21D46F134E6F7 /* ValidityBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31448862D828B3054ED19B21 /* ValidityBadge.swift */; };
 		FF471EC0616ED44F46511C39 /* ReadingCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D23D8F5E52DD5ADB9BD1DCB /* ReadingCheck.swift */; };
 /* End PBXBuildFile section */
 
@@ -100,9 +102,11 @@
 		244EA4ED092D5FA306BDE7D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29E31C70C65E5DBFFF74E628 /* EnergyBalanceChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyBalanceChartView.swift; sourceTree = "<group>"; };
 		310A633C86AF5159E5E83A56 /* MeterValueRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterValueRecognizer.swift; sourceTree = "<group>"; };
+		31448862D828B3054ED19B21 /* ValidityBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidityBadge.swift; sourceTree = "<group>"; };
 		3829AD9751C9E62D07F64CA4 /* VerbrauchsHub.storekit */ = {isa = PBXFileReference; path = VerbrauchsHub.storekit; sourceTree = "<group>"; };
 		3C9F8BB9D0C842B6B8E35CC3 /* ConsumptionCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionCalculator.swift; sourceTree = "<group>"; };
 		41ECFCC0D71BEA7E9D085548 /* VerbrauchsHubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerbrauchsHubApp.swift; sourceTree = "<group>"; };
+		436C9821A4778BBCDEF70723 /* AdvancePaymentSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancePaymentSheet.swift; sourceTree = "<group>"; };
 		47325950AD0CFC7A80AD8B40 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		505E561BD083193114713B0B /* ReminderSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderSettingsView.swift; sourceTree = "<group>"; };
 		511A42650C2C77900A7D6660 /* ExportImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportImportView.swift; sourceTree = "<group>"; };
@@ -196,6 +200,7 @@
 				FB988AF3376088AFD353D5B8 /* BuildingSwitcher.swift */,
 				E418360F9C69B2B65E8A5DE0 /* Formatting.swift */,
 				06059971BB933001B7F14DA0 /* Theme.swift */,
+				31448862D828B3054ED19B21 /* ValidityBadge.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -316,6 +321,7 @@
 			children = (
 				15D00D86A23D97E041E88436 /* AddMeterSheet.swift */,
 				A1F15276BF52E857823260C8 /* AddReadingSheet.swift */,
+				436C9821A4778BBCDEF70723 /* AdvancePaymentSheet.swift */,
 				5A53611D82C928AE8F3DFC1D /* EditMeterSheet.swift */,
 				A0250CE50AA3EA2C3F1AD89F /* MeterDetailView.swift */,
 				14B5BB5E88443C5AEA703C14 /* MeterListView.swift */,
@@ -513,6 +519,7 @@
 				AEDF0F275A88EDC98DB13704 /* AddReadingIntent.swift in Sources */,
 				328AD85BC777A76CC122E031 /* AddReadingSheet.swift in Sources */,
 				2A89C5ADC32BC546424C039D /* AdvancePayment.swift in Sources */,
+				39C694A2BB86504E66296480 /* AdvancePaymentSheet.swift in Sources */,
 				8B7C7D4ECAC692F5F60FD51F /* AppDataStore.swift in Sources */,
 				098CD9F4529E3D6D5AF1B850 /* AppState.swift in Sources */,
 				9CF99AFF6CA23329591651E7 /* BarComparisonChartView.swift in Sources */,
@@ -556,6 +563,7 @@
 				180F2E356FB1602AB3B25224 /* TariffListView.swift in Sources */,
 				09C120F7D8FE8221E21AC2EF /* Theme.swift in Sources */,
 				B324321E36F51066A6A3FEE2 /* Validity.swift in Sources */,
+				FEEDDE44FDC21D46F134E6F7 /* ValidityBadge.swift in Sources */,
 				CB3B0E7261CEE48ED34CE48A /* VerbrauchsHubApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

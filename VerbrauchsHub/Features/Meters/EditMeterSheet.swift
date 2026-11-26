@@ -9,7 +9,8 @@ struct EditMeterSheet: View {
     @Bindable var meter: Meter
 
     @State private var name = ""
-    @State private var advanceText = ""
+    @State private var showAddAdvance = false
+    @State private var editingAdvance: AdvancePayment?
     @State private var billingStart = Date.now
     @State private var targetText = ""
     @State private var didLoad = false
@@ -24,10 +25,27 @@ struct EditMeterSheet: View {
 
                 if !meter.type.isFeedIn {
                     Section {
-                        HStack {
-                            TextField("Monatlicher Abschlag", text: $advanceText)
-                                .keyboardType(.decimalPad)
-                            Text("€").foregroundStyle(.secondary)
+                        ForEach(sortedAdvances) { payment in
+                            Button {
+                                editingAdvance = payment
+                            } label: {
+                                HStack {
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        Text("\(Formatting.currency(payment.amountPerMonth)) pro Monat")
+                                            .foregroundStyle(.primary)
+                                        Text("ab \(Formatting.date.string(from: payment.validFrom))")
+                                            .font(.caption).foregroundStyle(.secondary)
+                                    }
+                                    Spacer()
+                                    ValidityBadge(status: payment.status(on: .now))
+                                }
+                            }
+                        }
+                        .onDelete(perform: deleteAdvances)
+                        Button {
+                            showAddAdvance = true
+                        } label: {
+                            Label("Abschlag hinzufügen", systemImage: "plus")
                         }
                         DatePicker("Abrechnungszeitraum ab", selection: $billingStart, displayedComponents: .date)
                     } header: {
@@ -64,6 +82,8 @@ struct EditMeterSheet: View {
                 }
             }
             .onAppear(perform: load)
+            .sheet(isPresented: $showAddAdvance) { AdvancePaymentSheet(meter: meter) }
+            .sheet(item: $editingAdvance) { AdvancePaymentSheet(meter: meter, payment: $0) }
         }
     }
 
@@ -71,25 +91,35 @@ struct EditMeterSheet: View {
         guard !didLoad else { return }
         didLoad = true
         name = meter.customName ?? ""
-        advanceText = meter.advancePaymentPerMonth.map(Formatting.inputString) ?? ""
         billingStart = meter.billingStartDate ?? Self.defaultBillingStart()
         targetText = meter.annualTarget.map(Formatting.inputString) ?? ""
     }
 
     private func save() {
-        let advance = parseOptional(advanceText)
         let target = parseOptional(targetText)
-        guard advance != .invalid, target != .invalid else {
+        guard target != .invalid else {
             validationError = "Bitte gültige Zahlen eingeben."
             return
         }
         let trimmed = name.trimmingCharacters(in: .whitespacesAndNewlines)
         meter.customName = trimmed.isEmpty ? nil : trimmed
-        meter.advancePaymentPerMonth = advance.value
-        meter.billingStartDate = advance.value == nil ? nil : billingStart
+        meter.billingStartDate = meter.advancePayments.isEmpty ? nil : billingStart
         meter.annualTarget = target.value
         try? context.save()
         dismiss()
+    }
+
+    private var sortedAdvances: [AdvancePayment] {
+        meter.advancePayments.sorted { $0.validFrom > $1.validFrom }
+    }
+
+    private func deleteAdvances(_ offsets: IndexSet) {
+        let removed = offsets.map { sortedAdvances[$0] }
+        let removedIDs = Set(removed.map(\.id))
+        for payment in removed { context.delete(payment) }
+        ValidityChain.relink(meter.advancePayments.filter { !removedIDs.contains($0.id) })
+        meter.advancePaymentPerMonth = nil
+        try? context.save()
     }
 
     private enum Parsed: Equatable {

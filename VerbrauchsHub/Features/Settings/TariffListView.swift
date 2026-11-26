@@ -46,14 +46,7 @@ struct TariffListView: View {
                         Text(Formatting.currency(t.pricePerUnit) + "/\(meter.unitLabel)")
                             .font(.headline)
                         Spacer()
-                        switch t.status(on: .now) {
-                        case .planned:
-                            Text("geplant").font(.caption).foregroundStyle(.orange)
-                        case .current:
-                            Text("aktuell").font(.caption).foregroundStyle(.green)
-                        case .ended:
-                            EmptyView()
-                        }
+                        ValidityBadge(status: t.status(on: .now))
                     }
                     if t.baseFeePerMonth != 0 {
                         Text("Grundgebühr: \(Formatting.currency(t.baseFeePerMonth))/Monat").font(.caption).foregroundStyle(.secondary)
