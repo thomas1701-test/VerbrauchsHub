@@ -35,15 +35,41 @@ enum SeedData {
 
         // Advance payments, billing years and goals show the planning cards.
         let yearStart = calendar.dateInterval(of: .year, for: now)?.start ?? now
-        strom.advancePaymentPerMonth = 105
+        let nextYearStart = calendar.date(byAdding: .year, value: 1, to: yearStart)!
+        let stromAdvances = [
+            AdvancePayment(meter: strom, amountPerMonth: 105, validFrom: tariffStart),
+            AdvancePayment(meter: strom, amountPerMonth: 110, validFrom: nextYearStart),
+        ]
+        stromAdvances.forEach { context.insert($0) }
+        ValidityChain.relink(stromAdvances)
         strom.billingStartDate = yearStart
         strom.annualTarget = 3_300
-        gas.advancePaymentPerMonth = 30
+        context.insert(AdvancePayment(meter: gas, amountPerMonth: 30, validFrom: tariffStart))
         gas.billingStartDate = calendar.date(byAdding: .month, value: 3, to: yearStart)
         gas.annualTarget = 1_400
         pv.annualTarget = 5_500
 
-        context.insert(Tariff(meter: strom, pricePerUnit: Decimal(string: "0.34")!, baseFeePerMonth: Decimal(string: "12.50")!, validFrom: tariffStart))
+        // Running contract past its minimum term, and the next one already signed for 1 January.
+        let stadtwerke = Contract(meter: strom, provider: "Stadtwerke", startDate: tariffStart)
+        stadtwerke.minimumTermEnd = calendar.date(byAdding: .year, value: 1, to: tariffStart)
+        stadtwerke.noticePeriodValue = 1
+        stadtwerke.noticeUnit = .months
+        let oekostrom = Contract(meter: strom, provider: "Ökostrom Nord", startDate: nextYearStart)
+        oekostrom.minimumTermEnd = calendar.date(byAdding: .month, value: 12, to: nextYearStart)
+        oekostrom.renewalMonths = 12
+        oekostrom.noticePeriodValue = 4
+        oekostrom.noticeUnit = .weeks
+        oekostrom.priceGuaranteeUntil = oekostrom.minimumTermEnd
+        context.insert(stadtwerke)
+        context.insert(oekostrom)
+        let stromTariffs = [
+            Tariff(meter: strom, pricePerUnit: Decimal(string: "0.34")!, baseFeePerMonth: Decimal(string: "12.50")!, validFrom: tariffStart),
+            Tariff(meter: strom, pricePerUnit: Decimal(string: "0.37")!, baseFeePerMonth: Decimal(string: "13.90")!, validFrom: nextYearStart),
+        ]
+        stromTariffs[0].contract = stadtwerke
+        stromTariffs[1].contract = oekostrom
+        stromTariffs.forEach { context.insert($0) }
+        ValidityChain.relink(stromTariffs)
         context.insert(Tariff(meter: pv, pricePerUnit: 0, baseFeePerMonth: 0, feedInPricePerUnit: Decimal(string: "0.082")!, validFrom: tariffStart))
         context.insert(Tariff(meter: gas, pricePerUnit: Decimal(string: "0.11")!, baseFeePerMonth: Decimal(string: "14.90")!, validFrom: tariffStart))
         context.insert(Tariff(meter: wasser, pricePerUnit: Decimal(string: "4.35")!, baseFeePerMonth: Decimal(string: "6.00")!, validFrom: tariffStart))
@@ -56,7 +82,14 @@ enum SeedData {
         seedReadings(meter: pv, startValue: 12_480, perMonth: 480, season: -0.8, context: context)
         seedReadings(meter: eigen, startValue: 5_310, perMonth: 210, season: -0.7, context: context)
         seedReadings(meter: gas, startValue: 18_940, perMonth: 110, season: 0.85, context: context)
-        seedReadings(meter: wasser, startValue: 1_204, perMonth: 9.5, season: -0.15, context: context)
+        let wasserReadings = seedReadings(meter: wasser, startValue: 1_204, perMonth: 9.5, season: -0.15, context: context)
+        // The water meter was exchanged about a year ago; the new one started at 0.
+        if let change = calendar.date(byAdding: .month, value: -12, to: now),
+           let index = wasserReadings.firstIndex(where: { $0.date >= change.addingTimeInterval(-86_400) }) {
+            let offset = wasserReadings[index].value
+            wasserReadings[index].previousMeterFinalValue = offset
+            for reading in wasserReadings[index...] { reading.value -= offset }
+        }
         seedReadings(meter: fewoStrom, startValue: 9_870, perMonth: 95, season: -0.35, context: context)
         seedReadings(meter: fewoWasser, startValue: 312, perMonth: 3.2, season: -0.5, context: context)
 
@@ -64,12 +97,14 @@ enum SeedData {
     }
 
     /// Readings are cumulative meter values, so every month adds a positive increment.
-    private static func seedReadings(meter: Meter, startValue: Double, perMonth: Double, season: Double, context: ModelContext) {
+    @discardableResult
+    private static func seedReadings(meter: Meter, startValue: Double, perMonth: Double, season: Double, context: ModelContext) -> [Reading] {
         let calendar = Calendar.current
         let now = Date()
         // Fixed jitter pattern keeps the demo data (and screenshots) reproducible.
         let jitter: [Double] = [1.04, 0.96, 1.08, 0.93, 1.01, 1.06, 0.95, 1.03, 0.98, 1.07, 0.94, 1.02]
         var value = startValue
+        var readings: [Reading] = []
         for i in stride(from: 24, through: 0, by: -1) {
             guard let date = calendar.date(byAdding: .month, value: -i, to: now) else { continue }
             if i < 24 {
@@ -78,7 +113,10 @@ enum SeedData {
                 value += perMonth * max(seasonal, 0.1) * jitter[i % jitter.count]
             }
             let rounded = (value * 10).rounded() / 10
-            context.insert(Reading(meter: meter, date: date, value: Decimal(rounded)))
+            let reading = Reading(meter: meter, date: date, value: Decimal(rounded))
+            context.insert(reading)
+            readings.append(reading)
         }
+        return readings
     }
 }
