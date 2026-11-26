@@ -1,0 +1,1 @@
+Zählerstand,Stromzähler,Gaszähler,Wasserzähler,Abschlag,Nachzahlung,Photovoltaik,PV,Nebenkosten

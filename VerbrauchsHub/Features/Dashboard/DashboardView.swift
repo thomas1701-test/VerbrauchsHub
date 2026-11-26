@@ -16,6 +16,7 @@ struct DashboardView: View {
         NavigationStack {
             ScrollView {
                 LazyVStack(spacing: 16) {
+                    TrialBanner()
                     if visibleMeters.isEmpty {
                         ContentUnavailableView(
                             "Noch keine Zähler",

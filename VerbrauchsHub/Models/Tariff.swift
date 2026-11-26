@@ -2,9 +2,10 @@ import Foundation
 import SwiftData
 
 @Model
-final class Tariff {
+final class Tariff: ValidityPeriod {
     @Attribute(.unique) var id: UUID
     var meter: Meter?
+    var contract: Contract?
     var pricePerUnit: Decimal
     var baseFeePerMonth: Decimal
     var feedInPricePerUnit: Decimal?
@@ -30,11 +31,5 @@ final class Tariff {
         self.validFrom = validFrom
         self.validTo = validTo
         self.createdAt = createdAt
-    }
-
-    func isActive(on date: Date) -> Bool {
-        if date < validFrom { return false }
-        if let validTo, date >= validTo { return false }
-        return true
     }
 }

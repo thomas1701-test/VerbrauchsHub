@@ -9,6 +9,8 @@ struct ConsumptionResult: Hashable {
     /// True if no reading data exists for any part of the period.
     var isEmpty: Bool { amount == 0 && isPartial == false && !hasCoverage }
     let hasCoverage: Bool
+    /// Seconds of the period actually covered by readings (0 without coverage).
+    var coveredSeconds: Double = 0
 }
 
 /// Computes consumption per period using linear interpolation between cumulative meter readings.
@@ -58,7 +60,8 @@ struct ConsumptionCalculator {
             if b.date <= coveredStart { continue }
             if a.date >= coveredEnd { break }
 
-            let delta = b.value - a.value
+            // On a meter exchange `b` carries the old meter's final value; from `b` on the new meter counts.
+            let delta = (b.previousMeterFinalValue ?? b.value) - a.value
             if delta <= 0 { continue } // ignore meter resets/decreases
 
             let pairSeconds: Double = b.date.timeIntervalSince(a.date)
@@ -74,7 +77,13 @@ struct ConsumptionCalculator {
             total += delta * ratio
         }
 
-        return ConsumptionResult(period: period, amount: total, isPartial: partial, hasCoverage: true)
+        return ConsumptionResult(
+            period: period,
+            amount: total,
+            isPartial: partial,
+            hasCoverage: true,
+            coveredSeconds: coveredEnd.timeIntervalSince(coveredStart)
+        )
     }
 
     /// Consumption per period for a granularity over a range.

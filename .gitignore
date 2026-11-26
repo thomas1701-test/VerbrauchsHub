@@ -19,3 +19,4 @@ xcshareddata/WorkspaceSettings.xcsettings
 
 # CocoaPods (not used here, but safe)
 Pods/
+.claude/release/

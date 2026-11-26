@@ -12,7 +12,6 @@ struct BarComparisonChartView: View {
         let meterName: String
         let color: Color
         let periodStart: Date
-        let label: String
         let amount: Double
         let isPartial: Bool
     }
@@ -27,7 +26,6 @@ struct BarComparisonChartView: View {
                     meterName: meter.displayName,
                     color: color,
                     periodStart: item.period.start,
-                    label: item.period.displayLabel,
                     amount: item.amount.doubleValue,
                     isPartial: item.isPartial
                 ))
@@ -41,7 +39,7 @@ struct BarComparisonChartView: View {
             Text("Periodenvergleich").font(.headline)
             Chart(bars) { b in
                 BarMark(
-                    x: .value("Periode", b.label),
+                    x: .value("Periode", b.periodStart, unit: granularity.calendarComponent),
                     y: .value("Verbrauch", b.amount)
                 )
                 .foregroundStyle(by: .value("Zähler", b.meterName))

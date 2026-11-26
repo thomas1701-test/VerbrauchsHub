@@ -3,6 +3,7 @@ import SwiftData
 
 struct BuildingsListView: View {
     @Environment(\.modelContext) private var context
+    @Environment(AppState.self) private var appState
     @Query(sort: \Building.createdAt) private var buildings: [Building]
     @State private var showAdd = false
 
@@ -24,7 +25,15 @@ struct BuildingsListView: View {
                 }
             }
             .onDelete { offsets in
-                for i in offsets { context.delete(buildings[i]) }
+                for i in offsets {
+                    let building = buildings[i]
+                    for meter in building.meters {
+                        NotificationService.shared.cancelReminder(for: meter)
+                        meter.contracts.forEach { NotificationService.shared.cancelContractReminders(for: $0) }
+                    }
+                    if appState.selectedBuildingID == building.id { appState.selectedBuildingID = nil }
+                    context.delete(building)
+                }
                 try? context.save()
             }
         }
@@ -102,12 +111,13 @@ struct AddBuildingSheet: View {
                 ToolbarItem(placement: .cancellationAction) { Button("Abbrechen") { dismiss() } }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Anlegen") {
+                        let name = name.trimmingCharacters(in: .whitespacesAndNewlines)
                         let b = Building(name: name, address: address.isEmpty ? nil : address, iconName: iconName, colorHex: colorHex, notes: notes.isEmpty ? nil : notes)
                         context.insert(b)
                         try? context.save()
                         dismiss()
                     }
-                    .disabled(name.isEmpty)
+                    .disabled(name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                 }
             }
         }

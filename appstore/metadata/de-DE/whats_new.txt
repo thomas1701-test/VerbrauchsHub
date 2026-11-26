@@ -1,0 +1,6 @@
+• Verträge: Anbieter, Laufzeit, Kündigungsfrist und Preisgarantie hinterlegen – VerbrauchsHub erinnert dich rechtzeitig vor dem letzten Kündigungstag
+• Neuer Vertrag ab Januar? Schon jetzt eintragen: Er erscheint als „geplant“ und zählt ab dem Wechseldatum in der Prognose
+• Abschläge mit Gültigkeit: Erhöhungen nach der Jahresabrechnung fließen richtig in die Prognose ein
+• Zählerwechsel: Endstand des alten und Startstand des neuen Zählers erfassen – ohne Lücke im Verbrauch
+• Preise lassen sich jetzt bearbeiten
+• Behoben: Tarife überschneiden sich nicht mehr, und Löschen hinterlässt keine Lücke bei den Kosten

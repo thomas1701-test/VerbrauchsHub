@@ -22,11 +22,13 @@ struct Forecaster {
             return nil
         }
         let ytd = calculator.totalConsumption(from: yearStart, to: date, calendar: calendar).amount
-        let totalSecondsInYear = yearEnd.timeIntervalSince(yearStart)
-        let elapsedSeconds = max(date.timeIntervalSince(yearStart), 1)
-        let factor = Decimal(totalSecondsInYear / elapsedSeconds)
-        let projected = ytd * factor
-        return ForecastResult(yearToDate: ytd, projectedTotal: projected, asOf: date)
+        // Extrapolates from the span actually covered by readings (not the elapsed time, otherwise
+        // the gap since the last reading drags the forecast down) and follows last year's
+        // seasonal pattern when it is known.
+        guard let projection = calculator.projection(from: yearStart, to: yearEnd, asOf: date, calendar: calendar) else {
+            return ForecastResult(yearToDate: ytd, projectedTotal: 0, asOf: date)
+        }
+        return ForecastResult(yearToDate: ytd, projectedTotal: projection.total, asOf: date)
     }
 }
 

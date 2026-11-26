@@ -206,8 +206,9 @@ struct TotalsTable: View {
                         Text(Formatting.amount(total, unit: meter.unitLabel))
                             .font(.subheadline.weight(.medium))
                         if cost.total != 0 {
-                            Text(Formatting.currency(cost.total))
-                                .font(.caption).foregroundStyle(.secondary)
+                            Text(Formatting.netCost(cost.total))
+                                .font(.caption)
+                                .foregroundStyle(cost.total < 0 ? AnyShapeStyle(.green) : AnyShapeStyle(.secondary))
                         }
                     }
                 }

@@ -1,0 +1,53 @@
+{
+  "identifier" : "6F3A2C1E",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "0.0",
+      "familyShareable" : false,
+      "internalID" : "7A1B2C3D",
+      "localizations" : [
+        {
+          "description" : "Alle Funktionen 14 Tage kostenlos testen.",
+          "displayName" : "14 Tage kostenlos testen",
+          "locale" : "de"
+        }
+      ],
+      "productID" : "net.gmx.dillmann.VerbrauchsHub.trial14",
+      "referenceName" : "14-day Trial",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "8B2C3D4E",
+      "localizations" : [
+        {
+          "description" : "Alle Funktionen dauerhaft freischalten.",
+          "displayName" : "Vollversion",
+          "locale" : "de"
+        }
+      ],
+      "productID" : "net.gmx.dillmann.VerbrauchsHub.full",
+      "referenceName" : "Vollversion",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_failTransactionsEnabled" : false,
+    "_locale" : "de_DE",
+    "_storefront" : "DEU",
+    "_storeKitErrors" : [
+
+    ]
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

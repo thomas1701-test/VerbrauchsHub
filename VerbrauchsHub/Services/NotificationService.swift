@@ -1,5 +1,6 @@
 import Foundation
 import UserNotifications
+import SwiftData
 
 @MainActor
 final class NotificationService {
@@ -50,4 +51,57 @@ final class NotificationService {
     private func identifier(for meter: Meter) -> String {
         "meter-reminder-\(meter.id.uuidString)"
     }
+}
+
+// MARK: - Contracts
+
+extension NotificationService {
+    func scheduleContractReminders(for contract: Contract) {
+        cancelContractReminders(for: contract)
+        let center = UNUserNotificationCenter.current()
+        for reminder in contract.reminders(asOf: .now) {
+            let content = UNMutableNotificationContent()
+            let date = Formatting.date.string(from: reminder.eventDate)
+            switch reminder.kind {
+            case .cancellation:
+                content.title = "Kündigungsfrist endet bald"
+                content.body = "\(contract.provider): noch bis \(date) kündbar."
+            case .priceGuarantee:
+                content.title = "Preisgarantie endet"
+                content.body = "\(contract.provider): Preisgarantie bis \(date)."
+            }
+            content.sound = .default
+            if let meterID = contract.meter?.id { content.userInfo = ["meterID": meterID.uuidString] }
+
+            let components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: reminder.fireDate)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+            let id = reminder.kind == .cancellation ? cancelIdentifier(for: contract) : guaranteeIdentifier(for: contract)
+            center.add(UNNotificationRequest(identifier: id, content: content, trigger: trigger), withCompletionHandler: nil)
+        }
+    }
+
+    func cancelContractReminders(for contract: Contract) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(
+            withIdentifiers: [cancelIdentifier(for: contract), guaranteeIdentifier(for: contract)]
+        )
+    }
+
+    /// Re-plans every contract, e.g. after an automatic renewal moved the deadline, and removes
+    /// reminders of contracts that no longer exist.
+    func rescheduleAllContractReminders(_ context: ModelContext) {
+        let contracts = (try? context.fetch(FetchDescriptor<Contract>())) ?? []
+        contracts.forEach(scheduleContractReminders)
+        let valid = Set(contracts.flatMap { [cancelIdentifier(for: $0), guaranteeIdentifier(for: $0)] })
+        UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
+            let stale = Self.contractReminderIDs(in: requests.map(\.identifier)).filter { !valid.contains($0) }
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: stale)
+        }
+    }
+
+    nonisolated static func contractReminderIDs(in identifiers: [String]) -> [String] {
+        identifiers.filter { $0.hasPrefix("contract-cancel-") || $0.hasPrefix("contract-guarantee-") }
+    }
+
+    private func cancelIdentifier(for contract: Contract) -> String { "contract-cancel-\(contract.id.uuidString)" }
+    private func guaranteeIdentifier(for contract: Contract) -> String { "contract-guarantee-\(contract.id.uuidString)" }
 }

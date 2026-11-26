@@ -23,8 +23,15 @@ struct MeterSummaryCard: View {
     private var currentConsumption: ConsumptionResult { calculator.consumption(in: currentMonth) }
     private var previousConsumption: ConsumptionResult { calculator.consumption(in: previousMonth) }
 
-    private var trend: TrendResult {
-        TrendResult(current: currentConsumption.amount, previous: previousConsumption.amount)
+    /// Compares average daily consumption, so a month that has only just started
+    /// isn't reported as a huge drop against the full previous month.
+    private var trend: TrendResult? {
+        let current = currentConsumption
+        let previous = previousConsumption
+        guard current.coveredSeconds > 0, previous.coveredSeconds > 0 else { return nil }
+        let currentDays = Decimal(current.coveredSeconds / 86_400)
+        let previousDays = Decimal(previous.coveredSeconds / 86_400)
+        return TrendResult(current: current.amount / currentDays, previous: previous.amount / previousDays)
     }
 
     private var monthCost: CostResult { costCalculator.cost(in: currentMonth) }
@@ -70,9 +77,9 @@ struct MeterSummaryCard: View {
                 }
                 Spacer()
                 if monthCost.total != 0 {
-                    Text(Formatting.currency(monthCost.total))
+                    Text(Formatting.netCost(monthCost.total))
                         .font(.subheadline.weight(.medium))
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(monthCost.total < 0 ? AnyShapeStyle(.green) : AnyShapeStyle(.secondary))
                 }
             }
 
@@ -94,7 +101,7 @@ struct MeterSummaryCard: View {
     }
 
     @ViewBuilder private var trendBadge: some View {
-        if let pct = trend.deltaPercent {
+        if let trend, let pct = trend.deltaPercent {
             let icon: String = {
                 switch trend.direction {
                 case .up: return "arrow.up.right"

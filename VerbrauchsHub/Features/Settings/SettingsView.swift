@@ -7,6 +7,7 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             List {
+                LicenseSection()
                 Section("Gebäude") {
                     NavigationLink {
                         BuildingsListView()
@@ -15,11 +16,11 @@ struct SettingsView: View {
                             .badge(buildings.count)
                     }
                 }
-                Section("Tarife") {
+                Section("Verträge") {
                     NavigationLink {
-                        TariffOverviewView()
+                        ContractOverviewView()
                     } label: {
-                        Label("Tarife pro Zähler", systemImage: "eurosign.circle")
+                        Label("Verträge & Preise", systemImage: "doc.text")
                     }
                 }
                 Section("Erinnerungen") {

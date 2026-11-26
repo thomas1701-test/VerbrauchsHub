@@ -31,10 +31,15 @@ struct ReminderRow: View {
                     set: { newValue in
                         meter.reminderEnabled = newValue
                         if newValue {
+                            // Without a day the scheduler bails out, although the picker shows "1.".
+                            if meter.reminderDayOfMonth == nil { meter.reminderDayOfMonth = 1 }
                             Task { @MainActor in
                                 let ok = await NotificationService.shared.requestPermissionIfNeeded()
                                 if ok {
                                     NotificationService.shared.scheduleReminder(for: meter)
+                                } else {
+                                    meter.reminderEnabled = false
+                                    try? context.save()
                                 }
                             }
                         } else {

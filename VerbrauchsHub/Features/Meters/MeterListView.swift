@@ -39,6 +39,8 @@ struct MeterListView: View {
                         .onDelete { offsets in
                             for idx in offsets {
                                 let meter = group.meters[idx]
+                                NotificationService.shared.cancelReminder(for: meter)
+                                meter.contracts.forEach { NotificationService.shared.cancelContractReminders(for: $0) }
                                 context.delete(meter)
                             }
                             try? context.save()

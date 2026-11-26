@@ -1,6 +1,11 @@
 import SwiftUI
 
+import SwiftData
+
 struct MainTabView: View {
+    @Query private var meters: [Meter]
+    private let navigation = AppNavigation.shared
+
     var body: some View {
         TabView {
             DashboardView()
@@ -11,6 +16,12 @@ struct MainTabView: View {
                 .tabItem { Label("Statistik", systemImage: "chart.line.uptrend.xyaxis") }
             SettingsView()
                 .tabItem { Label("Einstellungen", systemImage: "gearshape.fill") }
+        }
+        .sheet(item: Binding(
+            get: { meters.first { $0.id == navigation.addReadingMeterID } },
+            set: { if $0 == nil { navigation.addReadingMeterID = nil } }
+        )) { meter in
+            AddReadingSheet(meter: meter)
         }
     }
 }
